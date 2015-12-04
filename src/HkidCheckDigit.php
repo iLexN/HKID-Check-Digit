@@ -5,5 +5,5 @@ namespace Ilex\Validation;
 
 class HkidCheckDigit
 {
-    
+    //
 }
