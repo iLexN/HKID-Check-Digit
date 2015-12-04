@@ -2,27 +2,23 @@
 
 class Test1 extends PHPUnit_Framework_TestCase
 {
-    public function testCheckHKIDFormat()
+    
+    /**
+     * @dataProvider additionProvider
+     */
+    public function testCheckHKIDFormat($p1, $p2, $p)
     {
-        $p1 = 'B';
-        $p2 = '111111';
-        $p3 = '1';
-        $a = \Ilex\Validation\HkidCheckDigit::checkHKIDFormat($p1, $p2, $p3);
-        $this->assertTrue($a);
-     
-        //CA182361(1) 
-        $p1 = 'CA';
-        $p2 = '182361';
-        $p3 = '1';
         $a = \Ilex\Validation\HkidCheckDigit::checkHKIDFormat($p1, $p2, $p3);
         $this->assertTrue($a);
         
-        //ZA182361(3)
-        $p1 = 'ZA';
-        $p2 = '182361';
-        $p3 = '3';
-        $a = \Ilex\Validation\HkidCheckDigit::checkHKIDFormat($p1, $p2, $p3);
-        $this->assertTrue($a);
-        
+    }
+    
+    public function additionProvider()
+    {
+        return array(
+          array('B', '111111', '1'),
+          array('C', '182361', '1'),//CA182361(1) 
+          array('ZA', '182361', '3')//ZA182361(3)
+        );
     }
 }
