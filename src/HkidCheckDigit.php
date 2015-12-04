@@ -2,8 +2,49 @@
 
 namespace Ilex\Validation;
 
-
 class HkidCheckDigit
 {
-    //
+    public static function checkHKIDFormat($p1, $p2, $p3)
+    {
+        $p1_c = strtoupper(trim($p1));
+    
+        $i = 10;
+        
+        $id_check_ar = array();
+        foreach (range('A', 'Z') as $char) {
+            $id_check_ar[$char] = $i;
+            $i++;
+        }
+    
+        $countChat = strlen(trim($p1_c));
+        if ($countChat == 1) {
+            $chatSum = 324 + $id_check_ar[$p1_c[0]] * 8 ;
+        } elseif ($countChat == 2) {
+            $chatSum = $id_check_ar[$p1_c[0]] * 9 ;
+            $chatSum += $id_check_ar[$p1_c[1]] * 8 ;
+        }
+    
+        $hkid_sum = 11 - ((
+            $chatSum +
+            $p2[0] * 7 +
+            $p2[1] * 6 +
+            $p2[2] * 5 +
+            $p2[3] * 4 +
+            $p2[4] * 3 +
+            $p2[5] * 2) %11);
+
+    
+        if ($hkid_sum == 11) {
+            $hkid_sum = 0 ;
+        }
+        if ($hkid_sum == 10) {
+            $hkid_sum = 'A' ;
+        }
+    
+        if ($hkid_sum == strtoupper($p3)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
