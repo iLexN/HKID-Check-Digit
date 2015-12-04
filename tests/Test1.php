@@ -15,7 +15,7 @@ class Test1 extends PHPUnit_Framework_TestCase
     {
         return array(
           'B111111(1)' => array('B', '111111', '1'),
-          'CA182361(1)' => array('C', '182361', '1'),
+          'CA182361(1)' => array('CA', '182361', '1'),
           'ZA182361(3)' => array('ZA', '182361', '3')
         );
     }
