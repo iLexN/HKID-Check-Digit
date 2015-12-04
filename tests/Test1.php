@@ -9,11 +9,18 @@ class Test1 extends PHPUnit_Framework_TestCase
         $p3 = '1';
         $a = \Ilex\Validation\HkidCheckDigit::checkHKIDFormat($p1, $p2, $p3);
         $this->assertTrue($a);
-    
-        
-        $p1 = 'q';
-        $p2 = '126331';
+     
+        //CA182361(1) 
+        $p1 = 'CA';
+        $p2 = '182361';
         $p3 = '1';
+        $a = \Ilex\Validation\HkidCheckDigit::checkHKIDFormat($p1, $p2, $p3);
+        $this->assertTrue($a);
+        
+        //ZA182361(3)
+        $p1 = 'ZA';
+        $p2 = '182361';
+        $p3 = '3';
         $a = \Ilex\Validation\HkidCheckDigit::checkHKIDFormat($p1, $p2, $p3);
         $this->assertTrue($a);
         
