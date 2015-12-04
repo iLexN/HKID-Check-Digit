@@ -1,0 +1,21 @@
+{
+    "name": "ilexn/hkid-check-digit",
+    "description": "idorm db file cache",
+    "authors": [
+        {
+            "name": "iLexN",
+            "email": "ilex.job@gmail.com"
+        }
+    ],
+    "require": {
+        
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ilex\\Validation\\": "src"
+        }
+    }
+}
