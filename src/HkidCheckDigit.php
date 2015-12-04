@@ -4,6 +4,13 @@ namespace Ilex\Validation;
 
 class HkidCheckDigit
 {
+    /**
+     * check HKID Format eg. CA182361(1)
+     * @param string $p1 CA
+     * @param string $p2 182361
+     * @param string $p3 1 
+     * @return boolean
+     */
     public static function checkHKIDFormat($p1, $p2, $p3)
     {
         $p1_c = strtoupper(trim($p1));
