@@ -14,4 +14,8 @@
     }
 
 
+# Remember
+- website need SSL ,
+- do not save the data , or encode to save
+
 ref : http://keatonchan.blogspot.hk/2009/08/hkid-check-digit-calculation-algorithm.html
