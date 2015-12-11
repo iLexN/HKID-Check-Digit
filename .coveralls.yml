@@ -1,1 +1,2 @@
-repo_token: bE5tWdY2Zm18VLv5IdwKCX6RvU1m44ZQC
+service_name: travis-ci
+src_dir: src
