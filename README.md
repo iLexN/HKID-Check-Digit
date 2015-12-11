@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/iLexN/HKID-Check-Digit.svg?branch=master)](https://travis-ci.org/iLexN/HKID-Check-Digit)
+[![Coverage Status](https://coveralls.io/repos/iLexN/HKID-Check-Digit/badge.svg?branch=master&service=github)](https://coveralls.io/github/iLexN/HKID-Check-Digit?branch=master)
+
+
 # How to autoload
 
 
