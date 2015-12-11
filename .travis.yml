@@ -12,5 +12,4 @@ before_script:
  
 script: phpunit 
 
-after_success:
-  - coveralls
+after_success: coveralls
