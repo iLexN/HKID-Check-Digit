@@ -1,5 +1,7 @@
 <?php
 
+namespace Ilex\Test;
+
 class Test1 extends PHPUnit_Framework_TestCase
 {
     /**
@@ -10,7 +12,7 @@ class Test1 extends PHPUnit_Framework_TestCase
         $a = \Ilex\Validation\HkidCheckDigit::checkHKIDFormat($p1, $p2, $p3);
         $this->assertTrue($a);
     }
-    
+
     public function additionProvider()
     {
         return array(
@@ -21,16 +23,14 @@ class Test1 extends PHPUnit_Framework_TestCase
             'B111117(0)' => array('B', '111117', '0'),
         );
     }
-    
+
     public function testCheckHKIDFormatFalse()
     {
         $p1 = 'B';
         $p2 = '111111';
         $p3 = '3';
-        
+
         $a = \Ilex\Validation\HkidCheckDigit::checkHKIDFormat($p1, $p2, $p3);
         $this->assertFalse($a);
     }
-    
-    
 }
