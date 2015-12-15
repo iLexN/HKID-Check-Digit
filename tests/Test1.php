@@ -2,7 +2,7 @@
 
 namespace Ilex\Test;
 
-class Test1 extends PHPUnit_Framework_TestCase
+class Test1 extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider additionProvider
