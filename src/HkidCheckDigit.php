@@ -9,7 +9,7 @@ class HkidCheckDigit
      *
      * @param string $p1 CA
      * @param string $p2 182361
-     * @param string $p3 1 
+     * @param string $p3 1
      *
      * @return bool
      */
