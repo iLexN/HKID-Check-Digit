@@ -42,17 +42,28 @@ class HkidCheckDigit
             $p2[4] * 3 +
             $p2[5] * 2) % 11);
 
+        /*
         if ($hkid_sum == 11) {
             $hkid_sum = 0;
         }
         if ($hkid_sum == 10) {
             $hkid_sum = 'A';
         }
+         */
+
+        switch ($hkid_sum) {
+            case 11:
+                $hkid_sum = 0;
+                break;
+            case 10:
+                $hkid_sum = 'A';
+                break;
+        }
 
         if ($hkid_sum == strtoupper($p3)) {
             return true;
-        } else {
-            return false;
         }
+
+        return false;
     }
 }
