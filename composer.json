@@ -1,6 +1,6 @@
 {
     "name": "ilexn/hkid-check-digit",
-    "description": "idorm db file cache",
+    "description": "HKID digit check",
     "authors": [
         {
             "name": "iLexN",
