@@ -31,7 +31,10 @@ class HkidCheckDigit
         } elseif ($countChat == 2) {
             $chatSum = $id_check_ar[$p1_c[0]] * 9;
             $chatSum += $id_check_ar[$p1_c[1]] * 8;
+        } else {
+            return false;
         }
+            
 
         $hkid_sum = 11 - ((
             $chatSum +
