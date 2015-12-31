@@ -34,7 +34,6 @@ class HkidCheckDigit
         } else {
             return false;
         }
-            
 
         $hkid_sum = 11 - ((
             $chatSum +
