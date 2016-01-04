@@ -15,13 +15,13 @@ class Test1 extends \PHPUnit_Framework_TestCase
 
     public function additionProvider()
     {
-        return array(
-            'B111111(1)' => array('B', '111111', '1'),
-            'CA182361(1)' => array('CA', '182361', '1'),
+        return [
+            'B111111(1)'  => ['B', '111111', '1'],
+            'CA182361(1)' => ['CA', '182361', '1'],
             //'ZA182361(3)' => array('ZA', '182361', '3'),
-            'B111112(A)' => array('B', '111112', 'A'),
-            'B111117(0)' => array('B', '111117', '0'),
-        );
+            'B111112(A)' => ['B', '111112', 'A'],
+            'B111117(0)' => ['B', '111117', '0'],
+        ];
     }
 
     public function testCheckHKIDFormatFalse()
@@ -33,7 +33,7 @@ class Test1 extends \PHPUnit_Framework_TestCase
         $a = \Ilex\Validation\HkidCheckDigit::checkHKIDFormat($p1, $p2, $p3);
         $this->assertFalse($a);
     }
-    
+
     public function testCheckHKIDFormatFalse2()
     {
         $p1 = 'BSA';

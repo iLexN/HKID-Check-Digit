@@ -19,7 +19,7 @@ class HkidCheckDigit
 
         $i = 10;
 
-        $id_check_ar = array();
+        $id_check_ar = [];
         foreach (range('A', 'Z') as $char) {
             $id_check_ar[$char] = $i;
             ++$i;
