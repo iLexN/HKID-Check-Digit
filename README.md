@@ -2,6 +2,7 @@
 [![Coverage Status](https://coveralls.io/repos/iLexN/HKID-Check-Digit/badge.svg?branch=master&service=github)](https://coveralls.io/github/iLexN/HKID-Check-Digit?branch=master)
 [![StyleCI](https://styleci.io/repos/47378522/shield)](https://styleci.io/repos/47378522)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/iLexN/HKID-Check-Digit/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/iLexN/HKID-Check-Digit/?branch=master)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/9b916edb-0aa6-4811-a2e3-b9acbb1d4250/mini.png)](https://insight.sensiolabs.com/projects/9b916edb-0aa6-4811-a2e3-b9acbb1d4250)
 
 # How to autoload
 
