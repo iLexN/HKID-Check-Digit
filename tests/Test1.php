@@ -13,7 +13,7 @@ class Test1 extends \PHPUnit\Framework\TestCase
         $this->assertTrue($a);
 
         $b = new \Ilex\Validation\HkidCheckDigit($p1, $p2, $p3);
-        $this->assertFalse($b->checkHKID());
+        $this->assertTrue($b->checkHKID());
     }
 
     public function additionProvider()
