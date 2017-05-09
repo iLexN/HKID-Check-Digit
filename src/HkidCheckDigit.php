@@ -34,7 +34,7 @@ class HkidCheckDigit
     public function checkHKID()
     {
         $chatSum = $this->getchatSum();
-        if ($chatSum  === false) {
+        if ($chatSum === false) {
             return false;
         }
 
@@ -65,7 +65,7 @@ class HkidCheckDigit
     private function getP1P2Sum($chatSum)
     {
         $p2 = $this->p2;
-        $hkid_sum =  11 - ((
+        $hkid_sum = 11 - ((
             $chatSum +
             $p2[0] * 7 +
             $p2[1] * 6 +
