@@ -82,6 +82,7 @@ class HkidCheckDigit
                 $hkid_sum = 'A';
                 break;
         }
+
         return $hkid_sum;
     }
 
