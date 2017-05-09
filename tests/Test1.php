@@ -11,6 +11,9 @@ class Test1 extends \PHPUnit\Framework\TestCase
     {
         $a = \Ilex\Validation\HkidCheckDigit::checkHKIDFormat($p1, $p2, $p3);
         $this->assertTrue($a);
+
+        $b = new \Ilex\Validation\HkidCheckDigit($p1, $p2, $p3);
+        $this->assertFalse($b->checkHKID());
     }
 
     public function additionProvider()
@@ -32,6 +35,9 @@ class Test1 extends \PHPUnit\Framework\TestCase
 
         $a = \Ilex\Validation\HkidCheckDigit::checkHKIDFormat($p1, $p2, $p3);
         $this->assertFalse($a);
+
+        $b = new \Ilex\Validation\HkidCheckDigit($p1, $p2, $p3);
+        $this->assertFalse($b->checkHKID());
     }
 
     public function testCheckHKIDFormatFalse2()
@@ -42,5 +48,8 @@ class Test1 extends \PHPUnit\Framework\TestCase
 
         $a = \Ilex\Validation\HkidCheckDigit::checkHKIDFormat($p1, $p2, $p3);
         $this->assertFalse($a);
+
+        $b = new \Ilex\Validation\HkidCheckDigit($p1, $p2, $p3);
+        $this->assertFalse($b->checkHKID());
     }
 }
