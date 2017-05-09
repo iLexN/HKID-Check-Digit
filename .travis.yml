@@ -15,6 +15,6 @@ script:
   - if [[ "$TRAVIS_PHP_VERSION" != '5.6' ]]; then phpunit ; fi
 
 after_script:
-  - if [[ "$TRAVIS_PHP_VERSION" == '5.6' ]]; then php vendor/bin/coveralls -v ; fi
+  - if [[ "$TRAVIS_PHP_VERSION" == '5.6' ]]; then php vendor/bin/coveralls --coverage_clover=build/logs/clover.xml -v ; fi
   - if [[ "$TRAVIS_PHP_VERSION" == '5.6' ]]; then wget https://scrutinizer-ci.com/ocular.phar ; fi
   - if [[ "$TRAVIS_PHP_VERSION" == '5.6' ]]; then php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml ; fi
