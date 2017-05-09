@@ -2,7 +2,7 @@
 
 namespace Ilex\Test;
 
-class Test1 extends \PHPUnit_Framework_TestCase
+class HKIDTest1 extends \PHPUnit\Framework\TestCase
 {
     /**
      * @dataProvider additionProvider
