@@ -1,0 +1,16 @@
+<?php
+
+use Sami\Sami;
+use Symfony\Component\Finder\Finder;
+
+$srcDir = __DIR__ . '/src';
+$iterator = Finder::create()
+  ->files()
+  ->name('*.php')
+  ->in($srcDir);
+
+$options = [
+  'build_dir' => __DIR__ . '/docs',
+  'cache_dir' => __DIR__ . '/cache/sami_doc',
+];
+return new Sami($iterator, $options);

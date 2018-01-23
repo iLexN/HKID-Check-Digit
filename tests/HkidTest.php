@@ -1,8 +1,10 @@
 <?php
 
-namespace Ilex\Test;
+namespace Ilex\Validation\HkidTest\Test;
 
-class HkidTest extends \PHPUnit\Framework\TestCase
+use PHPUnit\Framework\TestCase;
+
+class HkidTest extends TestCase
 {
     /**
      * @dataProvider additionProvider

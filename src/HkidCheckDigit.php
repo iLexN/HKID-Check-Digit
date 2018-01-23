@@ -72,7 +72,8 @@ class HkidCheckDigit
             $p2[2] * 5 +
             $p2[3] * 4 +
             $p2[4] * 3 +
-            $p2[5] * 2) % 11);
+            $p2[5] * 2
+        ) % 11);
 
         switch ($hkid_sum) {
             case 11:
