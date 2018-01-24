@@ -1,29 +1,33 @@
 <?php
 
-namespace Ilex\Validation\HkidTest\Test;
+namespace Ilex\Validation\Test;
 
+use Ilex\Validation\HkidCheckDigit;
 use PHPUnit\Framework\TestCase;
 
 class HkidTest extends TestCase
 {
     /**
      * @dataProvider additionProvider
+     * @param string $p1 CA
+     * @param string $p2 182361
+     * @param string $p3 1
      */
-    public function testCheckHKIDFormat($p1, $p2, $p3)
+    public function testCheckHKIDFormat(string $p1, string $p2, string $p3)
     {
-        $a = \Ilex\Validation\HkidCheckDigit::checkHKIDFormat($p1, $p2, $p3);
+        $a = HkidCheckDigit::createFromParts($p1, $p2, $p3);
         $this->assertTrue($a);
 
-        $b = new \Ilex\Validation\HkidCheckDigit($p1, $p2, $p3);
-        $this->assertTrue($b->checkHKID());
+        $b = new HkidCheckDigit();
+        $this->assertTrue($b->check($p1, $p2, $p3));
     }
 
     public function additionProvider()
     {
         return [
             'B111111(1)'  => ['B', '111111', '1'],
-            'CA182361(1)' => ['CA', '182361', '1'],
-            //'ZA182361(3)' => array('ZA', '182361', '3'),
+            'CA182361(1)' => ['Ca', '182361', '1'],
+            'ZA182361(3)' => ['zA', '182361', '3'],
             'B111112(A)' => ['B', '111112', 'A'],
             'B111117(0)' => ['B', '111117', '0'],
         ];
@@ -35,11 +39,11 @@ class HkidTest extends TestCase
         $p2 = '111111';
         $p3 = '3';
 
-        $a = \Ilex\Validation\HkidCheckDigit::checkHKIDFormat($p1, $p2, $p3);
+        $a = HkidCheckDigit::createFromParts($p1, $p2, $p3);
         $this->assertFalse($a);
 
-        $b = new \Ilex\Validation\HkidCheckDigit($p1, $p2, $p3);
-        $this->assertFalse($b->checkHKID());
+        $b = new HkidCheckDigit();
+        $this->assertFalse($b->check($p1, $p2, $p3));
     }
 
     public function testCheckHKIDFormatFalse2()
@@ -48,10 +52,10 @@ class HkidTest extends TestCase
         $p2 = '111111';
         $p3 = '3';
 
-        $a = \Ilex\Validation\HkidCheckDigit::checkHKIDFormat($p1, $p2, $p3);
+        $a = HkidCheckDigit::createFromParts($p1, $p2, $p3);
         $this->assertFalse($a);
 
-        $b = new \Ilex\Validation\HkidCheckDigit($p1, $p2, $p3);
-        $this->assertFalse($b->checkHKID());
+        $b = new HkidCheckDigit();
+        $this->assertFalse($b->check($p1, $p2, $p3));
     }
 }

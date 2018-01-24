@@ -18,7 +18,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Ilex\\Validation\\HkidCheckDigit\\Tests\\": "tests/"
+            "Ilex\\Validation\\Tests\\": "tests/"
         }
     },
     "require-dev": {

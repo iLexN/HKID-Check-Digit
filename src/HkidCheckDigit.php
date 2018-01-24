@@ -1,22 +1,24 @@
 <?php
+declare(strict_types=1);
 
 namespace Ilex\Validation;
 
 class HkidCheckDigit
 {
-    public $p1;
-    public $p2;
-    public $p3;
+    private $partOneCharNumArray = [];
 
-    public function __construct($p1, $p2, $p3)
+    public function __construct()
     {
-        $this->p1 = strtoupper(trim($p1));
-        $this->p2 = $p2;
-        $this->p3 = strtoupper($p3);
+        $this->partOneCharNumArray = $this->getCharNumValue();
+    }
+
+    private function clearString(string $string):string
+    {
+        return strtoupper(trim($string));
     }
 
     /**
-     * check HKID Format eg. CA182361(1).
+     * Quick Helper check HKID Format eg. CA182361(1).
      *
      * @param string $p1 CA
      * @param string $p2 182361
@@ -24,56 +26,48 @@ class HkidCheckDigit
      *
      * @return bool
      */
-    public static function checkHKIDFormat($p1, $p2, $p3)
-    {
-        $hkidObj = new self($p1, $p2, $p3);
-
-        return $hkidObj->checkHKID();
+    public static function createFromParts(
+        string $p1,
+        string $p2,
+        string $p3
+    ): bool {
+        return (new self())->check($p1, $p2, $p3);
     }
 
-    public function checkHKID()
+    public function check(string $p1, string $p2, string $p3): bool
     {
-        $chatSum = $this->getchatSum();
-        if ($chatSum === false) {
+        $p1 = $this->clearString($p1);
+        $p3 = $this->clearString($p3);
+
+        try {
+            return $this->getP1P2Sum($p2, $this->getCharSum($p1)) === $p3;
+        } catch (\Exception $exception) {
             return false;
         }
-
-        $hkid_sum = $this->getP1P2Sum($chatSum);
-
-        if ($hkid_sum == $this->p3) {
-            return true;
-        }
-
-        return false;
     }
 
-    private function getchatSum()
+    /**
+     * @param string $p1
+     *
+     * @return int
+     * @throws \Exception
+     */
+    private function getCharSum(string $p1) : int
     {
-        $p1_c = $this->p1;
-        $id_check_ar = $this->getChatNum();
-        $countChat = strlen(trim($p1_c));
+        $countChat = strlen($p1);
 
         if ($countChat === 1) {
-            return 324 + $id_check_ar[$p1_c[0]] * 8;
+            return 324 + $this->partOneCharNumArray[$p1[0]] * 8;
         } elseif ($countChat === 2) {
-            return $id_check_ar[$p1_c[0]] * 9 + $id_check_ar[$p1_c[1]] * 8;
-        } else {
-            return false;
+            return $this->partOneCharNumArray[$p1[0]] * 9 + $this->partOneCharNumArray[$p1[1]] * 8;
         }
+
+        throw new \Exception('Wrong length for part 1');
     }
 
-    private function getP1P2Sum($chatSum)
+    private function getP1P2Sum($p2, $charSum): string
     {
-        $p2 = $this->p2;
-        $hkid_sum = 11 - ((
-            $chatSum +
-            $p2[0] * 7 +
-            $p2[1] * 6 +
-            $p2[2] * 5 +
-            $p2[3] * 4 +
-            $p2[4] * 3 +
-            $p2[5] * 2
-        ) % 11);
+        $hkid_sum = $this->calPart2Remainder($p2, $charSum);
 
         switch ($hkid_sum) {
             case 11:
@@ -84,10 +78,24 @@ class HkidCheckDigit
                 break;
         }
 
-        return $hkid_sum;
+        return (string)$hkid_sum;
     }
 
-    private function getChatNum()
+    public function calPart2Remainder(string $p2, int $charSum) :int
+    {
+        return 11 - ((
+                    $charSum +
+                    $p2[0] * 7 +
+                    $p2[1] * 6 +
+                    $p2[2] * 5 +
+                    $p2[3] * 4 +
+                    $p2[4] * 3 +
+                    $p2[5] * 2
+                ) % 11);
+    }
+
+
+    private function getCharNumValue()
     {
         $i = 10;
         $id_check_ar = [];
