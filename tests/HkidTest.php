@@ -2,27 +2,57 @@
 
 namespace Ilex\Validation\Test;
 
-use Ilex\Validation\HkidCheckDigit;
+use Ilex\Validation\HkidValidation\Helper;
+use Ilex\Validation\HkidValidation\HkidDigitCheck;
 use PHPUnit\Framework\TestCase;
 
 class HkidTest extends TestCase
 {
     /**
-     * @dataProvider additionProvider
+     * @dataProvider additionProviderTrueResult
+     *
      * @param string $p1 CA
      * @param string $p2 182361
      * @param string $p3 1
      */
     public function testCheckHKIDFormat(string $p1, string $p2, string $p3)
     {
-        $a = HkidCheckDigit::createFromParts($p1, $p2, $p3);
+        $a = Helper::checkByParts($p1, $p2, $p3);
         $this->assertTrue($a);
-
-        $b = new HkidCheckDigit();
-        $this->assertTrue($b->check($p1, $p2, $p3));
     }
 
-    public function additionProvider()
+    /**
+     * @dataProvider additionProviderTrueResult
+     *
+     * @param string $p1 CA
+     * @param string $p2 182361
+     * @param string $p3 1
+     */
+    public function testCheckHKIDFormat2(string $p1, string $p2, string $p3)
+    {
+        $c = Helper::checkByString($this->partsToString($p1, $p2, $p3));
+        $this->assertTrue($c);
+    }
+
+    /**
+     * @dataProvider additionProviderTrueResult
+     *
+     * @param string $p1 CA
+     * @param string $p2 182361
+     * @param string $p3 1
+     */
+    public function testCheckHKIDFormat3(string $p1, string $p2, string $p3)
+    {
+        $b = new HkidDigitCheck();
+        $this->assertTrue($b->checkParts($p1, $p2, $p3));
+    }
+
+    private function partsToString($p1, $p2, $p3)
+    {
+        return $p1.$p2.'('.$p3.')';
+    }
+
+    public function additionProviderTrueResult()
     {
         return [
             'B111111(1)'  => ['B', '111111', '1'],
@@ -33,29 +63,35 @@ class HkidTest extends TestCase
         ];
     }
 
-    public function testCheckHKIDFormatFalse()
+    public function additionProviderFalseResult()
     {
-        $p1 = 'B';
-        $p2 = '111111';
-        $p3 = '3';
-
-        $a = HkidCheckDigit::createFromParts($p1, $p2, $p3);
-        $this->assertFalse($a);
-
-        $b = new HkidCheckDigit();
-        $this->assertFalse($b->check($p1, $p2, $p3));
+        return [
+            'B111111(3)'  => ['B', '111111', '3'],
+            'CAC182361(1)' => ['CaC', '182361', '1'],
+            '111112(A)' => ['', '111112', 'A'],
+            '1B111117(0)' => ['1B', '111117', '0'],
+            '1111117(0)' => ['1', '111117', '0'],
+            '122(0)' => ['B', '22', '0'],
+            'B111111(G)'  => ['B', '111111', 'G'],
+        ];
     }
 
-    public function testCheckHKIDFormatFalse2()
+    /**
+     * @dataProvider additionProviderFalseResult
+     *
+     * @param string $p1 CA
+     * @param string $p2 182361
+     * @param string $p3 1
+     */
+    public function testCheckHKIDFormatFalse(string $p1, string $p2, string $p3)
     {
-        $p1 = 'BSA';
-        $p2 = '111111';
-        $p3 = '3';
-
-        $a = HkidCheckDigit::createFromParts($p1, $p2, $p3);
+        $a = Helper::checkByParts($p1, $p2, $p3);
         $this->assertFalse($a);
 
-        $b = new HkidCheckDigit();
-        $this->assertFalse($b->check($p1, $p2, $p3));
+        $c = Helper::checkByString($this->partsToString($p1, $p2, $p3));
+        $this->assertFalse($c);
+
+        $b = new HkidDigitCheck();
+        $this->assertFalse($b->checkParts($p1, $p2, $p3));
     }
 }

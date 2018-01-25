@@ -13,12 +13,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Ilex\\Validation\\": "src"
+            "Ilex\\Validation\\HkidValidation\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Ilex\\Validation\\Tests\\": "tests/"
+            "Ilex\\Validation\\HkidValidation\\Tests\\": "tests/"
         }
     },
     "require-dev": {
