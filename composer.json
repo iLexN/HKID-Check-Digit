@@ -43,6 +43,7 @@
         "cs-fix": "php-cs-fixer fix",
         "phpcs": "phpcs",
         "docs" : "@php ./sami.phar update .sami",
+        "changelog": "@php dev/create-change-log.php",
         "test-dev" : "phpunit --coverage-text",
         "test": "phpunit"
     },
