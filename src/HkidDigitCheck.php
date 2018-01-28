@@ -59,11 +59,11 @@ class HkidDigitCheck
     /**
      * check whole string format and pattern
      *
-     * @param $string
+     * @param string $string
      *
      * @return bool
      */
-    public function checkString($string)
+    public function checkString(string $string):bool
     {
         try {
             [$p1, $p2, $p3] = $this->validate($string);
@@ -76,13 +76,13 @@ class HkidDigitCheck
     /**
      * Format String from part1,2,3
      *
-     * @param $p1
-     * @param $p2
-     * @param $p3
+     * @param string $p1
+     * @param string $p2
+     * @param string $p3
      *
      * @return string
      */
-    private function formatString($p1, $p2, $p3)
+    private function formatString(string $p1, string $p2, string $p3): string
     {
         return $p1.$p2.'('.$p3.')';
     }
@@ -90,12 +90,12 @@ class HkidDigitCheck
     /**
      * break down the strong to part1,2,3
      *
-     * @param $string
+     * @param string $string
      *
      * @return array   [part1, part2, part3]
      * @throws \Exception wrong format
      */
-    public function validate($string)
+    public function validate(string $string): array
     {
         $re = '/^(?P<p1>\D{1,2})(?P<p2>\d{6})\((?P<p3>[\w{1}0-9aA])\)$/i';
         if (0 === preg_match($re, $string, $matches)) {
@@ -130,12 +130,12 @@ class HkidDigitCheck
     /**
      * Get part 2 remainder
      *
-     * @param $p2
-     * @param $charSum
+     * @param string $p2
+     * @param int $charSum
      *
      * @return string
      */
-    private function getPart2Remainder($p2, $charSum): string
+    private function getPart2Remainder(string $p2, int $charSum):string
     {
         $hkid_sum = $this->calPart2Remainder($p2, $charSum);
 

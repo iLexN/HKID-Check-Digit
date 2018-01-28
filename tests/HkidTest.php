@@ -1,6 +1,6 @@
 <?php
 
-namespace Ilex\Validation\Test;
+namespace Ilex\Validation\HkidValidation\Tests;
 
 use Ilex\Validation\HkidValidation\Helper;
 use Ilex\Validation\HkidValidation\HkidDigitCheck;
