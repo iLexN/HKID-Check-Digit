@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 );
 
 $c->addRelease(
-    (new Release('2.0.0', '2018-01-25'))
+    (new Release('2.0.0', '2018-01-28'))
         ->added('Help class for easy check')
         ->added('Add check by string')
         ->removed('Remove PHP<=7.0 support')
