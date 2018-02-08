@@ -25,7 +25,7 @@
         "friendsofphp/php-cs-fixer": "^2.10",
         "ilexn/keep-a-change-log": "^1.0",
         "phpstan/phpstan-shim": "^0.9.1",
-        "phpunit/phpunit": "^6.5",
+        "phpunit/phpunit": "^7.0",
         "squizlabs/php_codesniffer": "3.1.1"
     },
     "config": {
