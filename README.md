@@ -6,7 +6,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/iLexN/HKID-Check-Digit/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/iLexN/HKID-Check-Digit/?branch=master)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/9b916edb-0aa6-4811-a2e3-b9acbb1d4250/mini.png)](https://insight.sensiolabs.com/projects/9b916edb-0aa6-4811-a2e3-b9acbb1d4250)
 
-| tag | PHP      |
+| Tag | PHP      |
 |-----|----------|
 | 1.x |          |
 | 2.x | php>=7.1 |
@@ -40,7 +40,7 @@ if ($a === true) {
 <?php
 use Ilex\Validation\HkidValidation\Helper;
 
-require_once '../vendor/autoload.php';
+require_once './vendor/autoload.php';
 
 $s = 'CA182361(1)';
 

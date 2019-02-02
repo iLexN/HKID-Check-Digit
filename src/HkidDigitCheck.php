@@ -163,12 +163,12 @@ class HkidDigitCheck
     {
         return 11 - ((
                     $charSum +
-                    (int) $p2[0] * 7 +
-                    (int) $p2[1] * 6 +
-                    (int) $p2[2] * 5 +
-                    (int) $p2[3] * 4 +
-                    (int) $p2[4] * 3 +
-                    (int) $p2[5] * 2
+                    (int)$p2[0] * 7 +
+                    (int)$p2[1] * 6 +
+                    (int)$p2[2] * 5 +
+                    (int)$p2[3] * 4 +
+                    (int)$p2[4] * 3 +
+                    (int)$p2[5] * 2
                 ) % 11);
     }
 
