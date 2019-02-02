@@ -22,28 +22,28 @@
         }
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.10",
         "ilexn/keep-a-change-log": "^1.0",
-        "phpstan/phpstan-shim": "^0.9.1",
+        "phpstan/phpstan": "^0.11.0",
+        "phpstan/phpstan-phpunit": "^0.11.0",
+        "phpstan/phpstan-strict-rules": "^0.11.0",
         "phpunit/phpunit": "^7.0",
-        "squizlabs/php_codesniffer": "3.1.1"
+        "symplify/easy-coding-standard": "^5.4"
     },
     "config": {
         "sort-packages": true
     },
     "scripts": {
         "ci": [
-            "@phpcs",
+            "@ecs",
             "@test"
         ],
         "dev":[
-            "@cs-fix",
-            "@phpcs",
+            "@ecs",
             "@bug-check",
             "@test-dev"
         ],
-        "cs-fix": "php-cs-fixer fix",
-        "phpcs": "phpcs",
+        "ecs" : "ecs check src",
+        "ecs-fix" : "ecs check src --fix",
         "docs" : "@php ./sami.phar update .sami",
         "bug-check" : "phpstan analyse -l max src tests",
         "changelog": "@php dev/create-change-log.php",
