@@ -16,12 +16,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 );
 
 $c->addRelease(
+    (new Release('2.0.1', '2019-02-02'))
+        ->added('add/update dev package')
+        ->fixed('phpstan error')
+        ->changed('replace php-cs-fix to ecs')
+)->addRelease(
     (new Release('2.0.0', '2018-01-28'))
         ->added('Help class for easy check')
         ->added('Add check by string')
         ->removed('Remove PHP<=7.0 support')
 )->addRelease(
-    (new Release('1.0.6', '2016-01-04'))
+    new Release('1.0.6', '2016-01-04')
 );
 
 

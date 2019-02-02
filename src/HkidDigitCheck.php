@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Ilex\Validation\HkidValidation;
@@ -10,13 +11,12 @@ namespace Ilex\Validation\HkidValidation;
  */
 class HkidDigitCheck
 {
-
     /**
      * variable for cal for part1
      *
-     * @var array
+     * @var int[]
      */
-    private $partOneCharNumArray = [];
+    private $partOneCharNumArray;
 
     /**
      * HkidDigitCheck constructor.
@@ -63,7 +63,7 @@ class HkidDigitCheck
      *
      * @return bool
      */
-    public function checkString(string $string):bool
+    public function checkString(string $string): bool
     {
         try {
             [$p1, $p2, $p3] = $this->validate($string);
@@ -84,7 +84,7 @@ class HkidDigitCheck
      */
     private function formatString(string $p1, string $p2, string $p3): string
     {
-        return $p1.$p2.'('.$p3.')';
+        return $p1 . $p2 . '(' . $p3 . ')';
     }
 
     /**
@@ -135,7 +135,7 @@ class HkidDigitCheck
      *
      * @return string
      */
-    private function getPart2Remainder(string $p2, int $charSum):string
+    private function getPart2Remainder(string $p2, int $charSum): string
     {
         $hkid_sum = $this->calPart2Remainder($p2, $charSum);
 
@@ -163,19 +163,19 @@ class HkidDigitCheck
     {
         return 11 - ((
                     $charSum +
-                    $p2[0] * 7 +
-                    $p2[1] * 6 +
-                    $p2[2] * 5 +
-                    $p2[3] * 4 +
-                    $p2[4] * 3 +
-                    $p2[5] * 2
+                    (int) $p2[0] * 7 +
+                    (int) $p2[1] * 6 +
+                    (int) $p2[2] * 5 +
+                    (int) $p2[3] * 4 +
+                    (int) $p2[4] * 3 +
+                    (int) $p2[5] * 2
                 ) % 11);
     }
 
     /**
      * set up variable for cal for part1
      *
-     * @return array
+     * @return int[]
      */
     private function getCharNumValue(): array
     {

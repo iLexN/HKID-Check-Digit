@@ -8,9 +8,8 @@ namespace Ilex\Validation\HkidValidation;
  *
  * @package Ilex\Validation\HkidValidation
  */
-class Helper
+final class Helper
 {
-
     /**
      * Quick Helper check HKID Format eg. CA182361(1).
      *
