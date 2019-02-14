@@ -51,7 +51,6 @@
         "test": "phpunit"
     },
     "scripts-descriptions": {
-        "phpcs": "Checks that the application code conforms to coding standard",
         "test": "Launches the preconfigured PHPUnit"
     }
 }
