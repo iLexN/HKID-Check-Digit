@@ -9,7 +9,7 @@ namespace Ilex\Validation\HkidValidation;
  *
  * @package Ilex\Validation\HkidValidation
  */
-class HkidDigitCheck
+final class HkidDigitCheck
 {
     /**
      * variable for cal for part1
