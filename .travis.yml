@@ -17,7 +17,7 @@ before_script:
 
 script:
   - if [[ "$TRAVIS_PHP_VERSION" == '7.2' ]]; then mkdir -p build/logs && vendor/bin/phpunit --coverage-clover build/logs/clover.xml ; fi
-  - vendor/bin/phpunit
+  - if [[ "$TRAVIS_PHP_VERSION" != '7.2' ]]; then vendor/bin/phpunit ; fi
   - if [[ "$TRAVIS_PHP_VERSION" == '7.2' ]]; then vendor/bin/infection --threads=4 ; fi
 
 after_script:
