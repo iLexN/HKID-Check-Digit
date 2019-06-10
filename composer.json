@@ -1,15 +1,28 @@
 {
     "name": "ilexn/hkid-check-digit",
     "description": "HKID digit check",
+    "license": "MIT",
     "authors": [
         {
             "name": "iLexN",
             "email": "ilex.job@gmail.com"
         }
     ],
-    "license": "MIT",
     "require": {
         "php": ">=7.1"
+    },
+    "require-dev": {
+        "ilexn/keep-a-change-log": "^1.0",
+        "infection/infection": "^0.13.1",
+        "phpstan/phpstan": "^0.11.0",
+        "phpstan/phpstan-phpunit": "^0.11.0",
+        "phpstan/phpstan-strict-rules": "^0.11.0",
+        "phpunit/phpunit": "^7.0",
+        "symfony/var-dumper": "^4.3",
+        "symplify/easy-coding-standard": "^5.4"
+    },
+    "config": {
+        "sort-packages": true
     },
     "autoload": {
         "psr-4": {
@@ -21,34 +34,24 @@
             "Ilex\\Validation\\HkidValidation\\Tests\\": "tests/"
         }
     },
-    "require-dev": {
-        "ilexn/keep-a-change-log": "^1.0",
-        "phpstan/phpstan": "^0.11.0",
-        "phpstan/phpstan-phpunit": "^0.11.0",
-        "phpstan/phpstan-strict-rules": "^0.11.0",
-        "phpunit/phpunit": "^7.0",
-        "symplify/easy-coding-standard": "^5.4"
-    },
-    "config": {
-        "sort-packages": true
-    },
     "scripts": {
+        "bug-check": "phpstan analyse -l max src tests",
+        "changelog": "@php dev/create-change-log.php",
         "ci": [
             "@ecs",
             "@test"
         ],
-        "dev":[
+        "dev": [
             "@ecs",
             "@bug-check",
             "@test-dev"
         ],
-        "ecs" : "ecs check src",
-        "ecs-fix" : "ecs check src --fix",
-        "docs" : "@php ./sami.phar update .sami",
-        "bug-check" : "phpstan analyse -l max src tests",
-        "changelog": "@php dev/create-change-log.php",
-        "test-dev" : "phpunit --coverage-text",
-        "test": "phpunit"
+        "docs": "@php ./sami.phar update .sami",
+        "cs-check": "ecs check src",
+        "cs-fix": "ecs check src --fix",
+        "test": "phpunit",
+        "test-dev": "phpunit --coverage-text",
+        "test-test": "vendor/bin/infection --threads=4"
     },
     "scripts-descriptions": {
         "test": "Launches the preconfigured PHPUnit"

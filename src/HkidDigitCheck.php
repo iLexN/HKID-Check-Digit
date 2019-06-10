@@ -95,18 +95,18 @@ final class HkidDigitCheck
      * @return array   [part1, part2, part3]
      * @throws \Exception wrong format
      */
-    public function validate(string $string): array
+    private function validate(string $string): array
     {
         $re = '/^(?P<p1>\D{1,2})(?P<p2>\d{6})\((?P<p3>[\w{1}0-9aA])\)$/i';
-        if (0 === preg_match($re, $string, $matches)) {
-            throw new \Exception('Validate fail');
+        if (1 === preg_match($re, $string, $matches)) {
+            return [
+                $this->clearString($matches['p1']),
+                $matches['p2'],
+                $this->clearString($matches['p3']),
+            ];
         }
 
-        return [
-            $this->clearString($matches['p1']),
-            $matches['p2'],
-            $this->clearString($matches['p3']),
-        ];
+        throw new \Exception('Validate fail');
     }
 
     /**
@@ -119,9 +119,9 @@ final class HkidDigitCheck
      */
     private function getCharSum(string $p1): int
     {
-        $countChat = strlen($p1);
+        $countChat = \strlen($p1);
         if ($countChat === 1) {
-            return 324 + $this->partOneCharNumArray[$p1[0]] * 8;
+            return 324 + $this->partOneCharNumArray[$p1] * 8;
         }
         //$countChat === 2
         return $this->partOneCharNumArray[$p1[0]] * 9 + $this->partOneCharNumArray[$p1[1]] * 8;
@@ -154,22 +154,26 @@ final class HkidDigitCheck
     /**
      * Cal Part 2 Remainder
      *
-     * @param string $p2
+     * @param string $part2
      * @param int $charSum
      *
      * @return int
      */
-    private function calPart2Remainder(string $p2, int $charSum): int
+    private function calPart2Remainder(string $part2, int $charSum): int
     {
+        $p2 = array_map(static function (string $string): int {
+            return (int)$string;
+        }, str_split($part2));
+
         return 11 - ((
-                    $charSum +
-                    (int)$p2[0] * 7 +
-                    (int)$p2[1] * 6 +
-                    (int)$p2[2] * 5 +
-                    (int)$p2[3] * 4 +
-                    (int)$p2[4] * 3 +
-                    (int)$p2[5] * 2
-                ) % 11);
+            $charSum +
+            $p2[0] * 7 +
+            $p2[1] * 6 +
+            $p2[2] * 5 +
+            $p2[3] * 4 +
+            $p2[4] * 3 +
+            $p2[5] * 2
+        ) % 11);
     }
 
     /**
