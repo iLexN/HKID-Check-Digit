@@ -1,6 +1,9 @@
 # Validation of HKID
 > Used to validation the format and check digit calculation for HKID 
 
+[![Latest Stable Version](https://poser.pugx.org/ilexn/hkid-check-digit/v/stable)](https://packagist.org/packages/ilexn/hkid-check-digit)
+[![Total Downloads](https://poser.pugx.org/ilexn/hkid-check-digit/downloads)](https://packagist.org/packages/ilexn/hkid-check-digit)
+
 [![Build Status](https://travis-ci.org/iLexN/HKID-Check-Digit.svg?branch=2.x)](https://travis-ci.org/iLexN/HKID-Check-Digit)
 [![Coverage Status](https://coveralls.io/repos/github/iLexN/HKID-Check-Digit/badge.svg?branch=2.x)](https://coveralls.io/github/iLexN/HKID-Check-Digit?branch=2.x)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/iLexN/HKID-Check-Digit/badges/quality-score.png?b=2.x)](https://scrutinizer-ci.com/g/iLexN/HKID-Check-Digit/?branch=2.x)
@@ -78,9 +81,6 @@ if ($c->checkByString($s) === true) {
     echo ('wrong');
 }
 ```
-## API
-Please refer to the [docs].
 
 <!-- Markdown link & img dfn's -->
 [Example]: https://github.com/iLexN/keep-a-change-log/tree/master/example
-[docs]: https://ilexn.github.io/HKID-Check-Digit/
