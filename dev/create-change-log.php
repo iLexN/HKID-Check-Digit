@@ -15,6 +15,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     new DefaultFormatter('https://github.com/iLexN/HKID-Check-Digit/compare')
 );
 
+$nextRelease = (new Release('3.0.0','2019-xx-xx'))
+    ->added('use PHP 7.4 Typed properties')
+    ->added('use PHP 7.4 Short closures')
+    ->added('infection test to improve test case')
+    ->removed('Drop support PHP <= 7.3');
+
 $c->addRelease(
     (new Release('2.0.1', '2019-02-02'))
         ->added('add/update dev package')
