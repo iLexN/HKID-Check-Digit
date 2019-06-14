@@ -4,10 +4,10 @@
 [![Latest Stable Version](https://poser.pugx.org/ilexn/hkid-check-digit/v/stable)](https://packagist.org/packages/ilexn/hkid-check-digit)
 [![Total Downloads](https://poser.pugx.org/ilexn/hkid-check-digit/downloads)](https://packagist.org/packages/ilexn/hkid-check-digit)
 
-[![Build Status](https://travis-ci.org/iLexN/HKID-Check-Digit.svg?branch=2.x)](https://travis-ci.org/iLexN/HKID-Check-Digit)
-[![Coverage Status](https://coveralls.io/repos/github/iLexN/HKID-Check-Digit/badge.svg?branch=2.x)](https://coveralls.io/github/iLexN/HKID-Check-Digit?branch=2.x)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/iLexN/HKID-Check-Digit/badges/quality-score.png?b=2.x)](https://scrutinizer-ci.com/g/iLexN/HKID-Check-Digit/?branch=2.x)
-[![Infection MSI](https://badge.stryker-mutator.io/github.com/iLexN/HKID-Check-Digit/2.x)](https://infection.github.io)
+[![Build Status](https://travis-ci.org/iLexN/HKID-Check-Digit.svg?branch=3.x)](https://travis-ci.org/iLexN/HKID-Check-Digit)
+[![Coverage Status](https://coveralls.io/repos/github/iLexN/HKID-Check-Digit/badge.svg?branch=3.x)](https://coveralls.io/github/iLexN/HKID-Check-Digit?branch=3.x)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/iLexN/HKID-Check-Digit/badges/quality-score.png?b=3.x)](https://scrutinizer-ci.com/g/iLexN/HKID-Check-Digit/?branch=3.x)
+[![Infection MSI](https://badge.stryker-mutator.io/github.com/iLexN/HKID-Check-Digit/3.x)](https://infection.github.io)
 
 | Tag | PHP      |
 |-----|----------|
