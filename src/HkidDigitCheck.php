@@ -16,7 +16,7 @@ final class HkidDigitCheck
      *
      * @var int[]
      */
-    private $partOneCharNumArray;
+    private array $partOneCharNumArray;
 
     /**
      * HkidDigitCheck constructor.
@@ -106,7 +106,7 @@ final class HkidDigitCheck
             ];
         }
 
-        throw new \Exception('Validate fail');
+        throw new \InvalidArgumentException('Validate fail');
     }
 
     /**
@@ -161,9 +161,7 @@ final class HkidDigitCheck
      */
     private function calPart2Remainder(string $part2, int $charSum): int
     {
-        $p2 = array_map(static function (string $string): int {
-            return (int)$string;
-        }, str_split($part2));
+        $p2 = array_map(fn($int) => (int)$int, str_split($part2));
 
         return 11 - ((
             $charSum +
