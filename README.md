@@ -13,6 +13,7 @@
 |-----|----------|
 | 1.x |          |
 | 2.x | php>=7.1 |
+| 3.x | php>=7.4 |
 
 ## Installation
 ```sh
@@ -82,5 +83,3 @@ if ($c->checkByString($s) === true) {
 }
 ```
 
-<!-- Markdown link & img dfn's -->
-[Example]: https://github.com/iLexN/keep-a-change-log/tree/master/example
