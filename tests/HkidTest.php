@@ -16,7 +16,7 @@ class HkidTest extends TestCase
      * @param string $p2 182361
      * @param string $p3 1
      */
-    public function testCheckHKIDFormat(
+    public function testCheckPartsHkidFormatTrue(
         string $p1,
         string $p2,
         string $p3
@@ -32,7 +32,7 @@ class HkidTest extends TestCase
      * @param string $p2 182361
      * @param string $p3 1
      */
-    public function testCheckHKIDFormat2(
+    public function testCheckStringHkidFormatHelperTrue(
         string $p1,
         string $p2,
         string $p3
@@ -48,7 +48,7 @@ class HkidTest extends TestCase
      * @param string $p2 182361
      * @param string $p3 1
      */
-    public function testCheckHKIDFormat3(
+    public function testCheckHkidFormatMainTrue(
         string $p1,
         string $p2,
         string $p3
@@ -87,7 +87,7 @@ class HkidTest extends TestCase
             '122(0)' => ['B', '22', '0'],
             'B111111(G)' => ['B', '111111', 'G'],
             //wrong format
-            '111111' => ['1','111','11'],
+            '11111a1' => ['1','111a','11'],
         ];
     }
 
@@ -98,7 +98,7 @@ class HkidTest extends TestCase
      * @param string $p2 182361
      * @param string $p3 1
      */
-    public function testCheckHKIDFormatFalse(
+    public function testCheckHkidFormatFalse(
         string $p1,
         string $p2,
         string $p3

@@ -48,7 +48,7 @@
         ],
         "cs-check": "ecs check src",
         "cs-fix": "ecs check src --fix",
-        "test": "phpunit",
+        "test": "phpunit --testdox",
         "test-dev": "phpunit --coverage-text",
         "test-test": "vendor/bin/infection --threads=4"
     },
