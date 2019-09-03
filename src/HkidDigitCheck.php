@@ -45,15 +45,14 @@ final class HkidDigitCheck
      * @param string $p2
      * @param string $p3
      *
-     * @return bool
+     * @return \Ilex\Validation\HkidValidation\HkId
      */
-    public function checkParts(string $p1, string $p2, string $p3): bool
+    public function checkParts(string $p1, string $p2, string $p3): HkId
     {
-        return $this->checkString($this->formatString(
-            $this->clearString($p1),
-            $p2,
-            $this->clearString($p3)
-        ));
+
+        $hkid = new HkId($this->clearString($p1),$p2,$this->clearString($p3), false);
+
+        return $this->checkString($hkid->format());
     }
 
     /**
@@ -61,30 +60,20 @@ final class HkidDigitCheck
      *
      * @param string $string
      *
-     * @return bool
+     * @return \Ilex\Validation\HkidValidation\HkId
      */
-    public function checkString(string $string): bool
+    public function checkString(string $string): HkId
     {
         try {
             [$p1, $p2, $p3] = $this->validate($string);
-            return $this->getPart2Remainder($p2, $this->getCharSum($p1)) === $p3;
+            $valid = $this->getPart2Remainder(
+                    $p2,
+                    $this->getCharSum($p1)
+                ) === $p3;
+            return new HkId($p1, $p2, $p3, $valid);
         } catch (\Exception $exception) {
-            return false;
+            return new HkId('', '', '', false);
         }
-    }
-
-    /**
-     * Format String from part1,2,3
-     *
-     * @param string $p1
-     * @param string $p2
-     * @param string $p3
-     *
-     * @return string
-     */
-    private function formatString(string $p1, string $p2, string $p3): string
-    {
-        return $p1 . $p2 . '(' . $p3 . ')';
     }
 
     /**
@@ -161,7 +150,7 @@ final class HkidDigitCheck
      */
     private function calPart2Remainder(string $part2, int $charSum): int
     {
-        $p2 = array_map(fn($int) => (int)$int, str_split($part2));
+        $p2 = array_map(fn ($int) => (int)$int, str_split($part2));
 
         return 11 - ((
             $charSum +
