@@ -75,7 +75,7 @@ if ($c->checkParts($p1,$p2,$p3) === true) {
     echo ('wrong');
 }
 
-if ($c->checkByString($s) === true) {
+if ($c->checkString($s) === true) {
     echo ('correct');
 } else {
     echo ('wrong');
