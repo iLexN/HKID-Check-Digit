@@ -25,16 +25,20 @@ composer require ilexn/hkid-check-digit
 <?php
 use Ilex\Validation\HkidValidation\Helper;
 
-require_once '../vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
+//CA182361(1)
 $p1 = 'CA';
 $p2 = '182361';
 $p3 = '1';
 
+/** @var \Ilex\Validation\HkidValidation\HkId $node */
 $a = Helper::checkByParts($p1, $p2, $p3);
 
-if ($a === true) {
+if ($a->isValid()) {
     echo ('correct');
+    echo $a->format(); //CA182361(1)
+    echo (string) $a; //CA182361(1)
 } else {
     echo ('wrong');
 }
@@ -44,14 +48,15 @@ if ($a === true) {
 <?php
 use Ilex\Validation\HkidValidation\Helper;
 
-require_once './vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
 $s = 'CA182361(1)';
 
 $a = Helper::checkByString($s);
 
-if ($a === true) {
+if ($a->isValid()) {
     echo ('correct');
+    echo $a->format();
 } else {
     echo ('wrong');
 }
@@ -61,7 +66,7 @@ if ($a === true) {
 <?php
 use Ilex\Validation\HkidValidation\HkidDigitCheck;
 
-require_once '../vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
 $p1 = 'CA';
 $p2 = '182361';
@@ -69,15 +74,18 @@ $p3 = '1';
 $s = 'CA182361(1)';
 
 $c = new HkidDigitCheck();
-
-if ($c->checkParts($p1,$p2,$p3) === true) {
+$hkid = $c->checkParts($p1,$p2,$p3);
+if ($hkid->isValid()) {
     echo ('correct');
+    echo $a->format();
 } else {
     echo ('wrong');
 }
 
-if ($c->checkByString($s) === true) {
+$hkid = $c->checkString($s);
+if ($hkid->isValid()) {
     echo ('correct');
+    echo $a->format();
 } else {
     echo ('wrong');
 }

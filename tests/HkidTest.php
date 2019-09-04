@@ -77,7 +77,6 @@ class HkidTest extends TestCase
         self::assertEquals($this->clearString($p1), $r->getPart1());
         self::assertEquals($this->clearString($p2), $r->getPart2());
         self::assertEquals($this->clearString($p3), $r->getPart3());
-
     }
 
     public function additionProviderTrueResult(): array
@@ -131,6 +130,15 @@ class HkidTest extends TestCase
         self::assertFalse($b->checkParts($p1, $p2, $p3)->isValid());
     }
 
+    /**
+     * @param string $p1
+     * @param string $p2
+     * @param string $p3
+     *
+     * @return string
+     *
+     * @see \Ilex\Validation\HkidValidation\HkId::format
+     */
     private function partsToString(string $p1, string $p2, string $p3): string
     {
         return $p1 . $p2 . '(' . $p3 . ')';
