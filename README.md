@@ -91,3 +91,20 @@ if ($hkid->isValid()) {
 }
 ```
 
+## Upgrade from 2.x to 3.x
+All the checking now return `\Ilex\Validation\HkidValidation\HkId` object, not `bool`
+```php
+
+$a = Helper::checkByString($s);
+//2.x: $a is bool
+
+//3.x
+$a is \Ilex\Validation\HkidValidation\HkId
+$a->isValid(); //bool
+echo($a->format); // print the formated HKID.
+
+//also can get back each parts
+echo($a->getPart1());
+echo($a->getPart2());
+echo($a->getPart3());
+```
