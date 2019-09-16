@@ -51,9 +51,10 @@
         "cs-check": "ecs check src",
         "cs-fix": "ecs check src --fix",
         "test": "phpunit --testdox",
-        "test-dev": "phpunit --coverage-text",
+        "test-coverage": "phpunit --coverage-text",
         "test-test": "vendor/bin/infection --threads=4",
-        "test-watch": "phpunit-watcher watch"
+        "test-watch": "phpunit-watcher watch",
+        "test-dump": "phpunit --dump-xdebug-filter ./build/xdebug-filter.php"
     },
     "scripts-descriptions": {
         "test": "Launches the preconfigured PHPUnit"
