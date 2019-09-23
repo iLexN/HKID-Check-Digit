@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 );
 
 $c->addRelease(
+    (new Release('2.0.2', '2019-09-23'))
+        ->fixed('Fix some typo')
+        ->added('Add const')
+)->addRelease(
     (new Release('2.0.1', '2019-02-02'))
         ->added('add/update dev package')
         ->fixed('phpstan error')
