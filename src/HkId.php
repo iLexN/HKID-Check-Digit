@@ -27,7 +27,7 @@ final class HkId
         string $part1,
         string $part2,
         string $part3,
-        bool $isValid = false
+        bool $isValid
     ) {
         $this->part1 = $part1;
         $this->part2 = $part2;
