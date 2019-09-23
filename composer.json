@@ -1,7 +1,11 @@
 {
     "name": "ilexn/hkid-check-digit",
+    "type": "library",
     "description": "HKID digit check",
     "license": "MIT",
+    "keywords": [
+        "HKID"
+    ],
     "authors": [
         {
             "name": "iLexN",
