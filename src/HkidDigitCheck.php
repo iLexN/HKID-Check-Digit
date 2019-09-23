@@ -95,7 +95,7 @@ final class HkidDigitCheck
     }
 
     /**
-     * break down the strong to part1,2,3
+     * break down the string to part1,2,3
      *
      * @param string $string
      *
@@ -189,11 +189,11 @@ final class HkidDigitCheck
     private function getCharNumValue(): array
     {
         $i = self::CHAT_CONVERT_START_NUM;
-        $id_check_ar = [];
+        $idCheckArray = [];
         foreach (range('A', 'Z') as $char) {
-            $id_check_ar[$char] = $i++;
+            $idCheckArray[$char] = $i++;
         }
 
-        return $id_check_ar;
+        return $idCheckArray;
     }
 }
