@@ -68,7 +68,7 @@ final class HkidDigitCheck
      */
     public function checkParts(string $p1, string $p2, string $p3): HkIdValidResult
     {
-        $hkid = new HkIdValidResult($this->clearString($p1),$p2,$this->clearString($p3), false);
+        $hkid = new Hkid($this->clearString($p1),$p2,$this->clearString($p3));
 
         return $this->checkString($hkid->format());
     }
@@ -88,9 +88,9 @@ final class HkidDigitCheck
                     $p2,
                     $this->getCharSum($p1)
                 ) === $p3;
-            return new HkIdValidResult($p1, $p2, $p3, $valid);
+            return new HkIdValidResult(new Hkid($p1, $p2, $p3), $valid);
         } catch (\Exception $exception) {
-            return new HkIdValidResult('', '', '', false);
+            return new HkIdValidResult(new Hkid('', '', ''), false);
         }
     }
 

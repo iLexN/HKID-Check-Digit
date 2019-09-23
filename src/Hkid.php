@@ -4,26 +4,31 @@ declare(strict_types=1);
 
 namespace Ilex\Validation\HkidValidation;
 
-final class HkIdValidResult
+final class Hkid
 {
-    private bool $isValid;
+    /**
+     * @var string
+     */
+    private string  $part1;
 
     /**
-     * @var \Ilex\Validation\HkidValidation\Hkid
+     * @var string
      */
-    private Hkid $hkid;
+    private string $part2;
+
+    /**
+     * @var string
+     */
+    private string $part3;
 
     public function __construct(
-        Hkid $hkid,
-        bool $isValid
+        string $part1,
+        string $part2,
+        string $part3
     ) {
-        $this->hkid = $hkid;
-        $this->isValid = $isValid;
-    }
-
-    public function isValid(): bool
-    {
-        return $this->isValid;
+        $this->part1 = $part1;
+        $this->part2 = $part2;
+        $this->part3 = $part3;
     }
 
     /**
@@ -31,7 +36,7 @@ final class HkIdValidResult
      */
     public function getPart1(): string
     {
-        return $this->hkid->getPart1();
+        return $this->part1;
     }
 
     /**
@@ -39,7 +44,7 @@ final class HkIdValidResult
      */
     public function getPart2(): string
     {
-        return $this->hkid->getPart2();
+        return $this->part2;
     }
 
     /**
@@ -47,12 +52,12 @@ final class HkIdValidResult
      */
     public function getPart3(): string
     {
-        return $this->hkid->getPart3();
+        return $this->part3;
     }
 
     public function format(): string
     {
-        return $this->hkid->format();
+        return "{$this->getPart1()}{$this->getPart2()}({$this->getPart3()})";
     }
 
     public function __toString(): string
