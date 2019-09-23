@@ -89,7 +89,7 @@ final class HkidDigitCheck
                     $this->getCharSum($p1)
                 ) === $p3;
             return new HkIdValidResult(new Hkid($p1, $p2, $p3), $valid);
-        } catch (\Exception $exception) {
+        } catch (HkidInvalidException $exception) {
             return new HkIdValidResult(new Hkid('', '', ''), false);
         }
     }
@@ -100,7 +100,7 @@ final class HkidDigitCheck
      * @param string $string
      *
      * @return array   [part1, part2, part3]
-     * @throws \Exception wrong format
+     * @throws HkidInvalidException wrong format
      */
     private function validate(string $string): array
     {
@@ -113,7 +113,7 @@ final class HkidDigitCheck
             ];
         }
 
-        throw new \InvalidArgumentException('Validate fail');
+        throw HkidInvalidException::create($string);
     }
 
     /**
@@ -122,7 +122,6 @@ final class HkidDigitCheck
      * @param string $p1
      *
      * @return int
-     * @throws \Exception
      */
     private function getCharSum(string $p1): int
     {
