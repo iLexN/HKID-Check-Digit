@@ -11,6 +11,25 @@ namespace Ilex\Validation\HkidValidation;
  */
 final class HkidDigitCheck
 {
+    private const ONE_CHAT_NUM = 324;
+
+    private const MOD_NUM = 11;
+    private const MOD_NUM_10 = 'A';
+    private const MOD_NUM_11 = 0;
+
+    private const CHAT_WEIGHT_1 = 9;
+    private const CHAT_WEIGHT_2 = 8;
+
+    private const NUM_WEIGHT_1 = 7;
+    private const NUM_WEIGHT_2 = 6;
+    private const NUM_WEIGHT_3 = 5;
+    private const NUM_WEIGHT_4 = 4;
+    private const NUM_WEIGHT_5 = 3;
+    private const NUM_WEIGHT_6 = 2;
+
+    private const CHAT_CONVERT_START_NUM = 10;
+
+
     /**
      * variable for cal for part1
      *
@@ -110,10 +129,10 @@ final class HkidDigitCheck
     {
         $countChat = \strlen($p1);
         if ($countChat === 1) {
-            return 324 + $this->partOneCharNumArray[$p1] * 8;
+            return self::ONE_CHAT_NUM + $this->partOneCharNumArray[$p1] * self::CHAT_WEIGHT_2;
         }
         //$countChat === 2
-        return $this->partOneCharNumArray[$p1[0]] * 9 + $this->partOneCharNumArray[$p1[1]] * 8;
+        return $this->partOneCharNumArray[$p1[0]] * self::CHAT_WEIGHT_1 + $this->partOneCharNumArray[$p1[1]] * self::CHAT_WEIGHT_2;
     }
 
     /**
@@ -130,10 +149,10 @@ final class HkidDigitCheck
 
         switch ($hkid_sum) {
             case 11:
-                $hkid_sum = 0;
+                $hkid_sum = self::MOD_NUM_11;
                 break;
             case 10:
-                $hkid_sum = 'A';
+                $hkid_sum = self::MOD_NUM_10;
                 break;
         }
 
@@ -152,15 +171,15 @@ final class HkidDigitCheck
     {
         $p2 = array_map(fn ($int) => (int)$int, str_split($part2));
 
-        return 11 - ((
+        return self::MOD_NUM - ((
             $charSum +
-            $p2[0] * 7 +
-            $p2[1] * 6 +
-            $p2[2] * 5 +
-            $p2[3] * 4 +
-            $p2[4] * 3 +
-            $p2[5] * 2
-        ) % 11);
+            $p2[0] * self::NUM_WEIGHT_1 +
+            $p2[1] * self::NUM_WEIGHT_2 +
+            $p2[2] * self::NUM_WEIGHT_3 +
+            $p2[3] * self::NUM_WEIGHT_4 +
+            $p2[4] * self::NUM_WEIGHT_5 +
+            $p2[5] * self::NUM_WEIGHT_6
+        ) % self::MOD_NUM);
     }
 
     /**
@@ -170,7 +189,7 @@ final class HkidDigitCheck
      */
     private function getCharNumValue(): array
     {
-        $i = 10;
+        $i = self::CHAT_CONVERT_START_NUM;
         $id_check_ar = [];
         foreach (range('A', 'Z') as $char) {
             $id_check_ar[$char] = $i++;
