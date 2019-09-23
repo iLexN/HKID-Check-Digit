@@ -138,7 +138,7 @@ class HkidTest extends TestCase
      *
      * @return string
      *
-     * @see \Ilex\Validation\HkidValidation\HkId::format
+     * @see \Ilex\Validation\HkidValidation\HkIdValidResult::format
      */
     private function partsToString(string $p1, string $p2, string $p3): string
     {

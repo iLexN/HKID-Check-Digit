@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Ilex\Validation\HkidValidation;
 
-final class HkId
+final class HkIdValidResult
 {
     /**
      * @var string

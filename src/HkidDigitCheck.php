@@ -64,11 +64,11 @@ final class HkidDigitCheck
      * @param string $p2
      * @param string $p3
      *
-     * @return \Ilex\Validation\HkidValidation\HkId
+     * @return \Ilex\Validation\HkidValidation\HkIdValidResult
      */
-    public function checkParts(string $p1, string $p2, string $p3): HkId
+    public function checkParts(string $p1, string $p2, string $p3): HkIdValidResult
     {
-        $hkid = new HkId($this->clearString($p1),$p2,$this->clearString($p3), false);
+        $hkid = new HkIdValidResult($this->clearString($p1),$p2,$this->clearString($p3), false);
 
         return $this->checkString($hkid->format());
     }
@@ -78,9 +78,9 @@ final class HkidDigitCheck
      *
      * @param string $string
      *
-     * @return \Ilex\Validation\HkidValidation\HkId
+     * @return \Ilex\Validation\HkidValidation\HkIdValidResult
      */
-    public function checkString(string $string): HkId
+    public function checkString(string $string): HkIdValidResult
     {
         try {
             [$p1, $p2, $p3] = $this->validate($string);
@@ -88,9 +88,9 @@ final class HkidDigitCheck
                     $p2,
                     $this->getCharSum($p1)
                 ) === $p3;
-            return new HkId($p1, $p2, $p3, $valid);
+            return new HkIdValidResult($p1, $p2, $p3, $valid);
         } catch (\Exception $exception) {
-            return new HkId('', '', '', false);
+            return new HkIdValidResult('', '', '', false);
         }
     }
 

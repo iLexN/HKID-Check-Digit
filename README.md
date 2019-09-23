@@ -32,7 +32,7 @@ $p1 = 'CA';
 $p2 = '182361';
 $p3 = '1';
 
-/** @var \Ilex\Validation\HkidValidation\HkId $node */
+/** @var \Ilex\Validation\HkidValidation\HkIdValidResult $node */
 $a = Helper::checkByParts($p1, $p2, $p3);
 
 if ($a->isValid()) {
