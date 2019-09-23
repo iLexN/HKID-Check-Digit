@@ -19,7 +19,9 @@ $nextRelease = (new Release('3.0.0','2019-xx-xx'))
     ->added('use PHP 7.4 Typed properties')
     ->added('use PHP 7.4 Short closures')
     ->added('infection test to improve test case')
-    ->changed('BC: Helper class now return value object, not bool')
+    ->added('Value Object and Result Value Object')
+    ->added('New Invalid Exception Class')
+    ->changed('BC: Helper class now return result value object, not bool')
     ->removed('Drop support PHP <= 7.3');
 
 $c->addRelease(
