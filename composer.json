@@ -28,10 +28,7 @@
         "symplify/easy-coding-standard": "^6.0"
     },
     "config": {
-        "sort-packages": true,
-        "platform": {
-            "php": "7.3"
-        }
+        "sort-packages": true
     },
     "autoload": {
         "psr-4": {
