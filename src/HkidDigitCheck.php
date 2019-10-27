@@ -64,7 +64,7 @@ final class HkidDigitCheck
      * @param string $p2
      * @param string $p3
      *
-     * @return \Ilex\Validation\HkidValidation\HkIdValidResult
+     * @return HkIdValidResult
      */
     public function checkParts(string $p1, string $p2, string $p3): HkIdValidResult
     {
@@ -78,7 +78,7 @@ final class HkidDigitCheck
      *
      * @param string $string
      *
-     * @return \Ilex\Validation\HkidValidation\HkIdValidResult
+     * @return HkIdValidResult
      */
     public function checkString(string $string): HkIdValidResult
     {
@@ -143,18 +143,18 @@ final class HkidDigitCheck
      */
     private function getPart2Remainder(string $p2, int $charSum): string
     {
-        $hkid_sum = $this->calPart2Remainder($p2, $charSum);
+        $hkidSum = $this->calPart2Remainder($p2, $charSum);
 
-        switch ($hkid_sum) {
+        switch ($hkidSum) {
             case 11:
-                $hkid_sum = self::MOD_NUM_11;
+                $hkidSum = self::MOD_NUM_11;
                 break;
             case 10:
-                $hkid_sum = self::MOD_NUM_10;
+                $hkidSum = self::MOD_NUM_10;
                 break;
         }
 
-        return (string)$hkid_sum;
+        return (string)$hkidSum;
     }
 
     /**

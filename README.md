@@ -32,7 +32,7 @@ $p1 = 'CA';
 $p2 = '182361';
 $p3 = '1';
 
-/** @var \Ilex\Validation\HkidValidation\HkIdValidResult $node */
+/** @var \Ilex\Validation\HkidValidation\HkIdValidResult $a */
 $a = Helper::checkByParts($p1, $p2, $p3);
 
 if ($a->isValid()) {
@@ -99,7 +99,7 @@ $a = Helper::checkByString($s);
 //2.x: $a is bool
 
 //3.x
-$a is \Ilex\Validation\HkidValidation\HkId
+/** @var \Ilex\Validation\HkidValidation\HkIdValidResult $a */
 $a->isValid(); //bool
 echo($a->format); // print the formated HKID.
 
