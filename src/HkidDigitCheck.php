@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Ilex\Validation\HkidValidation;
 
+use Ilex\Validation\HkidValidation\Reason\DigitError;
+use Ilex\Validation\HkidValidation\Reason\Ok;
+use Ilex\Validation\HkidValidation\Reason\PattenError;
+
 /**
  * Class HkidDigitCheck
  *
@@ -16,6 +20,8 @@ final class HkidDigitCheck
     private const MOD_NUM = 11;
     private const MOD_NUM_10 = 'A';
     private const MOD_NUM_11 = 0;
+    private const MOD_MATCH_10 = 10;
+    private const MOD_MATCH_11 = 11;
 
     private const CHAT_WEIGHT_1 = 9;
     private const CHAT_WEIGHT_2 = 8;
@@ -66,9 +72,12 @@ final class HkidDigitCheck
      *
      * @return HkIdValidResult
      */
-    public function checkParts(string $p1, string $p2, string $p3): HkIdValidResult
-    {
-        $hkid = new Hkid($this->clearString($p1),$p2,$this->clearString($p3));
+    public function checkParts(
+        string $p1,
+        string $p2,
+        string $p3
+    ): HkIdValidResult {
+        $hkid = new Hkid($this->clearString($p1), $p2, $this->clearString($p3));
 
         return $this->checkString($hkid->format());
     }
@@ -83,15 +92,21 @@ final class HkidDigitCheck
     public function checkString(string $string): HkIdValidResult
     {
         try {
-            [$p1, $p2, $p3] = $this->validate($string);
-            $valid = $this->getPart2Remainder(
-                    $p2,
-                    $this->getCharSum($p1)
-                ) === $p3;
-            return new HkIdValidResult(new Hkid($p1, $p2, $p3), $valid);
+            $hkid = $this->validate($string);
+            $valid = $this->isValid($hkid);
+            $reason = $valid ? new Ok() : new DigitError();
+            return new HkIdValidResult($hkid, $reason);
         } catch (HkidInvalidException $exception) {
-            return new HkIdValidResult(new Hkid('', '', ''), false);
+            return new HkIdValidResult(new Hkid('', '', ''), new PattenError());
         }
+    }
+
+    private function isValid(Hkid $hkid): bool
+    {
+        return $this->getPart2Remainder(
+                $hkid->getPart2(),
+                $this->getCharSum($hkid->getPart1())
+            ) === $hkid->getPart3();
     }
 
     /**
@@ -99,18 +114,18 @@ final class HkidDigitCheck
      *
      * @param string $string
      *
-     * @return array   [part1, part2, part3]
-     * @throws HkidInvalidException wrong format
+     * @return \Ilex\Validation\HkidValidation\Hkid
+     * @throws \Ilex\Validation\HkidValidation\HkidInvalidException wrong format
      */
-    private function validate(string $string): array
+    private function validate(string $string): Hkid
     {
         $re = '/^(?P<p1>\D{1,2})(?P<p2>\d{6})\((?P<p3>[\w{1}0-9aA])\)$/i';
         if (1 === preg_match($re, $string, $matches)) {
-            return [
+            return new Hkid(
                 $this->clearString($matches['p1']),
                 $matches['p2'],
-                $this->clearString($matches['p3']),
-            ];
+                $this->clearString($matches['p3'])
+            );
         }
 
         throw HkidInvalidException::create($string);
@@ -146,10 +161,10 @@ final class HkidDigitCheck
         $hkidSum = $this->calPart2Remainder($p2, $charSum);
 
         switch ($hkidSum) {
-            case 11:
+            case self::MOD_MATCH_11:
                 $hkidSum = self::MOD_NUM_11;
                 break;
-            case 10:
+            case self::MOD_MATCH_10:
                 $hkidSum = self::MOD_NUM_10;
                 break;
         }

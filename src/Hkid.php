@@ -9,7 +9,7 @@ final class Hkid
     /**
      * @var string
      */
-    private string  $part1;
+    private string $part1;
 
     /**
      * @var string

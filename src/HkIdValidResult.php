@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Ilex\Validation\HkidValidation;
 
+use Ilex\Validation\HkidValidation\Reason\ReasonInterface;
+
 final class HkIdValidResult
 {
-    private bool $isValid;
+    private ReasonInterface $reason;
 
     /**
      * @var \Ilex\Validation\HkidValidation\Hkid
@@ -15,15 +17,30 @@ final class HkIdValidResult
 
     public function __construct(
         Hkid $hkid,
-        bool $isValid
+        ReasonInterface $reason
     ) {
         $this->hkid = $hkid;
-        $this->isValid = $isValid;
+        $this->reason = $reason;
     }
 
     public function isValid(): bool
     {
-        return $this->isValid;
+        return $this->reason->isValid();
+    }
+
+    public function isPattenError(): bool
+    {
+        return $this->reason->isPattenError();
+    }
+
+    public function isDigitError(): bool
+    {
+        return $this->reason->isDigitError();
+    }
+
+    public function getReason(): string
+    {
+        return $this->reason->getKey();
     }
 
     /**

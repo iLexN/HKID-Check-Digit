@@ -4,6 +4,10 @@ namespace Ilex\Validation\HkidValidation\Tests;
 
 use Ilex\Validation\HkidValidation\Helper;
 use Ilex\Validation\HkidValidation\HkidDigitCheck;
+use Ilex\Validation\HkidValidation\Reason\DigitError;
+use Ilex\Validation\HkidValidation\Reason\Ok;
+use Ilex\Validation\HkidValidation\Reason\PattenError;
+use Ilex\Validation\HkidValidation\Reason\ReasonInterface;
 use PHPUnit\Framework\TestCase;
 
 class HkidTest extends TestCase
@@ -24,7 +28,12 @@ class HkidTest extends TestCase
         string $expectedFormat
     ): void {
         $a = Helper::checkByParts($p1, $p2, $p3);
+
         self::assertTrue($a->isValid());
+        self::assertEquals(ReasonInterface::OK, $a->getReason());
+        self::assertFalse($a->isDigitError());
+        self::assertFalse($a->isPattenError());
+
         self::assertEquals($expectedFormat, $a->format());
         self::assertEquals($expectedFormat, (string)$a);
         self::assertEquals($this->clearString($p1), $a->getPart1());
@@ -47,7 +56,12 @@ class HkidTest extends TestCase
         string $expectedFormat
     ): void {
         $c = Helper::checkByString($this->partsToString($p1, $p2, $p3));
+
         self::assertTrue($c->isValid());
+        self::assertEquals(ReasonInterface::OK, $c->getReason());
+        self::assertFalse($c->isDigitError());
+        self::assertFalse($c->isPattenError());
+
         self::assertEquals($expectedFormat, $c->format());
         self::assertEquals($expectedFormat, (string)$c);
         self::assertEquals($this->clearString($p1), $c->getPart1());
@@ -72,6 +86,10 @@ class HkidTest extends TestCase
         $b = new HkidDigitCheck();
         $r = $b->checkParts($p1, $p2, $p3);
         self::assertTrue($r->isValid());
+        self::assertEquals(ReasonInterface::OK, $r->getReason());
+        self::assertFalse($r->isDigitError());
+        self::assertFalse($r->isPattenError());
+
         self::assertEquals($expectedFormat, $r->format());
         self::assertEquals($expectedFormat, (string)$r);
         self::assertEquals($this->clearString($p1), $r->getPart1());
@@ -94,16 +112,19 @@ class HkidTest extends TestCase
     public function additionProviderFalseResult(): \Generator
     {
 
-        yield 'B111111(3)' => ['B', '111111', '3'];
-        yield 'CAC182361(1)' => ['CaC', '182361', '1'];
-        yield '111112(A)' => ['', '111112', 'A'];
-        yield '1B111117(0)' => ['1B', '111117', '0'];
-        yield '1111117(0)' => ['1', '111117', '0'];
-        yield '122(0)' => ['B', '22', '0'];
-        yield 'B111111(G)' => ['B', '111111', 'G'];
+        $p = new PattenError();
+        $d = new DigitError();
+
+        yield 'B111111(3)' => ['B', '111111', '3', $d];
+        yield 'CAC182361(1)' => ['CaC', '182361', '1', $p];
+        yield '111112(A)' => ['', '111112', 'A', $p];
+        yield '1B111117(0)' => ['1B', '111117', '0', $p];
+        yield '1111117(0)' => ['1', '111117', '0', $p];
+        yield '122(0)' => ['B', '22', '0', $p];
+        yield 'B111111(G)' => ['B', '111111', 'G', $d];
         //wrong format
-        yield '1111a' => ['1', '111a', '11'];
-        yield '11111a1' => ['1', '111a11', '11'];
+        yield '1111a' => ['1', '111a', '11', $p];
+        yield '11111a1' => ['1', '111a11', '11', $p];
     }
 
     /**
@@ -112,20 +133,25 @@ class HkidTest extends TestCase
      * @param string $p1 CA
      * @param string $p2 182361
      * @param string $p3 1
+     * @param \Ilex\Validation\HkidValidation\Reason\ReasonInterface $reason
      */
     public function testCheckHkidFormatFalse(
         string $p1,
         string $p2,
-        string $p3
+        string $p3,
+        ReasonInterface $reason
     ): void {
         $a = Helper::checkByParts($p1, $p2, $p3);
         self::assertFalse($a->isValid());
+        self::assertEquals($reason->getKey(), $a->getReason());
+        self::assertEquals($reason->isDigitError(),$a->isDigitError());
+        self::assertEquals($reason->isPattenError(),$a->isPattenError());
 
-        $c = Helper::checkByString($this->partsToString($p1, $p2, $p3));
-        self::assertFalse($c->isValid());
-
-        $b = new HkidDigitCheck();
-        self::assertFalse($b->checkParts($p1, $p2, $p3)->isValid());
+        $a = Helper::checkByString($this->partsToString($p1, $p2, $p3));
+        self::assertFalse($a->isValid());
+        self::assertEquals($reason->getKey(), $a->getReason());
+        self::assertEquals($reason->isDigitError(),$a->isDigitError());
+        self::assertEquals($reason->isPattenError(),$a->isPattenError());
     }
 
     /**
