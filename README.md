@@ -19,6 +19,31 @@
 ```sh
 composer require ilexn/hkid-check-digit
 ```
+
+## Upgrade from 2.x to 3.x
+All the checking now return `\Ilex\Validation\HkidValidation\HkId` object, not `bool`
+```php
+<?php
+use Ilex\Validation\HkidValidation\Helper;
+
+require_once 'vendor/autoload.php';
+$a = Helper::checkByString($s);
+//2.x: $a is bool
+
+//3.x
+/** @var \Ilex\Validation\HkidValidation\HkIdValidResult $a */
+$a->isValid(); //bool
+$a->isPattenError(); //bool
+$a->isDigitError(); //bool
+echo($a->format); // print the formated HKID.
+echo($a->getReason());
+
+//also can get back each parts
+echo($a->getPart1());
+echo($a->getPart2());
+echo($a->getPart3());
+```
+
 ## Usage example
 #### Quick helper - check by each part
 ```php
@@ -52,13 +77,19 @@ require_once 'vendor/autoload.php';
 
 $s = 'CA182361(1)';
 
-$a = Helper::checkByString($s);
+$hkid = Helper::checkByString($s);
 
-if ($a->isValid()) {
-    echo ('correct');
-    echo $a->format();
-} else {
-    echo ('wrong');
+switch ($hkid->getReason()){
+    case \Ilex\Validation\HkidValidation\Reason\ReasonInterface::OK:
+        echo('correct');
+        echo($hkid->format());
+        break;
+    case \Ilex\Validation\HkidValidation\Reason\ReasonInterface::PATTEN_ERROR:
+        echo('Patten not match');
+        break;
+    case \Ilex\Validation\HkidValidation\Reason\ReasonInterface::DIGIT_ERROR:
+        echo('Digit not match');
+        break;
 }
 ```
 #### Normal 
@@ -80,6 +111,12 @@ if ($hkid->isValid()) {
     echo $a->format();
 } else {
     echo ('wrong');
+    if ($hkid->isPattenError()) {
+        echo('Patten not match');
+    }
+    if ($hkid->isDigitError()) {
+        echo('Digit not match');
+    }
 }
 
 $hkid = $c->checkString($s);
@@ -91,20 +128,3 @@ if ($hkid->isValid()) {
 }
 ```
 
-## Upgrade from 2.x to 3.x
-All the checking now return `\Ilex\Validation\HkidValidation\HkId` object, not `bool`
-```php
-
-$a = Helper::checkByString($s);
-//2.x: $a is bool
-
-//3.x
-/** @var \Ilex\Validation\HkidValidation\HkIdValidResult $a */
-$a->isValid(); //bool
-echo($a->format); // print the formated HKID.
-
-//also can get back each parts
-echo($a->getPart1());
-echo($a->getPart2());
-echo($a->getPart3());
-```
