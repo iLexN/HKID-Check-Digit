@@ -15,24 +15,79 @@ use Ilex\Validation\HkidValidation\Reason\PattenError;
  */
 final class HkidDigitCheck
 {
+    /**
+     * @var int
+     */
     private const ONE_CHAT_NUM = 324;
 
+    /**
+     * @var int
+     */
     private const MOD_NUM = 11;
+
+    /**
+     * @var string
+     */
     private const MOD_NUM_10 = 'A';
+
+    /**
+     * @var int
+     */
     private const MOD_NUM_11 = 0;
+
+    /**
+     * @var int
+     */
     private const MOD_MATCH_10 = 10;
+
+    /**
+     * @var int
+     */
     private const MOD_MATCH_11 = 11;
 
+    /**
+     * @var int
+     */
     private const CHAT_WEIGHT_1 = 9;
+
+    /**
+     * @var int
+     */
     private const CHAT_WEIGHT_2 = 8;
 
+    /**
+     * @var int
+     */
     private const NUM_WEIGHT_1 = 7;
+
+    /**
+     * @var int
+     */
     private const NUM_WEIGHT_2 = 6;
+
+    /**
+     * @var int
+     */
     private const NUM_WEIGHT_3 = 5;
+
+    /**
+     * @var int
+     */
     private const NUM_WEIGHT_4 = 4;
+
+    /**
+     * @var int
+     */
     private const NUM_WEIGHT_5 = 3;
+
+    /**
+     * @var int
+     */
     private const NUM_WEIGHT_6 = 2;
 
+    /**
+     * @var int
+     */
     private const CHAT_CONVERT_START_NUM = 10;
 
 
@@ -41,7 +96,7 @@ final class HkidDigitCheck
      *
      * @var int[]
      */
-    private array $partOneCharNumArray;
+    private array $partOneCharNumArray = [];
 
     /**
      * HkidDigitCheck constructor.
@@ -96,7 +151,7 @@ final class HkidDigitCheck
             $valid = $this->isValid($hkid);
             $reason = $valid ? new Ok() : new DigitError();
             return new HkIdValidResult($hkid, $reason);
-        } catch (HkidInvalidException $exception) {
+        } catch (HkidInvalidException $hkidInvalidException) {
             return new HkIdValidResult(new Hkid('', '', ''), new PattenError());
         }
     }

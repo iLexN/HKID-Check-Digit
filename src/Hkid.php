@@ -57,7 +57,7 @@ final class Hkid
 
     public function format(): string
     {
-        return "{$this->getPart1()}{$this->getPart2()}({$this->getPart3()})";
+        return sprintf('%s%s(%s)', $this->getPart1(), $this->getPart2(), $this->getPart3());
     }
 
     public function __toString(): string

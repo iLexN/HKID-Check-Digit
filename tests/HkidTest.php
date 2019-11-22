@@ -2,10 +2,10 @@
 
 namespace Ilex\Validation\HkidValidation\Tests;
 
+use Generator;
 use Ilex\Validation\HkidValidation\Helper;
 use Ilex\Validation\HkidValidation\HkidDigitCheck;
 use Ilex\Validation\HkidValidation\Reason\DigitError;
-use Ilex\Validation\HkidValidation\Reason\Ok;
 use Ilex\Validation\HkidValidation\Reason\PattenError;
 use Ilex\Validation\HkidValidation\Reason\ReasonInterface;
 use PHPUnit\Framework\TestCase;
@@ -97,9 +97,10 @@ class HkidTest extends TestCase
         self::assertEquals($this->clearString($p3), $r->getPart3());
     }
 
-    public function additionProviderTrueResult(): \Generator
+    public function additionProviderTrueResult(): Generator
     {
-        yield 'B111111(1)' => ['B', '111111', '1', 'B111111(1)'];
+        yield 'B111111(1)' .
+            '' => ['B', '111111', '1', 'B111111(1)'];
         yield 'CA182361(1)' => ['Ca', '182361', '1', 'CA182361(1)'];
         yield 'ZA182361(3)' => ['zA', '182361', '3', 'ZA182361(3)'];
         yield 'B111112(A)' => ['B', '111112', 'A', 'B111112(A)'];
@@ -109,7 +110,7 @@ class HkidTest extends TestCase
         yield 'z109852(8)' => ['z', '109852', '8', 'Z109852(8)'];
     }
 
-    public function additionProviderFalseResult(): \Generator
+    public function additionProviderFalseResult(): Generator
     {
 
         $p = new PattenError();
