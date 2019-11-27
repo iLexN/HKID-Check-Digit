@@ -24,9 +24,9 @@
         "phpstan/phpstan-phpunit": "^0.11.0",
         "phpstan/phpstan-strict-rules": "^0.11.0",
         "phpunit/phpunit": "^8.0",
-        "rector/rector": "^0.5.23",
+        "rector/rector": "^0.6",
         "spatie/phpunit-watcher": "^1.8",
-        "symplify/easy-coding-standard": "^6.0"
+        "symplify/easy-coding-standard": "^7.0"
     },
     "config": {
         "sort-packages": true
@@ -60,7 +60,8 @@
         "test-test": "vendor/bin/infection --threads=4",
         "test-watch": "phpunit-watcher watch",
         "test-dump": "phpunit --dump-xdebug-filter ./build/xdebug-filter.php",
-        "benchmark": "phpbench run benchmarks/HkidBenchmark.php --report=aggregate --retry-threshold=5"
+        "benchmark": "phpbench run benchmarks/HkidBenchmark.php --report=aggregate --retry-threshold=5",
+        "rector": "rector process src --config rector-ci.yaml --dry-run"
     },
     "scripts-descriptions": {
         "test": "Launches the preconfigured PHPUnit"

@@ -159,9 +159,9 @@ final class HkidDigitCheck
     private function isValid(Hkid $hkid): bool
     {
         return $this->getPart2Remainder(
-                $hkid->getPart2(),
-                $this->getCharSum($hkid->getPart1())
-            ) === $hkid->getPart3();
+            $hkid->getPart2(),
+            $this->getCharSum($hkid->getPart1())
+        ) === $hkid->getPart3();
     }
 
     /**
