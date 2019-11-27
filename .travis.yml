@@ -14,15 +14,15 @@ matrix:
 
 before_script:
   - composer install --prefer-source --no-interaction
-  - if [[ "$TRAVIS_PHP_VERSION" == '7.2' ]]; then composer require php-coveralls/php-coveralls -n ; fi
+  - composer require php-coveralls/php-coveralls -n
 
 script:
   - echo $TRAVIS_PHP_VERSION
-  - if [[ "$TRAVIS_PHP_VERSION" == '7.2' ]]; then mkdir -p build/logs && vendor/bin/phpunit --coverage-clover build/logs/clover.xml ; fi
-  - if [[ "$TRAVIS_PHP_VERSION" != '7.2' ]]; then vendor/bin/phpunit ; fi
-  - if [[ "$TRAVIS_PHP_VERSION" == '7.2' ]]; then vendor/bin/infection --threads=4 ; fi
+  - mkdir -p build/logs && vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+  - vendor/bin/phpunit
+  - vendor/bin/infection --threads=4
 
 after_script:
-  - if [[ "$TRAVIS_PHP_VERSION" == '7.2' ]]; then php vendor/bin/php-coveralls --coverage_clover=build/logs/clover.xml -v ; fi
-  - if [[ "$TRAVIS_PHP_VERSION" == '7.2' ]]; then wget https://scrutinizer-ci.com/ocular.phar ; fi
-  - if [[ "$TRAVIS_PHP_VERSION" == '7.2' ]]; then php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml ; fi
+  - php vendor/bin/php-coveralls --coverage_clover=build/logs/clover.xml -v
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml
