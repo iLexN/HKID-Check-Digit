@@ -11,12 +11,13 @@ cache:
 matrix:
   allow_failures:
     - php: nightly
- 
+
 before_script:
   - composer install --prefer-source --no-interaction
   - if [[ "$TRAVIS_PHP_VERSION" == '7.2' ]]; then composer require php-coveralls/php-coveralls -n ; fi
 
 script:
+  - echo $TRAVIS_PHP_VERSION
   - if [[ "$TRAVIS_PHP_VERSION" == '7.2' ]]; then mkdir -p build/logs && vendor/bin/phpunit --coverage-clover build/logs/clover.xml ; fi
   - if [[ "$TRAVIS_PHP_VERSION" != '7.2' ]]; then vendor/bin/phpunit ; fi
   - if [[ "$TRAVIS_PHP_VERSION" == '7.2' ]]; then vendor/bin/infection --threads=4 ; fi
