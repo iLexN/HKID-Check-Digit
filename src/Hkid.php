@@ -59,9 +59,4 @@ final class Hkid
     {
         return sprintf('%s%s(%s)', $this->getPart1(), $this->getPart2(), $this->getPart3());
     }
-
-    public function __toString(): string
-    {
-        return $this->format();
-    }
 }

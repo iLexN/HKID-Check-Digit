@@ -64,7 +64,6 @@ class HkidTest extends TestCase
 
         self::assertEquals($expectedFormat, $c->format());
         self::assertEquals($expectedFormat, (string)$c);
-        self::assertEquals($expectedFormat, $c->__toString());
         self::assertEquals($this->clearString($p1), $c->getPart1());
         self::assertEquals($this->clearString($p2), $c->getPart2());
         self::assertEquals($this->clearString($p3), $c->getPart3());
