@@ -19,7 +19,6 @@ before_script:
 script:
   - echo $TRAVIS_PHP_VERSION
   - mkdir -p build/logs && vendor/bin/phpunit --coverage-clover build/logs/clover.xml
-  - vendor/bin/phpunit
   - vendor/bin/infection --threads=4
 
 after_script:
