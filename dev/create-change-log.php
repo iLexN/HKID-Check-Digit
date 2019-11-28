@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 );
 
 $c->addRelease(
-    (new Release('3.0.0','2019-xx-xx'))
+    (new Release('3.0.0','2019-11-28'))
         ->added('use PHP 7.4 Typed properties')
         ->added('use PHP 7.4 Short closures')
         ->added('infection test to improve test case')
