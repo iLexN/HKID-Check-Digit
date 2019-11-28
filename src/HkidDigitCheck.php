@@ -96,7 +96,7 @@ final class HkidDigitCheck
      *
      * @var int[]
      */
-    private array $partOneCharNumArray = [];
+    private array $partOneCharNumArray;
 
     /**
      * HkidDigitCheck constructor.

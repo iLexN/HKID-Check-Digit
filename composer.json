@@ -62,7 +62,8 @@
         "test-watch": "phpunit-watcher watch",
         "test-dump": "phpunit --dump-xdebug-filter ./build/xdebug-filter.php",
         "benchmark": "phpbench run benchmarks/HkidBenchmark.php --report=aggregate --retry-threshold=5",
-        "rector": "rector process src --config rector-ci.yaml --dry-run",
+        "rector-check": "rector process src --config rector-ci.yaml --dry-run",
+        "rector-fix": "rector process src --config rector-ci.yaml",
         "psalm" : "psalm"
     },
     "scripts-descriptions": {

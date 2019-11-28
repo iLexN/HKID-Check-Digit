@@ -9,3 +9,5 @@ parameters:
         - 'php-73'
         - 'php-74'
         - 'solid'
+    exclude_rectors:
+        - 'Rector\CodingStyle\Rector\Switch_\BinarySwitchToIfElseRector'
