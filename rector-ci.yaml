@@ -11,3 +11,4 @@ parameters:
         - 'solid'
     exclude_rectors:
         - 'Rector\CodingStyle\Rector\Switch_\BinarySwitchToIfElseRector'
+        - 'Rector\CodingStyle\Rector\Class_\AddArrayDefaultToArrayPropertyRector'

@@ -50,9 +50,12 @@
             "@test"
         ],
         "dev": [
-            "@ecs",
+            "@test",
+            "@cs-check",
             "@bug-check",
-            "@test-dev"
+            "@psalm",
+            "@rector-check",
+            "@benchmark"
         ],
         "cs-check": "ecs check src",
         "cs-fix": "ecs check src --fix",
