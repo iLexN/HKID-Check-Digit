@@ -17,9 +17,10 @@ before_script:
   - composer require php-coveralls/php-coveralls -n
 
 script:
-  - echo $TRAVIS_PHP_VERSION
   - mkdir -p build/logs && vendor/bin/phpunit --prepend build/xdebug-filter.php --coverage-clover build/logs/clover.xml
   - vendor/bin/infection --threads=4
+  - composer psalm
+  - composer benchmark
 
 after_script:
   - php vendor/bin/php-coveralls --coverage_clover=build/logs/clover.xml -v

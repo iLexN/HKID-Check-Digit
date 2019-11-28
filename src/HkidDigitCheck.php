@@ -237,7 +237,7 @@ final class HkidDigitCheck
      */
     private function calPart2Remainder(string $part2, int $charSum): int
     {
-        $p2 = array_map(fn ($int): int => (int)$int, \str_split($part2));
+        $p2 = array_map(fn (string $int): int => (int)$int, \str_split($part2));
 
         return self::MOD_NUM - ((
             $charSum +
