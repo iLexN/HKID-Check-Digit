@@ -17,7 +17,7 @@ before_script:
   - composer require php-coveralls/php-coveralls -n
 
 script:
-  - mkdir -p build/logs && vendor/bin/phpunit --prepend build/xdebug-filter.php --coverage-clover build/logs/clover.xml
+  - mkdir -p build/logs && vendor/bin/phpunit --coverage-clover build/logs/clover.xml
   - vendor/bin/infection --threads=4
   - composer cs-check
   - composer bug-check
