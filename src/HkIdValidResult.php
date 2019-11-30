@@ -11,7 +11,7 @@ final class HkIdValidResult
     private ReasonInterface $reason;
 
     /**
-     * @var \Ilex\Validation\HkidValidation\Hkid
+     * @var Hkid
      */
     private Hkid $hkid;
 

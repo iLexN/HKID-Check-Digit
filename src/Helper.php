@@ -17,7 +17,7 @@ final class Helper
      * @param string $p2 182361
      * @param string $p3 1
      *
-     * @return \Ilex\Validation\HkidValidation\HkIdValidResult
+     * @return HkIdValidResult
      */
     public static function checkByParts(
         string $p1,
@@ -32,7 +32,7 @@ final class Helper
      *
      * @param string $string CA182361(1)
      *
-     * @return \Ilex\Validation\HkidValidation\HkIdValidResult
+     * @return HkIdValidResult
      */
     public static function checkByString(string $string): HkIdValidResult
     {

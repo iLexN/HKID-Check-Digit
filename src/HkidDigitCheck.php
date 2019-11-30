@@ -169,8 +169,8 @@ final class HkidDigitCheck
      *
      * @param string $string
      *
-     * @return \Ilex\Validation\HkidValidation\Hkid
-     * @throws \Ilex\Validation\HkidValidation\HkidInvalidException wrong format
+     * @return Hkid
+     * @throws HkidInvalidException wrong format
      */
     private function validate(string $string): Hkid
     {
