@@ -1,6 +1,16 @@
 # Validation of HKID
 > Used to validation the format and check digit calculation for HKID 
 
+```
+ __    __   __  ___  __   _______       ______  __    __   _______   ______  __  ___
+|  |  |  | |  |/  / |  | |       \     /      ||  |  |  | |   ____| /      ||  |/  /
+|  |__|  | |  '  /  |  | |  .--.  |   |  ,----'|  |__|  | |  |__   |  ,----'|  '  / 
+|   __   | |    <   |  | |  |  |  |   |  |     |   __   | |   __|  |  |     |    <  
+|  |  |  | |  .  \  |  | |  '--'  |   |  `----.|  |  |  | |  |____ |  `----.|  .  \ 
+|__|  |__| |__|\__\ |__| |_______/     \______||__|  |__| |_______| \______||__|\__\
+                                                                                    
+```
+
 [![Latest Stable Version](https://poser.pugx.org/ilexn/hkid-check-digit/v/stable)](https://packagist.org/packages/ilexn/hkid-check-digit)
 [![Total Downloads](https://poser.pugx.org/ilexn/hkid-check-digit/downloads)](https://packagist.org/packages/ilexn/hkid-check-digit)
 
