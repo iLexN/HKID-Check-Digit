@@ -97,10 +97,12 @@ class HkidTest extends TestCase
         self::assertEquals($this->clearString($p3), $r->getPart3());
     }
 
+    /**
+     * @return \Generator<array>
+     */
     public function additionProviderTrueResult(): Generator
     {
-        yield 'B111111(1)' .
-            '' => ['B', '111111', '1', 'B111111(1)'];
+        yield 'B111111(1)' => ['B', '111111', '1', 'B111111(1)'];
         yield 'CA182361(1)' => ['Ca', '182361', '1', 'CA182361(1)'];
         yield 'ZA182361(3)' => ['zA', '182361', '3', 'ZA182361(3)'];
         yield 'B111112(A)' => ['B', '111112', 'A', 'B111112(A)'];
@@ -110,6 +112,9 @@ class HkidTest extends TestCase
         yield 'z109852(8)' => ['z', '109852', '8', 'Z109852(8)'];
     }
 
+    /**
+     * @return \Generator<array>
+     */
     public function additionProviderFalseResult(): Generator
     {
 
