@@ -25,7 +25,7 @@ script:
   - if [[ "$ANALYSIS" == 'true' ]]; then composer cs-check ; fi
   - if [[ "$ANALYSIS" == 'true' ]]; then composer bug-check ; fi
   - if [[ "$ANALYSIS" == 'true' ]]; then composer psalm ; fi
-  - if [[ "$ANALYSIS" == 'true' ]]; then composer rector-check ; fi
+  #- if [[ "$ANALYSIS" == 'true' ]]; then composer rector-check ; fi
   - if [[ "$ANALYSIS" == 'true' ]]; then composer benchmark ; fi
 
 after_success:
