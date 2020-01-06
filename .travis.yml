@@ -1,32 +1,34 @@
 language: php
 
-php:
-  - 7.4snapshot
-  - nightly
-
 cache:
   directories:
     - $HOME/.composer/cache
 
 matrix:
+  include:
+    - php: 7.4
+    - php: 7.4snapshot
+      env: ANALYSIS='true'
+    - php: nightly
   allow_failures:
     - php: nightly
 
 before_script:
   - composer install --prefer-source --no-interaction
-  - composer require php-coveralls/php-coveralls -n
+  - if [[ "$ANALYSIS" == 'true' ]]; composer require php-coveralls/php-coveralls -n ; fi
 
 script:
-  - composer test-dump
-  - mkdir -p build/logs && vendor/bin/phpunit --prepend build/xdebug-filter.php --coverage-clover build/logs/clover.xml
-  - vendor/bin/infection --threads=4
-  - composer cs-check
-  - composer bug-check
-  - composer psalm
-  - composer rector-check
-  - composer benchmark
+  - if [[ "$ANALYSIS" == 'true' ]]; composer test-dump ; fi
+  - if [[ "$ANALYSIS" != 'true' ]]; vendor/bin/phpunit --prepend build/xdebug-filter.php ; fi
+  - if [[ "$ANALYSIS" == 'true' ]]; mkdir -p build/logs && vendor/bin/phpunit --prepend build/xdebug-filter.php --coverage-clover build/logs/clover.xml ; fi
+  - if [[ "$ANALYSIS" == 'true' ]]; vendor/bin/infection --threads=4 ; fi
+  - if [[ "$ANALYSIS" == 'true' ]]; composer cs-check ; fi
+  - if [[ "$ANALYSIS" == 'true' ]]; composer bug-check ; fi
+  - if [[ "$ANALYSIS" == 'true' ]]; composer psalm ; fi
+  - if [[ "$ANALYSIS" == 'true' ]]; composer rector-check ; fi
+  - if [[ "$ANALYSIS" == 'true' ]]; composer benchmark ; fi
 
-after_script:
-  - php vendor/bin/php-coveralls --coverage_clover=build/logs/clover.xml -v
-  - wget https://scrutinizer-ci.com/ocular.phar
-  - php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml
+after_success:
+  - if [[ "$ANALYSIS" == 'true' ]]; php vendor/bin/php-coveralls --coverage_clover=build/logs/clover.xml -v ; fi
+  - if [[ "$ANALYSIS" == 'true' ]]; wget https://scrutinizer-ci.com/ocular.phar ; fi
+  - if [[ "$ANALYSIS" == 'true' ]]; php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml ; fi
