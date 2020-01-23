@@ -61,7 +61,10 @@ jobs:
           coverage: none
 
       - name: Composer install
-        run: composer install
+        uses: nick-zh/composer-php@master
+        with:
+          action: 'update'
+          options: '-o'
 
       - name: Code style check
         run: composer cs-check
