@@ -1,17 +1,17 @@
-name: Tests
+name: Code Coverage
 
 on:
   pull_request: null
   push: null
 
 jobs:
-  tests:
+  code_coverage:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         php: ['7.4']
 
-    name: PHP ${{ matrix.php }} tests
+    name: PHP ${{ matrix.php }} Code Coverage
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -26,11 +26,14 @@ jobs:
         uses: shivammathur/setup-php@v1
         with:
           php-version: ${{ matrix.php }}
-          coverage: none
+          coverage: pcov
 
       - name: Composer install
         run: composer install
 
       - name: Execute tests
         run: |
-          vendor/bin/phpunit
+          composer require php-coveralls/php-coveralls
+          vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+          # Coveralls.io
+          vendor/bin/php-coveralls --coverage_clover=build/logs/clover.xml -v
