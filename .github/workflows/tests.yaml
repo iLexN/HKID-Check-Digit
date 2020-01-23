@@ -35,3 +35,35 @@ jobs:
         run: |
           composer require --dev mheap/phpunit-github-actions-printer
           vendor/bin/phpunit --printer mheap\\GithubActionsReporter\\Printer
+
+  tests2:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['7.4']
+
+    name: PHP ${{ matrix.php }} tests
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v1
+        with:
+          path: ~/.composer/cache/files
+          key: composer-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v1
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+
+      - name: Composer install
+        run: composer install
+
+      - name: Code check
+        run: |
+          composer cs-check
+          composer bug-check
+          composer psalm
