@@ -40,3 +40,5 @@ jobs:
         env:
           COVERALLS_REPO_TOKEN: 'BTZFbEdqEYS2g15AvNIL265L2HoyEgKek'
 
+      - name: Infection Test
+        run: vendor/bin/infection --threads=4
