@@ -68,8 +68,5 @@
         "rector-check": "rector process src --config rector-ci.yaml --dry-run",
         "rector-fix": "rector process src --config rector-ci.yaml",
         "psalm" : "psalm"
-    },
-    "scripts-descriptions": {
-        "test": "Launches the preconfigured PHPUnit"
     }
 }
