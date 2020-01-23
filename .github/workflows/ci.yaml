@@ -36,13 +36,13 @@ jobs:
           composer require --dev mheap/phpunit-github-actions-printer
           vendor/bin/phpunit --printer mheap\\GithubActionsReporter\\Printer
 
-  tests2:
+  check:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         php: ['7.4']
 
-    name: PHP ${{ matrix.php }} tests
+    name: PHP ${{ matrix.php }} code check
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -62,8 +62,14 @@ jobs:
       - name: Composer install
         run: composer install
 
-      - name: Code check
-        run: |
-          composer cs-check
-          composer bug-check
-          composer psalm
+      - name: Code style check
+        run: composer cs-check
+
+      - name: PhpStan check
+        run: composer bug-check
+
+      - name: Psalm check
+        run: composer psalm
+
+      - name: Rector check
+        run: composer rector-check
