@@ -37,3 +37,6 @@ jobs:
           vendor/bin/phpunit --coverage-clover build/logs/clover.xml
           # Coveralls.io
           vendor/bin/php-coveralls --coverage_clover=build/logs/clover.xml -v
+        env:
+          COVERALLS_REPO_TOKEN: 'BTZFbEdqEYS2g15AvNIL265L2HoyEgKek'
+
