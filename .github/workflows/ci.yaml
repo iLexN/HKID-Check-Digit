@@ -32,9 +32,7 @@ jobs:
         run: composer install
 
       - name: Execute tests
-        run: |
-          composer require --dev mheap/phpunit-github-actions-printer
-          vendor/bin/phpunit --printer mheap\\GithubActionsReporter\\Printer
+        run: vendor/bin/phpunit --printer mheap\\GithubActionsReporter\\Printer
 
   check:
     runs-on: ubuntu-latest
