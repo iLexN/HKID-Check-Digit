@@ -1,4 +1,4 @@
-name: Tests
+name: CI Check
 
 on:
   pull_request: null
@@ -29,7 +29,10 @@ jobs:
           coverage: none
 
       - name: Composer install
-        run: composer install
+        uses: nick-zh/composer-php@master
+        with:
+          action: 'update'
+          options: '-o'
 
       - name: Execute tests
         run: vendor/bin/phpunit --printer mheap\\GithubActionsReporter\\Printer
