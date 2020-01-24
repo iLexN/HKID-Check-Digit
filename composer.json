@@ -19,6 +19,7 @@
         "codedungeon/phpunit-result-printer": "^0.26.2",
         "ilexn/keep-a-change-log": "^1.1",
         "infection/infection": "^0.15.0",
+        "mheap/phpunit-github-actions-printer": "^1.1",
         "phpbench/phpbench": "@dev",
         "phpstan/phpstan": "^0.12.5",
         "phpstan/phpstan-phpunit": "^0.12.6",
@@ -67,9 +68,6 @@
         "benchmark": "phpbench run benchmarks/HkidBenchmark.php --report=aggregate --retry-threshold=5",
         "rector-check": "rector process src --config rector-ci.yaml --dry-run",
         "rector-fix": "rector process src --config rector-ci.yaml",
-        "psalm" : "psalm"
-    },
-    "scripts-descriptions": {
-        "test": "Launches the preconfigured PHPUnit"
+        "psalm" : "psalm "
     }
 }

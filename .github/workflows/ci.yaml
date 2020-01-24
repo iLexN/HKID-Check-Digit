@@ -1,0 +1,75 @@
+name: CI Check
+
+on:
+  pull_request: null
+  push:
+    branches:
+      - master
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['7.4']
+
+    name: PHP ${{ matrix.php }} tests
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+#      - name: Cache composer dependencies
+#        uses: actions/cache@v1
+#        with:
+#          path: ~/.composer/cache
+#          key: composer-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v1
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+
+      - name: Composer install
+        uses: nick-zh/composer-php@master
+        with:
+          action: 'update'
+          options: '-o'
+
+      - name: Execute tests
+        run: vendor/bin/phpunit --printer mheap\\GithubActionsReporter\\Printer
+
+  check:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['7.4']
+
+    name: PHP ${{ matrix.php }} code check
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v1
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+
+      - name: Composer install
+        uses: nick-zh/composer-php@master
+        with:
+          action: 'update'
+          options: '-o'
+
+      - name: Code style check
+        run: composer cs-check
+
+      - name: PhpStan check
+        run: composer bug-check
+
+      - name: Psalm check
+        run: composer psalm
+
+      - name: Rector check
+        run: composer rector-check

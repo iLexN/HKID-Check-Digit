@@ -22,9 +22,6 @@ script:
   - if [[ "$ANALYSIS" != 'true' ]]; then vendor/bin/phpunit --prepend build/xdebug-filter.php ; fi
   - if [[ "$ANALYSIS" == 'true' ]]; then mkdir -p build/logs && vendor/bin/phpunit --prepend build/xdebug-filter.php --coverage-clover build/logs/clover.xml ; fi
   - if [[ "$ANALYSIS" == 'true' ]]; then vendor/bin/infection --threads=4 ; fi
-  - if [[ "$ANALYSIS" == 'true' ]]; then composer cs-check ; fi
-  - if [[ "$ANALYSIS" == 'true' ]]; then composer bug-check ; fi
-  - if [[ "$ANALYSIS" == 'true' ]]; then composer psalm ; fi
   #- if [[ "$ANALYSIS" == 'true' ]]; then composer rector-check ; fi
   - if [[ "$ANALYSIS" == 'true' ]]; then composer benchmark ; fi
 
