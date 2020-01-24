@@ -1,5 +1,9 @@
 language: php
 
+branches:
+  only:
+    - 3.x
+
 cache:
   directories:
     - $HOME/.composer/cache
