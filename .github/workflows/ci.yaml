@@ -69,7 +69,7 @@ jobs:
         run: composer bug-check
 
       - name: Psalm check
-        run: composer psalm
+        run: vendor/bin/psalm --shepherd --stats
 
       - name: Rector check
         run: composer rector-check
