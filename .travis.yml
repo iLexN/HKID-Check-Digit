@@ -3,7 +3,6 @@ language: php
 branches:
   only:
     - 3.x
-    - type-coverage
 
 cache:
   directories:
