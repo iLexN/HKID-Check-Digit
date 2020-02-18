@@ -19,7 +19,7 @@
         "codedungeon/phpunit-result-printer": "^0.26.2",
         "ilexn/keep-a-change-log": "^1.1",
         "infection/infection": "^0.15.3",
-        "mheap/phpunit-github-actions-printer": "^1.1",
+        "mheap/phpunit-github-actions-printer": "^1.2",
         "phpbench/phpbench": "@dev",
         "phpstan/phpstan": "^0.12.9",
         "phpstan/phpstan-phpunit": "^0.12.6",
