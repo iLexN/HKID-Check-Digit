@@ -68,6 +68,6 @@
         "benchmark": "phpbench run benchmarks/HkidBenchmark.php --report=aggregate --retry-threshold=5",
         "rector-check": "rector process src --config rector-ci.yaml --dry-run",
         "rector-fix": "rector process src --config rector-ci.yaml",
-        "psalm" : "psalm "
+        "psalm" : "psalm"
     }
 }

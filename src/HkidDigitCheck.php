@@ -99,6 +99,11 @@ final class HkidDigitCheck
     private array $partOneCharNumArray;
 
     /**
+     * @var string
+     */
+    private const RE = '/^(?P<p1>\D{1,2})(?P<p2>\d{6})\((?P<p3>[\w{1}0-9aA])\)$/i';
+
+    /**
      * HkidDigitCheck constructor.
      */
     public function __construct()
@@ -174,15 +179,13 @@ final class HkidDigitCheck
      */
     private function validate(string $string): Hkid
     {
-        $re = '/^(?P<p1>\D{1,2})(?P<p2>\d{6})\((?P<p3>[\w{1}0-9aA])\)$/i';
-        if (1 === preg_match($re, $string, $matches)) {
+        if (1 === preg_match(self::RE, $string, $matches)) {
             return new Hkid(
                 $this->clearString($matches['p1']),
                 $matches['p2'],
                 $this->clearString($matches['p3'])
             );
         }
-
         throw HkidInvalidException::create($string);
     }
 
