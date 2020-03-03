@@ -16,7 +16,7 @@
         "php": ">=7.4"
     },
     "require-dev": {
-        "codedungeon/phpunit-result-printer": "^0.26.2",
+        "codedungeon/phpunit-result-printer": "^0.27.0",
         "ilexn/keep-a-change-log": "^1.1",
         "infection/infection": "^0.15.3",
         "mheap/phpunit-github-actions-printer": "^1.2",
