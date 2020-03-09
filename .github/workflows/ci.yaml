@@ -37,7 +37,7 @@ jobs:
           options: '-o'
 
       - name: Execute tests
-        run: vendor/bin/phpunit --printer mheap\\GithubActionsReporter\\Printer
+        run: vendor/bin/phpunit
 
   check:
     runs-on: ubuntu-latest
