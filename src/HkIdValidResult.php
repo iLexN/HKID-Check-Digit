@@ -11,12 +11,12 @@ final class HkIdValidResult
     private ReasonInterface $reason;
 
     /**
-     * @var Hkid
+     * @var HkidValueInterface
      */
-    private Hkid $hkid;
+    private HkidValueInterface $hkid;
 
     public function __construct(
-        Hkid $hkid,
+        HkidValueInterface $hkid,
         ReasonInterface $reason
     ) {
         $this->hkid = $hkid;

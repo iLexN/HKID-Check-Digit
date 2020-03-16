@@ -121,16 +121,16 @@ class HkidTest extends TestCase
         $p = new PattenError();
         $d = new DigitError();
 
-        yield 'B111111(3)' => ['B', '111111', '3', $d];
-        yield 'CAC182361(1)' => ['CaC', '182361', '1', $p];
-        yield '111112(A)' => ['', '111112', 'A', $p];
-        yield '1B111117(0)' => ['1B', '111117', '0', $p];
-        yield '1111117(0)' => ['1', '111117', '0', $p];
-        yield '122(0)' => ['B', '22', '0', $p];
-        yield 'B111111(G)' => ['B', '111111', 'G', $d];
+        yield 'B111111(3)' => ['B', '111111', '3', $d, 'B111111(3)'];
+        yield 'CAC182361(1)' => ['CaC', '182361', '1', $p, 'CAC182361(1)'];
+        yield '111112(A)' => ['', '111112', 'A', $p, '111112(A)'];
+        yield '1B111117(0)' => ['1B', '111117', '0', $p ,'1B111117(0)'];
+        yield '1111117(0)' => ['1', '111117', '0', $p, '1111117(0)'];
+        yield 'B22(0)' => ['B', '22', '0', $p, 'B22(0)'];
+        yield 'B111111(G)' => ['B', '111111', 'G', $d, 'B111111(G)'];
         //wrong format
-        yield '1111a' => ['1', '111a', '11', $p];
-        yield '11111a1' => ['1', '111a11', '11', $p];
+        yield '1111a(11)' => ['1', '111a', '11', $p, '1111a(11)'];
+        yield '1111a11(11)' => ['1', '111a11', '11', $p, '1111a11(11)'];
     }
 
     /**
@@ -145,22 +145,30 @@ class HkidTest extends TestCase
         string $p1,
         string $p2,
         string $p3,
-        ReasonInterface $reason
+        ReasonInterface $reason,
+        string $format
     ): void {
         $a = Helper::checkByParts($p1, $p2, $p3);
         self::assertFalse($a->isValid());
         self::assertEquals($reason->getKey(), $a->getReason());
         self::assertEquals($reason->isDigitError(), $a->isDigitError());
         self::assertEquals($reason->isPattenError(), $a->isPattenError());
+        self::assertEquals($format , $a->format());
 
         switch ($reason->getKey()) {
             case ReasonInterface::DIGIT_ERROR:
                 self::assertFalse($a->isPattenError());
                 self::assertTrue($a->isDigitError());
+                self::assertEquals($p1, $a->getPart1());
+                self::assertEquals($p2, $a->getPart2());
+                self::assertEquals($p3, $a->getPart3());
                 break;
             case ReasonInterface::PATTEN_ERROR:
                 self::assertTrue($a->isPattenError());
                 self::assertFalse($a->isDigitError());
+                self::assertEquals('', $a->getPart1());
+                self::assertEquals('', $a->getPart2());
+                self::assertEquals('', $a->getPart3());
                 break;
         }
 

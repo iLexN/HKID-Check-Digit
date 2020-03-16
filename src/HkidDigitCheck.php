@@ -151,14 +151,14 @@ final class HkidDigitCheck
      */
     public function checkString(string $string): HkIdValidResult
     {
-        try {
-            $hkid = $this->validate($string);
-            $valid = $this->isValid($hkid);
-            $reason = $valid ? new Ok() : new DigitError();
-            return new HkIdValidResult($hkid, $reason);
-        } catch (HkidInvalidException $hkidInvalidException) {
-            return new HkIdValidResult(new Hkid('', '', ''), new PattenError());
+        $hkid = $this->validate($string);
+
+        if ($hkid instanceof HkidNull) {
+            return new HkIdValidResult($hkid, new PattenError());
         }
+
+        $reason = $this->isValid($hkid) ? new Ok() : new DigitError();
+        return new HkIdValidResult($hkid, $reason);
     }
 
     private function isValid(Hkid $hkid): bool
@@ -175,9 +175,8 @@ final class HkidDigitCheck
      * @param string $string
      *
      * @return Hkid
-     * @throws HkidInvalidException wrong format
      */
-    private function validate(string $string): Hkid
+    private function validate(string $string): HkidValueInterface
     {
         if (1 === preg_match(self::RE, $string, $matches)) {
             return new Hkid(
@@ -186,7 +185,7 @@ final class HkidDigitCheck
                 $this->clearString($matches['p3'])
             );
         }
-        throw HkidInvalidException::create($string);
+        return new HkidNull($string);
     }
 
     /**
