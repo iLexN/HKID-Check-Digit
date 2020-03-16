@@ -161,7 +161,7 @@ final class HkidDigitCheck
         return new HkIdValidResult($hkid, $reason);
     }
 
-    private function isValid(Hkid $hkid): bool
+    private function isValid(HkidValueInterface $hkid): bool
     {
         return $this->getPart2Remainder(
             $hkid->getPart2(),
@@ -174,7 +174,7 @@ final class HkidDigitCheck
      *
      * @param string $string
      *
-     * @return Hkid
+     * @return HkidValueInterface
      */
     private function validate(string $string): HkidValueInterface
     {
