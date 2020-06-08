@@ -18,11 +18,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-#      - name: Cache composer dependencies
-#        uses: actions/cache@v1
-#        with:
-#          path: ~/.composer/cache
-#          key: composer-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
+      - name: Cache composer dependencies
+        uses: actions/cache@v1
+        with:
+          path: ~/.composer/cache
+          key: composer-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v1
@@ -31,9 +31,7 @@ jobs:
           coverage: none
 
       - name: Composer install
-        uses: nick-zh/composer-php@master
-        with:
-          action: 'update -o'
+        run: composer install
 
       - name: Execute tests
         run: vendor/bin/phpunit
@@ -49,6 +47,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Cache composer dependencies
+        uses: actions/cache@v1
+        with:
+          path: ~/.composer/cache
+          key: composer-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v1
         with:
@@ -56,10 +60,7 @@ jobs:
           coverage: none
 
       - name: Composer install
-        uses: nick-zh/composer-php@master
-        with:
-          action: 'update'
-          options: '-o'
+        run: composer install
 
       - name: Code style check
         run: composer cs-check
