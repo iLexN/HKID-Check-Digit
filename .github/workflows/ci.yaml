@@ -31,9 +31,7 @@ jobs:
           coverage: none
 
       - name: Composer install
-        uses: nick-zh/composer-php@master
-        with:
-          action: 'update -o'
+        run: composer install
 
       - name: Execute tests
         run: vendor/bin/phpunit
