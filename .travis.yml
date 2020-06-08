@@ -3,6 +3,7 @@ language: php
 branches:
   only:
     - 3.x
+    - composer-php8
 
 cache:
   directories:
@@ -18,7 +19,13 @@ matrix:
     - php: nightly
 
 before_script:
-  - composer install --prefer-source --no-interaction
+  #- composer install --prefer-source --no-interaction
+  - |
+    if [ $TRAVIS_PHP_VERSION = 'nightly' ] ; then
+      composer install --ignore-platform-reqs;
+    else
+      composer install;
+    fi
   - if [[ "$ANALYSIS" == 'true' ]]; then composer require php-coveralls/php-coveralls -n ; fi
 
 script:
