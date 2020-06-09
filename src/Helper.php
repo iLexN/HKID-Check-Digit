@@ -10,15 +10,11 @@ namespace Ilex\Validation\HkidValidation;
  */
 final class Helper
 {
-    private static ?HkidDigitCheck $instance = null;
+    private static HkidDigitCheck $instance;
 
     private static function getInstance(): HkidDigitCheck
     {
-        if (self::$instance === null) {
-            self::$instance = new HkidDigitCheck();
-        }
-
-        return self::$instance;
+        return self::$instance ??= new HkidDigitCheck();
     }
 
     /**

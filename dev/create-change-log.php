@@ -15,6 +15,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     new DefaultFormatter('https://github.com/iLexN/HKID-Check-Digit/compare')
 );
 
+$c->addRelease((new Release('3.1.2','2020-06-09'))
+    ->added('Reuse the class in Helper')
+);
+
+$c->addRelease((new Release('3.1.1','2020-06-09'))
+    ->added('Reuse the class in Helper')
+);
+
 $c->addRelease((new Release('3.1.0','2020-03-16'))
     ->added('New const for regx')
     ->added('HKID null value object')
