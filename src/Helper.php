@@ -10,6 +10,17 @@ namespace Ilex\Validation\HkidValidation;
  */
 final class Helper
 {
+    private static ?HkidDigitCheck $instance = null;
+
+    private static function getInstance(): HkidDigitCheck
+    {
+        if (self::$instance === null) {
+            self::$instance = new HkidDigitCheck();
+        }
+
+        return self::$instance;
+    }
+
     /**
      * Quick Helper check HKID Format eg. CA182361(1).
      *
@@ -24,7 +35,7 @@ final class Helper
         string $p2,
         string $p3
     ): HkIdValidResult {
-        return (new HkidDigitCheck())->checkParts($p1, $p2, $p3);
+        return self::getInstance()->checkParts($p1, $p2, $p3);
     }
 
     /**
@@ -36,6 +47,6 @@ final class Helper
      */
     public static function checkByString(string $string): HkIdValidResult
     {
-        return (new HkidDigitCheck())->checkString($string);
+        return self::getInstance()->checkString($string);
     }
 }
