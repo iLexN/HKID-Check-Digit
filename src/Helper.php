@@ -35,7 +35,7 @@ final class Helper
         string $p2,
         string $p3
     ): HkIdValidResult {
-        return (self::getInstance())->checkParts($p1, $p2, $p3);
+        return self::getInstance()->checkParts($p1, $p2, $p3);
     }
 
     /**
@@ -47,6 +47,6 @@ final class Helper
      */
     public static function checkByString(string $string): HkIdValidResult
     {
-        return (self::getInstance())->checkString($string);
+        return self::getInstance()->checkString($string);
     }
 }
