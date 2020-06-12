@@ -1,0 +1,78 @@
+name: CI Check PHP next version
+
+on:
+  pull_request: null
+  push:
+    branches:
+      - 3.x
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['8.0']
+
+    name: PHP ${{ matrix.php }} tests
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v1
+        with:
+          path: ~/.composer/cache
+          key: composer-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+
+      - name: Composer install
+        run: composer install --ignore-platform-reqs
+
+      - name: Execute tests
+        run: vendor/bin/phpunit
+
+  check:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['7.4']
+
+    name: PHP ${{ matrix.php }} code check
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v1
+        with:
+          path: ~/.composer/cache
+          key: composer-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+
+      - name: Composer install
+        run: composer install --ignore-platform-reqs
+
+      - name: Code style check
+        run: composer cs-check
+
+      - name: PhpStan check
+        run: composer bug-check
+
+      - name: Psalm check
+        run: composer psalm
+
+      - name: Rector check
+        run: composer rector-check
+
+      - name: Benchmark
+        run: composer benchmark
