@@ -62,9 +62,6 @@ jobs:
       - name: Composer install
         run: composer install --ignore-platform-reqs
 
-      - name: Code style check
-        run: composer cs-check
-
       - name: PhpStan check
         run: composer bug-check
 
