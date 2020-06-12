@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php: ['7.4']
+        php: ['8.0']
 
     name: PHP ${{ matrix.php }} code check
     steps:
