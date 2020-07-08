@@ -14,7 +14,7 @@ final class Helper
 
     private static function getInstance(): HkidDigitCheck
     {
-        return self::$instance ??= new HkidDigitCheck();
+        return static::$instance ??= new HkidDigitCheck();
     }
 
     /**
