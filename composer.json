@@ -21,7 +21,7 @@
         "infection/infection": "^0.16.4",
         "phpbench/phpbench": "@dev",
         "phpstan/phpstan": "^0.12.34",
-        "phpstan/phpstan-phpunit": "^0.12.11",
+        "phpstan/phpstan-phpunit": "^0.12.16",
         "phpstan/phpstan-strict-rules": "^0.12.4",
         "phpunit/phpunit": "^9.2",
         "rector/rector": "^0.7",
