@@ -12,7 +12,6 @@ use PHPUnit\Framework\TestCase;
 
 class HkidTest extends TestCase
 {
-
     /**
      * @dataProvider additionProviderTrueResult
      *
@@ -117,14 +116,13 @@ class HkidTest extends TestCase
      */
     public function additionProviderFalseResult(): Generator
     {
-
         $p = new PattenError();
         $d = new DigitError();
 
         yield 'B111111(3)' => ['B', '111111', '3', $d, 'B111111(3)'];
         yield 'CAC182361(1)' => ['CaC', '182361', '1', $p, 'CAC182361(1)'];
         yield '111112(A)' => ['', '111112', 'A', $p, '111112(A)'];
-        yield '1B111117(0)' => ['1B', '111117', '0', $p ,'1B111117(0)'];
+        yield '1B111117(0)' => ['1B', '111117', '0', $p, '1B111117(0)'];
         yield '1111117(0)' => ['1', '111117', '0', $p, '1111117(0)'];
         yield 'B22(0)' => ['B', '22', '0', $p, 'B22(0)'];
         yield 'B111111(G)' => ['B', '111111', 'G', $d, 'B111111(G)'];
@@ -153,7 +151,7 @@ class HkidTest extends TestCase
         self::assertEquals($reason->getKey(), $a->getReason());
         self::assertEquals($reason->isDigitError(), $a->isDigitError());
         self::assertEquals($reason->isPattenError(), $a->isPattenError());
-        self::assertEquals($format , $a->format());
+        self::assertEquals($format, $a->format());
 
         switch ($reason->getKey()) {
             case ReasonInterface::DIGIT_ERROR:
@@ -177,6 +175,13 @@ class HkidTest extends TestCase
         self::assertEquals($reason->getKey(), $a->getReason());
         self::assertEquals($reason->isDigitError(), $a->isDigitError());
         self::assertEquals($reason->isPattenError(), $a->isPattenError());
+    }
+
+    public function testSameInstance(): void
+    {
+        $one = Helper::factory();
+        $two = Helper::factory();
+        self::assertEquals($one, $two);
     }
 
     /**

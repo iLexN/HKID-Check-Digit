@@ -45,4 +45,9 @@ final class Helper
     {
         return self::getInstance()->checkString($string);
     }
+
+    public static function factory(): HkidDigitCheck
+    {
+        return self::getInstance();
+    }
 }
