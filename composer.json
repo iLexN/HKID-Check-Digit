@@ -19,6 +19,7 @@
         "codedungeon/phpunit-result-printer": "^0.28.0",
         "ilexn/keep-a-change-log": "^1.1",
         "infection/infection": "^0.17.2",
+        "migrify/config-transformer": "^0.3.31",
         "phpbench/phpbench": "@dev",
         "phpstan/phpstan": "^0.12.38",
         "phpstan/phpstan-phpunit": "^0.12.16",
@@ -26,7 +27,7 @@
         "phpunit/phpunit": "^9.3",
         "rector/rector": "^0.7",
         "spatie/phpunit-watcher": "^1.22",
-        "symplify/easy-coding-standard": "^7.3",
+        "symplify/easy-coding-standard": "^8.2",
         "vimeo/psalm": "^3.14"
     },
     "config": {
@@ -65,8 +66,8 @@
         "test-watch": "phpunit-watcher watch",
         "test-dump": "phpunit --dump-xdebug-filter ./build/xdebug-filter.php",
         "benchmark": "phpbench run benchmarks/HkidBenchmark.php --report=aggregate --retry-threshold=5",
-        "rector-check": "rector process src --config rector-ci.yaml --dry-run",
-        "rector-fix": "rector process src --config rector-ci.yaml",
+        "rector-check": "rector process src --config rector-ci.php --dry-run",
+        "rector-fix": "rector process src --config rector-ci.php",
         "psalm" : "psalm"
     }
 }
