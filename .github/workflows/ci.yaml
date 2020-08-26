@@ -68,11 +68,11 @@ jobs:
       - name: PhpStan check
         run: composer bug-check
 
-#      - name: Psalm check
-#        run: composer psalm
+      - name: Psalm check
+        run: composer psalm
 
-      - name: Rector check
-        run: composer rector-check
+#      - name: Rector check
+#        run: composer rector-check
 
       - name: Benchmark
         run: composer benchmark

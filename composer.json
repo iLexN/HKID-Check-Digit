@@ -26,7 +26,7 @@
         "phpunit/phpunit": "^9.3",
         "rector/rector": "^0.7",
         "spatie/phpunit-watcher": "^1.22",
-        "symplify/easy-coding-standard": "^7.3",
+        "symplify/easy-coding-standard": "^8.2",
         "vimeo/psalm": "^3.14"
     },
     "config": {
@@ -57,16 +57,16 @@
             "@rector-check",
             "@benchmark"
         ],
-        "cs-check": "ecs check src",
-        "cs-fix": "ecs check src --fix",
+        "cs-check": "ecs check src tests",
+        "cs-fix": "ecs check src tests --fix",
         "test": "phpunit --testdox",
         "test-coverage": "phpunit --coverage-text",
         "test-test": "vendor/bin/infection --threads=4",
         "test-watch": "phpunit-watcher watch",
         "test-dump": "phpunit --dump-xdebug-filter ./build/xdebug-filter.php",
         "benchmark": "phpbench run benchmarks/HkidBenchmark.php --report=aggregate --retry-threshold=5",
-        "rector-check": "rector process src --config rector-ci.yaml --dry-run",
-        "rector-fix": "rector process src --config rector-ci.yaml",
+        "rector-check": "rector process src --config rector-ci.php --dry-run",
+        "rector-fix": "rector process src --config rector-ci.php",
         "psalm" : "psalm"
     }
 }
