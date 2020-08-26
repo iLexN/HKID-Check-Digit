@@ -71,8 +71,8 @@ jobs:
       - name: Psalm check
         run: composer psalm
 
-      - name: Rector check
-        run: composer rector-check
+#      - name: Rector check
+#        run: composer rector-check
 
       - name: Benchmark
         run: composer benchmark
