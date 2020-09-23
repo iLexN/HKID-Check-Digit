@@ -16,18 +16,19 @@
         "php": ">=7.4"
     },
     "require-dev": {
-        "codedungeon/phpunit-result-printer": "^0.28.0",
+        "codedungeon/phpunit-result-printer": "^0.29.1",
         "ilexn/keep-a-change-log": "^1.1",
         "infection/infection": "^0.17.3",
         "phpbench/phpbench": "@dev",
-        "phpstan/phpstan": "^0.12.42",
+        "phpstan/phpstan": "^0.12.43",
         "phpstan/phpstan-phpunit": "^0.12.16",
         "phpstan/phpstan-strict-rules": "^0.12.5",
         "phpunit/phpunit": "^9.3",
         "rector/rector": "^0.8",
         "spatie/phpunit-watcher": "^1.22",
         "symplify/easy-coding-standard": "^8.3",
-        "vimeo/psalm": "^3.15"
+        "vimeo/psalm": "^3.16"
+
     },
     "config": {
         "sort-packages": true
