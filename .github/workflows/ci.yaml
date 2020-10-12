@@ -31,7 +31,7 @@ jobs:
           coverage: none
 
       - name: Composer install
-        run: composer install
+        run: composer install --ansi
 
       - name: Execute tests
         run: vendor/bin/phpunit
@@ -60,7 +60,7 @@ jobs:
           coverage: none
 
       - name: Composer install
-        run: composer install
+        run: composer install --ansi
 
       - name: Code style check
         run: composer cs-check

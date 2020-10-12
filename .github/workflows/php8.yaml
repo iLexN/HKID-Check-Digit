@@ -31,7 +31,7 @@ jobs:
           coverage: none
 
       - name: Composer install
-        run: composer install --ignore-platform-reqs
+        run: composer install --ignore-platform-reqs --ansi
 
       - name: Execute tests
         run: vendor/bin/phpunit
