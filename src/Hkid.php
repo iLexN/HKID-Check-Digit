@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Ilex\Validation\HkidValidation;
 
+/**
+ * @see \Ilex\Validation\HkidValidation\Tests\HkidTest
+ */
 final class Hkid implements HkidValueInterface
 {
     /**
@@ -57,6 +60,6 @@ final class Hkid implements HkidValueInterface
 
     public function format(): string
     {
-        return sprintf('%s%s(%s)', $this->getPart1(), $this->getPart2(), $this->getPart3());
+        return \sprintf('%s%s(%s)', $this->getPart1(), $this->getPart2(), $this->getPart3());
     }
 }

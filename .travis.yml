@@ -20,9 +20,9 @@ matrix:
 before_script:
   - |
     if [ $TRAVIS_PHP_VERSION = 'nightly' ] ; then
-      composer install --ignore-platform-reqs;
+      composer install --ignore-platform-reqs --ansi;
     else
-      composer install;
+      composer install --ansi;
     fi
   - if [[ "$ANALYSIS" == 'true' ]]; then composer require php-coveralls/php-coveralls -n ; fi
 

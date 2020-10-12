@@ -120,7 +120,7 @@ final class HkidDigitCheck
      */
     private function clearString(string $string): string
     {
-        return strtoupper(trim($string));
+        return \strtoupper(\trim($string));
     }
 
     /**
@@ -178,7 +178,7 @@ final class HkidDigitCheck
      */
     private function validate(string $string): HkidValueInterface
     {
-        if (1 === preg_match(self::RE, $string, $matches)) {
+        if (1 === \preg_match(self::RE, $string, $matches)) {
             return new Hkid(
                 $this->clearString($matches['p1']),
                 $matches['p2'],
@@ -239,7 +239,7 @@ final class HkidDigitCheck
      */
     private function calPart2Remainder(string $part2, int $charSum): int
     {
-        $p2 = array_map(fn (string $int): int => (int)$int, \str_split($part2));
+        $p2 = \array_map(fn (string $int): int => (int)$int, \str_split($part2));
 
         return self::MOD_NUM - ((
             $charSum +
@@ -261,7 +261,7 @@ final class HkidDigitCheck
     {
         $i = self::CHAT_CONVERT_START_NUM;
         $idCheckArray = [];
-        foreach (range('A', 'Z') as $char) {
+        foreach (\range('A', 'Z') as $char) {
             $idCheckArray[$char] = $i++;
         }
 
