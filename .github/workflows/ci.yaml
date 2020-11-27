@@ -4,14 +4,14 @@ on:
   pull_request: null
   push:
     branches:
-      - 3.x
+      - 4.x
 
 jobs:
   tests:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php: ['7.4']
+        php: ['8.0']
 
     name: PHP ${{ matrix.php }} tests
     steps:
@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php: ['7.4']
+        php: ['8.0']
 
     name: PHP ${{ matrix.php }} code check
     steps:
@@ -62,8 +62,8 @@ jobs:
       - name: Composer install
         run: composer install --ansi
 
-      - name: Code style check
-        run: composer cs-check
+#      - name: Code style check
+#        run: composer cs-check
 
       - name: PhpStan check
         run: composer bug-check
