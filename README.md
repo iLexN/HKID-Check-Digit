@@ -14,9 +14,9 @@
 [![Latest Stable Version](https://poser.pugx.org/ilexn/hkid-check-digit/v/stable)](https://packagist.org/packages/ilexn/hkid-check-digit)
 [![Total Downloads](https://poser.pugx.org/ilexn/hkid-check-digit/downloads)](https://packagist.org/packages/ilexn/hkid-check-digit)
 
-![GitHub Action](https://github.com/iLexN/HKID-Check-Digit/workflows/CI%20Check/badge.svg?branch=3.x)
-[![Coverage Status](https://coveralls.io/repos/github/iLexN/HKID-Check-Digit/badge.svg?branch=3.x)](https://coveralls.io/github/iLexN/HKID-Check-Digit?branch=3.x)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/iLexN/HKID-Check-Digit/badges/quality-score.png?b=3.x)](https://scrutinizer-ci.com/g/iLexN/HKID-Check-Digit/?branch=3.x)
+![GitHub Action](https://github.com/iLexN/HKID-Check-Digit/workflows/CI%20Check/badge.svg?branch=4.x)
+[![Coverage Status](https://coveralls.io/repos/github/iLexN/HKID-Check-Digit/badge.svg?branch=4.x)](https://coveralls.io/github/iLexN/HKID-Check-Digit?branch=4.x)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/iLexN/HKID-Check-Digit/badges/quality-score.png?b=4.x)](https://scrutinizer-ci.com/g/iLexN/HKID-Check-Digit/?branch=3.x)
 [![Infection MSI](https://badge.stryker-mutator.io/github.com/iLexN/HKID-Check-Digit/4.x)](https://infection.github.io)
 
 | Tag | PHP      |
@@ -41,7 +41,7 @@ require_once 'vendor/autoload.php';
 $a = Helper::checkByString($s);
 //2.x: $a is bool
 
-//3.x
+//>=3.x
 $a->isValid(); //bool
 $a->isPattenError(); //bool
 $a->isDigitError(); //bool
