@@ -28,13 +28,20 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          coverage: none
+          coverage: xdebug
 
       - name: Composer install
         run: composer install --ansi
 
       - name: Execute tests
-        run: vendor/bin/phpunit
+        run: vendor/bin/phpunit -c
+        
+      - name: Upload coverage results to Coveralls
+        env:
+          COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          composer global require php-coveralls/php-coveralls
+          php-coveralls --coverage_clover=build/logs/clover.xml -v
 
   check:
     runs-on: ubuntu-latest
