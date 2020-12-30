@@ -6,14 +6,10 @@ namespace Ilex\Validation\HkidValidation;
 
 final class HkidNull implements HkidValueInterface
 {
-    /**
-     * @var string
-     */
-    private string $hkid;
-
-    public function __construct(string $hkid)
+    public function __construct(
+        private string $hkid
+    )
     {
-        $this->hkid = $hkid;
     }
 
     /**

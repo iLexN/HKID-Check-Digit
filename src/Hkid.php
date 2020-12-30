@@ -9,29 +9,12 @@ namespace Ilex\Validation\HkidValidation;
  */
 final class Hkid implements HkidValueInterface
 {
-    /**
-     * @var string
-     */
-    private string $part1;
-
-    /**
-     * @var string
-     */
-    private string $part2;
-
-    /**
-     * @var string
-     */
-    private string $part3;
 
     public function __construct(
-        string $part1,
-        string $part2,
-        string $part3
+        private string $part1,
+        private string $part2,
+        private string $part3,
     ) {
-        $this->part1 = $part1;
-        $this->part2 = $part2;
-        $this->part3 = $part3;
     }
 
     /**

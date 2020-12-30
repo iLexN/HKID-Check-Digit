@@ -6,21 +6,13 @@ namespace Ilex\Validation\HkidValidation;
 
 use Ilex\Validation\HkidValidation\Reason\ReasonInterface;
 
-final class HkIdValidResult
+final class HkIdValidResult implements \Stringable
 {
-    private ReasonInterface $reason;
-
-    /**
-     * @var HkidValueInterface
-     */
-    private HkidValueInterface $hkid;
 
     public function __construct(
-        HkidValueInterface $hkid,
-        ReasonInterface $reason
+        private HkidValueInterface $hkid,
+        private ReasonInterface $reason,
     ) {
-        $this->hkid = $hkid;
-        $this->reason = $reason;
     }
 
     public function isValid(): bool

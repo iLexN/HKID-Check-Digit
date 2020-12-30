@@ -16,8 +16,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         SetList::DEAD_CODE,
         SetList::CODING_STYLE,
         SetList::PHP_74,
-        SetList::SOLID,
-        SetList::CODING_STYLE_ADVANCED,
         SetList::PERFORMANCE,
         SetList::PHPUNIT_91,
         SetList::PHPUNIT_CODE_QUALITY,
@@ -26,15 +24,13 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         SetList::PHPUNIT_INJECTOR,
         SetList::PHPUNIT_YIELD_DATA_PROVIDER,
         SetList::PHPUNIT_SPECIFIC_METHOD,
-        SetList::PHPSTAN,
+        SetList::PHP_80,
     ]);
 
-    $parameters->set('exclude_rectors', [
+    $parameters->set(Option::SKIP, [
         BinarySwitchToIfElseRector::class,
         AddArrayDefaultToArrayPropertyRector::class,
-    ]);
-
-    $parameters->set(Option::EXCLUDE_PATHS, [
         __DIR__ . '/src/Helper.php',
     ]);
+
 };

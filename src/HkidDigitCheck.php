@@ -217,14 +217,11 @@ final class HkidDigitCheck
     {
         $hkidSum = $this->calPart2Remainder($p2, $charSum);
 
-        switch ($hkidSum) {
-            case self::MOD_MATCH_11:
-                $hkidSum = self::MOD_NUM_11;
-                break;
-            case self::MOD_MATCH_10:
-                $hkidSum = self::MOD_NUM_10;
-                break;
-        }
+        $hkidSum = match ($hkidSum) {
+            self::MOD_MATCH_11 => self::MOD_NUM_11,
+            self::MOD_MATCH_10 => self::MOD_NUM_10,
+            default => $hkidSum,
+        };
 
         return (string)$hkidSum;
     }
