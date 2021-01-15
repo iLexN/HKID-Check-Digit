@@ -3,9 +3,7 @@
     "type": "library",
     "description": "HKID digit check",
     "license": "MIT",
-    "keywords": [
-        "HKID"
-    ],
+    "keywords": ["HKID"],
     "authors": [
         {
             "name": "iLexN",
@@ -67,6 +65,6 @@
         "benchmark": "phpbench run benchmarks/HkidBenchmark.php --report=aggregate --retry-threshold=5",
         "rector-check": "rector process src --config rector-ci.php --dry-run",
         "rector-fix": "rector process src --config rector-ci.php",
-        "psalm" : "psalm"
+        "psalm": "psalm"
     }
 }
