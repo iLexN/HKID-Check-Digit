@@ -30,6 +30,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters->set(Option::SKIP, [
         BinarySwitchToIfElseRector::class,
         AddArrayDefaultToArrayPropertyRector::class,
+        Rector\Php80\Rector\FunctionLike\UnionTypesRector::class,
         __DIR__ . '/src/Helper.php',
     ]);
 
