@@ -21,7 +21,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         SetList::PHPUNIT_CODE_QUALITY,
         SetList::PHPUNIT_EXCEPTION,
         SetList::PHPUNIT_MOCK,
-        SetList::PHPUNIT_INJECTOR,
+        //SetList::PHPUNIT_INJECTOR,
         SetList::PHPUNIT_YIELD_DATA_PROVIDER,
         SetList::PHPUNIT_SPECIFIC_METHOD,
         SetList::PHP_80,
