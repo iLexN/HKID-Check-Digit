@@ -16,7 +16,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         SetList::DEAD_CODE,
         SetList::CODING_STYLE,
         SetList::PHP_74,
-        SetList::PERFORMANCE,
+        //SetList::PERFORMANCE,
         SetList::PHPUNIT_91,
         SetList::PHPUNIT_CODE_QUALITY,
         SetList::PHPUNIT_EXCEPTION,
