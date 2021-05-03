@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ilex\Validation\HkidValidation;
 
+use Ilex\ResultOption\Option\Option;
 use Ilex\Validation\HkidValidation\Reason\DigitError;
 use Ilex\Validation\HkidValidation\Reason\Ok;
 use Ilex\Validation\HkidValidation\Reason\PattenError;
@@ -131,6 +132,7 @@ final class HkidDigitCheck
      * @param string $p3
      *
      * @return HkIdValidResult
+     * @throws \Ilex\ResultOption\Error\OptionException
      */
     public function checkParts(
         string $p1,
@@ -148,17 +150,21 @@ final class HkidDigitCheck
      * @param string $string
      *
      * @return HkIdValidResult
+     * @throws \Ilex\ResultOption\Error\OptionException
      */
     public function checkString(string $string): HkIdValidResult
     {
-        $hkid = $this->validate($string);
+        $option = $this->validate($string);
 
-        if ($hkid instanceof HkidNull) {
-            return new HkIdValidResult($hkid, new PattenError());
+        if ($option->isNone()) {
+            return new HkIdValidResult($option, new PattenError());
         }
 
-        $reason = $this->isValid($hkid) ? new Ok() : new DigitError();
-        return new HkIdValidResult($hkid, $reason);
+        if ($this->isValid($option->unwrap())) {
+            return new HkIdValidResult($option, new Ok()) ;
+        }
+
+        return new HkIdValidResult(Option::none(), new DigitError()) ;
     }
 
     private function isValid(HkidValueInterface $hkid): bool
@@ -174,18 +180,19 @@ final class HkidDigitCheck
      *
      * @param string $string
      *
-     * @return HkidValueInterface
+     * @return \Ilex\ResultOption\Option\Option<\Ilex\Validation\HkidValidation\Hkid>
      */
-    private function validate(string $string): HkidValueInterface
+    private function validate(string $string): Option
     {
         if (1 === \preg_match(self::RE, $string, $matches)) {
-            return new Hkid(
+            return Option::some(new Hkid(
                 $this->clearString($matches['p1']),
                 $matches['p2'],
                 $this->clearString($matches['p3'])
-            );
+            ));
         }
-        return new HkidNull($string);
+
+        return Option::none();
     }
 
     /**
@@ -236,7 +243,7 @@ final class HkidDigitCheck
      */
     private function calPart2Remainder(string $part2, int $charSum): int
     {
-        $p2 = \array_map(fn (string $int): int => (int)$int, \str_split($part2));
+        $p2 = \array_map(static fn (string $int): int => (int)$int, \str_split($part2));
 
         return self::MOD_NUM - ((
             $charSum +
