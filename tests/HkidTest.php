@@ -157,22 +157,15 @@ class HkidTest extends TestCase
         self::assertEquals($reason->getKey(), $a->getReason());
         self::assertEquals($reason->isDigitError(), $a->isDigitError());
         self::assertEquals($reason->isPattenError(), $a->isPattenError());
-        //self::assertEquals($format, $a->format());
 
         switch ($reason->getKey()) {
             case ReasonInterface::DIGIT_ERROR:
                 self::assertFalse($a->isPattenError());
                 self::assertTrue($a->isDigitError());
-                //self::assertEquals($p1, $a->getPart1());
-                //self::assertEquals($p2, $a->getPart2());
-                //self::assertEquals($p3, $a->getPart3());
                 break;
             case ReasonInterface::PATTEN_ERROR:
                 self::assertTrue($a->isPattenError());
                 self::assertFalse($a->isDigitError());
-                //self::assertEquals('', $a->getPart1());
-                //self::assertEquals('', $a->getPart2());
-                //self::assertEquals('', $a->getPart3());
                 break;
         }
 
