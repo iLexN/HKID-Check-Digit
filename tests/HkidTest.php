@@ -12,6 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 class HkidTest extends TestCase
 {
+
     /**
      * @dataProvider additionProviderTrueResult
      *
@@ -19,6 +20,8 @@ class HkidTest extends TestCase
      * @param string $p2 182361
      * @param string $p3 1
      * @param string $expectedFormat
+     *
+     * @throws \Ilex\ResultOption\Error\OptionException
      */
     public function testCheckPartsHkidFormatTrue(
         string $p1,
@@ -47,6 +50,8 @@ class HkidTest extends TestCase
      * @param string $p2 182361
      * @param string $p3 1
      * @param string $expectedFormat
+     *
+     * @throws \Ilex\ResultOption\Error\OptionException
      */
     public function testCheckStringHkidFormatHelperTrue(
         string $p1,
@@ -75,6 +80,8 @@ class HkidTest extends TestCase
      * @param string $p2 182361
      * @param string $p3 1
      * @param string $expectedFormat
+     *
+     * @throws \Ilex\ResultOption\Error\OptionException
      */
     public function testCheckHkidFormatMainTrue(
         string $p1,
@@ -138,36 +145,27 @@ class HkidTest extends TestCase
      * @param string $p2 182361
      * @param string $p3 1
      * @param \Ilex\Validation\HkidValidation\Reason\ReasonInterface $reason
-     * @param string $format
      */
     public function testCheckHkidFormatFalse(
         string $p1,
         string $p2,
         string $p3,
         ReasonInterface $reason,
-        string $format
     ): void {
         $a = Helper::checkByParts($p1, $p2, $p3);
         self::assertFalse($a->isValid());
         self::assertEquals($reason->getKey(), $a->getReason());
         self::assertEquals($reason->isDigitError(), $a->isDigitError());
         self::assertEquals($reason->isPattenError(), $a->isPattenError());
-        self::assertEquals($format, $a->format());
 
         switch ($reason->getKey()) {
             case ReasonInterface::DIGIT_ERROR:
                 self::assertFalse($a->isPattenError());
                 self::assertTrue($a->isDigitError());
-                self::assertEquals($p1, $a->getPart1());
-                self::assertEquals($p2, $a->getPart2());
-                self::assertEquals($p3, $a->getPart3());
                 break;
             case ReasonInterface::PATTEN_ERROR:
                 self::assertTrue($a->isPattenError());
                 self::assertFalse($a->isDigitError());
-                self::assertEquals('', $a->getPart1());
-                self::assertEquals('', $a->getPart2());
-                self::assertEquals('', $a->getPart3());
                 break;
         }
 
