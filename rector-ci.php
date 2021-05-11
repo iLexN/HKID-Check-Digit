@@ -5,27 +5,24 @@ declare(strict_types=1);
 use Rector\CodingStyle\Rector\Class_\AddArrayDefaultToArrayPropertyRector;
 use Rector\CodingStyle\Rector\Switch_\BinarySwitchToIfElseRector;
 use Rector\Core\Configuration\Option;
+use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\SetList;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters = $containerConfigurator->parameters();
 
-    $parameters->set(Option::SETS, [
-        SetList::CODE_QUALITY,
-        SetList::DEAD_CODE,
-        SetList::CODING_STYLE,
-        SetList::PHP_74,
-        //SetList::PERFORMANCE,
-        SetList::PHPUNIT_91,
-        SetList::PHPUNIT_CODE_QUALITY,
-        SetList::PHPUNIT_EXCEPTION,
-        SetList::PHPUNIT_MOCK,
-        //SetList::PHPUNIT_INJECTOR,
-        SetList::PHPUNIT_YIELD_DATA_PROVIDER,
-        SetList::PHPUNIT_SPECIFIC_METHOD,
-        SetList::PHP_80,
-    ]);
+    $containerConfigurator->import(SetList::CODE_QUALITY);
+    $containerConfigurator->import(SetList::DEAD_CODE);
+    $containerConfigurator->import(SetList::CODING_STYLE);
+    $containerConfigurator->import(SetList::PHP_74);
+    $containerConfigurator->import(PHPUnitSetList::PHPUNIT_91);
+    $containerConfigurator->import(PHPUnitSetList::PHPUNIT_CODE_QUALITY);
+    $containerConfigurator->import(PHPUnitSetList::PHPUNIT_EXCEPTION);
+    $containerConfigurator->import(PHPUnitSetList::PHPUNIT_MOCK);
+    $containerConfigurator->import(PHPUnitSetList::PHPUNIT_YIELD_DATA_PROVIDER);
+    $containerConfigurator->import(PHPUnitSetList::PHPUNIT_SPECIFIC_METHOD);
+    $containerConfigurator->import(SetList::PHP_80);
 
     $parameters->set(Option::SKIP, [
         BinarySwitchToIfElseRector::class,
