@@ -15,7 +15,7 @@
         "ilexn/result-option": "0.1.1"
     },
     "require-dev": {
-        "codedungeon/phpunit-result-printer": "^0.30.1",
+        "codedungeon/phpunit-result-printer": "^0.31.0",
         "ilexn/keep-a-change-log": "^1.3",
         "infection/infection": "^0.24.0",
         "phpbench/phpbench": "1.0.4",
