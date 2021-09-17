@@ -208,6 +208,7 @@ final class HkidDigitCheck
         if ($countChat === 1) {
             return self::ONE_CHAT_NUM + $this->partOneCharNumArray[$p1] * self::CHAT_WEIGHT_2;
         }
+
         //$countChat === 2
         return $this->partOneCharNumArray[$p1[0]] * self::CHAT_WEIGHT_1 + $this->partOneCharNumArray[$p1[1]] * self::CHAT_WEIGHT_2;
     }
