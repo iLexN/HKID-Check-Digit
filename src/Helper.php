@@ -29,7 +29,7 @@ final class Helper
     public static function checkByParts(
         string $p1,
         string $p2,
-        string $p3
+        string $p3,
     ): HkIdValidResult {
         return self::getInstance()->checkParts($p1, $p2, $p3);
     }

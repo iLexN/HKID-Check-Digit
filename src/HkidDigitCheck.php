@@ -137,7 +137,7 @@ final class HkidDigitCheck
     public function checkParts(
         string $p1,
         string $p2,
-        string $p3
+        string $p3,
     ): HkIdValidResult {
         $hkid = new Hkid($this->clearString($p1), $p2, $this->clearString($p3));
 
