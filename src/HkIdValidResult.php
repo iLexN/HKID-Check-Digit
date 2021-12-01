@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Ilex\Validation\HkidValidation;
 
 use Ilex\ResultOption\Option\Option;
-use Ilex\Validation\HkidValidation\Reason\ReasonInterface;
+use Ilex\Validation\HkidValidation\Enum\Reason;
 
 final class HkIdValidResult implements \Stringable
 {
@@ -14,11 +14,11 @@ final class HkIdValidResult implements \Stringable
      * HkIdValidResult constructor.
      *
      * @param \Ilex\ResultOption\Option\Option<\Ilex\Validation\HkidValidation\Hkid> $hkid
-     * @param \Ilex\Validation\HkidValidation\Reason\ReasonInterface $reason
+     * @param \Ilex\Validation\HkidValidation\Enum\Reason $reason
      */
     public function __construct(
-        private Option $hkid,
-        private ReasonInterface $reason,
+        private readonly Option $hkid,
+        private readonly Reason $reason,
     ) {
     }
 
@@ -37,9 +37,9 @@ final class HkIdValidResult implements \Stringable
         return $this->reason->isDigitError();
     }
 
-    public function getReason(): string
+    public function getReason(): Reason
     {
-        return $this->reason->getKey();
+        return $this->reason;
     }
 
     /**

@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace Ilex\Validation\HkidValidation;
 
 use Ilex\ResultOption\Option\Option;
-use Ilex\Validation\HkidValidation\Reason\DigitError;
-use Ilex\Validation\HkidValidation\Reason\Ok;
-use Ilex\Validation\HkidValidation\Reason\PattenError;
+use Ilex\Validation\HkidValidation\Enum\Reason;
 
 /**
  * Class HkidDigitCheck
@@ -97,7 +95,7 @@ final class HkidDigitCheck
      *
      * @var int[]
      */
-    private array $partOneCharNumArray;
+    private readonly array $partOneCharNumArray;
 
     /**
      * @var string
@@ -157,14 +155,14 @@ final class HkidDigitCheck
         $option = $this->validate($string);
 
         if ($option->isNone()) {
-            return new HkIdValidResult($option, new PattenError());
+            return new HkIdValidResult($option, Reason::PATTEN_ERROR);
         }
 
         if ($this->isValid($option->unwrap())) {
-            return new HkIdValidResult($option, new Ok()) ;
+            return new HkIdValidResult($option, Reason::OK) ;
         }
 
-        return new HkIdValidResult(Option::none(), new DigitError()) ;
+        return new HkIdValidResult(Option::none(), Reason::DIGIT_ERROR) ;
     }
 
     private function isValid(HkidValueInterface $hkid): bool

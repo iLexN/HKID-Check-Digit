@@ -3,11 +3,9 @@
 namespace Ilex\Validation\HkidValidation\Tests;
 
 use Generator;
+use Ilex\Validation\HkidValidation\Enum\Reason;
 use Ilex\Validation\HkidValidation\Helper;
 use Ilex\Validation\HkidValidation\HkidDigitCheck;
-use Ilex\Validation\HkidValidation\Reason\DigitError;
-use Ilex\Validation\HkidValidation\Reason\PattenError;
-use Ilex\Validation\HkidValidation\Reason\ReasonInterface;
 use PHPUnit\Framework\TestCase;
 
 class HkidTest extends TestCase
@@ -32,7 +30,7 @@ class HkidTest extends TestCase
         $a = Helper::checkByParts($p1, $p2, $p3);
 
         self::assertTrue($a->isValid());
-        self::assertEquals(ReasonInterface::OK, $a->getReason());
+        self::assertEquals(Reason::OK, $a->getReason());
         self::assertFalse($a->isDigitError());
         self::assertFalse($a->isPattenError());
 
@@ -62,7 +60,7 @@ class HkidTest extends TestCase
         $c = Helper::checkByString($this->partsToString($p1, $p2, $p3));
 
         self::assertTrue($c->isValid());
-        self::assertEquals(ReasonInterface::OK, $c->getReason());
+        self::assertEquals(Reason::OK, $c->getReason());
         self::assertFalse($c->isDigitError());
         self::assertFalse($c->isPattenError());
 
@@ -92,7 +90,7 @@ class HkidTest extends TestCase
         $b = new HkidDigitCheck();
         $r = $b->checkParts($p1, $p2, $p3);
         self::assertTrue($r->isValid());
-        self::assertEquals(ReasonInterface::OK, $r->getReason());
+        self::assertEquals(Reason::OK, $r->getReason());
         self::assertFalse($r->isDigitError());
         self::assertFalse($r->isPattenError());
 
@@ -104,7 +102,7 @@ class HkidTest extends TestCase
     }
 
     /**
-     * @return \Generator<array>
+     * @return \Generator<array<int,string>>
      */
     public function additionProviderTrueResult(): Generator
     {
@@ -119,12 +117,12 @@ class HkidTest extends TestCase
     }
 
     /**
-     * @return \Generator<array>
+     * @return \Generator<array<int,string|Reason>>
      */
     public function additionProviderFalseResult(): Generator
     {
-        $p = new PattenError();
-        $d = new DigitError();
+        $p = Reason::PATTEN_ERROR;
+        $d = Reason::DIGIT_ERROR;
 
         yield 'B111111(3)' => ['B', '111111', '3', $d, 'B111111(3)'];
         yield 'CAC182361(1)' => ['CaC', '182361', '1', $p, 'CAC182361(1)'];
@@ -144,26 +142,26 @@ class HkidTest extends TestCase
      * @param string $p1 CA
      * @param string $p2 182361
      * @param string $p3 1
-     * @param \Ilex\Validation\HkidValidation\Reason\ReasonInterface $reason
+     * @param Reason $reason
      */
     public function testCheckHkidFormatFalse(
         string $p1,
         string $p2,
         string $p3,
-        ReasonInterface $reason,
+        Reason $reason,
     ): void {
         $a = Helper::checkByParts($p1, $p2, $p3);
         self::assertFalse($a->isValid());
-        self::assertEquals($reason->getKey(), $a->getReason());
+        self::assertEquals($reason, $a->getReason());
         self::assertEquals($reason->isDigitError(), $a->isDigitError());
         self::assertEquals($reason->isPattenError(), $a->isPattenError());
 
-        switch ($reason->getKey()) {
-            case ReasonInterface::DIGIT_ERROR:
+        switch ($reason) {
+            case Reason::DIGIT_ERROR:
                 self::assertFalse($a->isPattenError());
                 self::assertTrue($a->isDigitError());
                 break;
-            case ReasonInterface::PATTEN_ERROR:
+            case Reason::PATTEN_ERROR:
                 self::assertTrue($a->isPattenError());
                 self::assertFalse($a->isDigitError());
                 break;
@@ -171,7 +169,7 @@ class HkidTest extends TestCase
 
         $a = Helper::checkByString($this->partsToString($p1, $p2, $p3));
         self::assertFalse($a->isValid());
-        self::assertEquals($reason->getKey(), $a->getReason());
+        self::assertEquals($reason, $a->getReason());
         self::assertEquals($reason->isDigitError(), $a->isDigitError());
         self::assertEquals($reason->isPattenError(), $a->isPattenError());
     }
