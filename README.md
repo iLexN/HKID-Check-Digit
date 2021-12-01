@@ -25,10 +25,43 @@
 | 2.x | php>=7.1 |
 | 3.x | php>=7.4 |
 | 4.x | php>=8.0 |
+| 5.x | php>=8.1 |
 
 ## Installation
 ```sh
 composer require ilexn/hkid-check-digit
+```
+
+## Upgrade from 4.x to 5.x
+The `\Ilex\Validation\HkidValidation\Reason\ReasonInterface` changed to Enum `\Ilex\Validation\HkidValidation\Enum\Reason`
+```php
+//4.x
+switch ($hkid->getReason()){
+    case \Ilex\Validation\HkidValidation\Reason\ReasonInterface::OK:
+        echo('correct');
+        echo($hkid->format());
+        break;
+    case \Ilex\Validation\HkidValidation\Reason\ReasonInterface::PATTEN_ERROR:
+        echo('Patten not match');
+        break;
+    case \Ilex\Validation\HkidValidation\Reason\ReasonInterface::DIGIT_ERROR:
+        echo('Digit not match');
+        break;
+}
+
+//5.x
+switch ($hkid->getReason()){
+    case \Ilex\Validation\HkidValidation\Enum\Reason::OK:
+        echo('correct');
+        echo($hkid->format());
+        break;
+    case \Ilex\Validation\HkidValidation\Enum\Reason::PATTEN_ERROR:
+        echo('Patten not match');
+        break;
+    case \Ilex\Validation\HkidValidation\Enum\Reason::DIGIT_ERROR:
+        echo('Digit not match');
+        break;
+}
 ```
 
 ## Upgrade from 2.x to 3.x
@@ -89,17 +122,16 @@ $s = 'CA182361(1)';
 $hkid = Helper::checkByString($s);
 
 switch ($hkid->getReason()){
-    case \Ilex\Validation\HkidValidation\Reason\ReasonInterface::OK:
+    case \Ilex\Validation\HkidValidation\Enum\Reason::OK:
         echo('correct');
         echo($hkid->format());
         break;
-    case \Ilex\Validation\HkidValidation\Reason\ReasonInterface::PATTEN_ERROR:
+    case \Ilex\Validation\HkidValidation\Enum\Reason::PATTEN_ERROR:
         echo('Patten not match');
         break;
-    case \Ilex\Validation\HkidValidation\Reason\ReasonInterface::DIGIT_ERROR:
+    case \Ilex\Validation\HkidValidation\Enum\Reason::DIGIT_ERROR:
         echo('Digit not match');
         break;
-}
 ```
 #### Normal 
 ```php
