@@ -6,16 +6,16 @@ namespace Ilex\Validation\HkidValidation\Enum;
 enum Reason
 {
 
-    case OK;
+    case Ok;
 
-    case PATTEN_ERROR;
+    case PattenError;
 
-    case DIGIT_ERROR;
+    case DigitError;
 
     public function isValid(): bool
     {
         return match ($this) {
-            self::OK => true,
+            self::Ok => true,
             default => false,
         };
     }
@@ -23,7 +23,7 @@ enum Reason
     public function isPattenError(): bool
     {
         return match ($this) {
-            self::PATTEN_ERROR => true,
+            self::PattenError => true,
             default => false,
         };
     }
@@ -31,7 +31,7 @@ enum Reason
     public function isDigitError(): bool
     {
         return match ($this) {
-            self::DIGIT_ERROR => true,
+            self::DigitError => true,
             default => false,
         };
     }

@@ -155,14 +155,14 @@ final class HkidDigitCheck
         $option = $this->validate($string);
 
         if ($option->isNone()) {
-            return new HkIdValidResult($option, Reason::PATTEN_ERROR);
+            return new HkIdValidResult($option, Reason::PattenError);
         }
 
         if ($this->isValid($option->unwrap())) {
-            return new HkIdValidResult($option, Reason::OK) ;
+            return new HkIdValidResult($option, Reason::Ok) ;
         }
 
-        return new HkIdValidResult(Option::none(), Reason::DIGIT_ERROR) ;
+        return new HkIdValidResult(Option::none(), Reason::DigitError) ;
     }
 
     private function isValid(HkidValueInterface $hkid): bool
