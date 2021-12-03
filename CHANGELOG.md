@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [5.0.1] - 2021-12-03
+### Added
+- Support PHP 8.1
+- Enum class for Reason
+
+### Removed
+- Drop Support PHP 8.0
+
+## [4.1.0] - 2021-05-25
+### Added
+- Rust like option
+
 ## [4.0.0] - 2020-03-05
 ### Added
 - Support PHP 8
@@ -68,6 +80,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Remove PHP<=7.0 support
 
 ## [1.0.6] - 2016-01-04
+[5.0.1]: https://github.com/iLexN/HKID-Check-Digit/compare/4.1.0...5.0.1
+[4.1.0]: https://github.com/iLexN/HKID-Check-Digit/compare/4.0.0...4.1.0
 [4.0.0]: https://github.com/iLexN/HKID-Check-Digit/compare/3.1.2...4.0.0
 [3.1.2]: https://github.com/iLexN/HKID-Check-Digit/compare/3.1.1...3.1.2
 [3.1.1]: https://github.com/iLexN/HKID-Check-Digit/compare/3.1.0...3.1.1
