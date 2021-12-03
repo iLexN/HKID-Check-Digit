@@ -51,14 +51,14 @@ switch ($hkid->getReason()){
 
 //5.x
 switch ($hkid->getReason()){
-    case \Ilex\Validation\HkidValidation\Enum\Reason::OK:
+    case \Ilex\Validation\HkidValidation\Enum\Reason::Ok:
         echo('correct');
         echo($hkid->format());
         break;
-    case \Ilex\Validation\HkidValidation\Enum\Reason::PATTEN_ERROR:
+    case \Ilex\Validation\HkidValidation\Enum\Reason::PattenError:
         echo('Patten not match');
         break;
-    case \Ilex\Validation\HkidValidation\Enum\Reason::DIGIT_ERROR:
+    case \Ilex\Validation\HkidValidation\Enum\Reason::DigitError:
         echo('Digit not match');
         break;
 }
@@ -111,9 +111,10 @@ if ($a->isValid()) {
 }
 ```
 #### Quick helper - check by string
+
 ```php
 <?php
-use Ilex\Validation\HkidValidation\Helper;
+use Ilex\Validation\HkidValidation\Enum\Reason;use Ilex\Validation\HkidValidation\Helper;
 
 require_once 'vendor/autoload.php';
 
@@ -122,14 +123,14 @@ $s = 'CA182361(1)';
 $hkid = Helper::checkByString($s);
 
 switch ($hkid->getReason()){
-    case \Ilex\Validation\HkidValidation\Enum\Reason::OK:
+    case \Ilex\Validation\HkidValidation\Enum\Reason::Ok:
         echo('correct');
         echo($hkid->format());
         break;
-    case \Ilex\Validation\HkidValidation\Enum\Reason::PATTEN_ERROR:
+    case \Ilex\Validation\HkidValidation\Enum\Reason::PattenError:
         echo('Patten not match');
         break;
-    case \Ilex\Validation\HkidValidation\Enum\Reason::DIGIT_ERROR:
+    case \Ilex\Validation\HkidValidation\Enum\Reason::DigitError:
         echo('Digit not match');
         break;
 ```

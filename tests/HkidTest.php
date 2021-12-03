@@ -30,7 +30,7 @@ class HkidTest extends TestCase
         $a = Helper::checkByParts($p1, $p2, $p3);
 
         self::assertTrue($a->isValid());
-        self::assertEquals(Reason::OK, $a->getReason());
+        self::assertEquals(Reason::Ok, $a->getReason());
         self::assertFalse($a->isDigitError());
         self::assertFalse($a->isPattenError());
 
@@ -60,7 +60,7 @@ class HkidTest extends TestCase
         $c = Helper::checkByString($this->partsToString($p1, $p2, $p3));
 
         self::assertTrue($c->isValid());
-        self::assertEquals(Reason::OK, $c->getReason());
+        self::assertEquals(Reason::Ok, $c->getReason());
         self::assertFalse($c->isDigitError());
         self::assertFalse($c->isPattenError());
 
@@ -90,7 +90,7 @@ class HkidTest extends TestCase
         $b = new HkidDigitCheck();
         $r = $b->checkParts($p1, $p2, $p3);
         self::assertTrue($r->isValid());
-        self::assertEquals(Reason::OK, $r->getReason());
+        self::assertEquals(Reason::Ok, $r->getReason());
         self::assertFalse($r->isDigitError());
         self::assertFalse($r->isPattenError());
 
@@ -121,8 +121,8 @@ class HkidTest extends TestCase
      */
     public function additionProviderFalseResult(): Generator
     {
-        $p = Reason::PATTEN_ERROR;
-        $d = Reason::DIGIT_ERROR;
+        $p = Reason::PattenError;
+        $d = Reason::DigitError;
 
         yield 'B111111(3)' => ['B', '111111', '3', $d, 'B111111(3)'];
         yield 'CAC182361(1)' => ['CaC', '182361', '1', $p, 'CAC182361(1)'];
@@ -157,11 +157,11 @@ class HkidTest extends TestCase
         self::assertEquals($reason->isPattenError(), $a->isPattenError());
 
         switch ($reason) {
-            case Reason::DIGIT_ERROR:
+            case Reason::DigitError:
                 self::assertFalse($a->isPattenError());
                 self::assertTrue($a->isDigitError());
                 break;
-            case Reason::PATTEN_ERROR:
+            case Reason::PattenError:
                 self::assertTrue($a->isPattenError());
                 self::assertFalse($a->isDigitError());
                 break;
