@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Rector\CodingStyle\Rector\Class_\AddArrayDefaultToArrayPropertyRector;
 use Rector\CodingStyle\Rector\Switch_\BinarySwitchToIfElseRector;
 use Rector\Core\Configuration\Option;
+use Rector\Core\ValueObject\PhpVersion;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\SetList;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
@@ -23,6 +24,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->import(PHPUnitSetList::PHPUNIT_YIELD_DATA_PROVIDER);
     $containerConfigurator->import(PHPUnitSetList::PHPUNIT_SPECIFIC_METHOD);
     $containerConfigurator->import(SetList::PHP_80);
+    $containerConfigurator->import(SetList::PHP_81);
 
     $parameters->set(Option::SKIP, [
         BinarySwitchToIfElseRector::class,
@@ -32,5 +34,5 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         Rector\DeadCode\Rector\ClassMethod\RemoveUselessReturnTagRector::class,
         __DIR__ . '/src/Helper.php',
     ]);
-
+    $parameters->set(Option::PHP_VERSION_FEATURES, PhpVersion::PHP_81);
 };

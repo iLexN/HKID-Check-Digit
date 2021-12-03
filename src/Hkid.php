@@ -11,9 +11,9 @@ final class Hkid implements HkidValueInterface
 {
 
     public function __construct(
-        private string $part1,
-        private string $part2,
-        private string $part3,
+        private readonly string $part1,
+        private readonly string $part2,
+        private readonly string $part3,
     ) {
     }
 
