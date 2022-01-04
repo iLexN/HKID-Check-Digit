@@ -3,10 +3,6 @@ parameters:
     paths:
         - src
         - tests
-    ignoreErrors:
-        # phpstan not support 8.1 enum
-        - '#Access to undefined constant Ilex\\Validation\\HkidValidation\\Enum\\Reason::(.*)#'
-        #- '#Access to an undefined property Ilex\\Validation\\HkidValidation\\Enum\\Reason::(.*)#'
 
 includes:
     - vendor/phpstan/phpstan-strict-rules/rules.neon
