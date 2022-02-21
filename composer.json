@@ -25,7 +25,7 @@
         "phpunit/phpunit": "^9.5",
         "rector/rector": "0.12.16",
         "spatie/phpunit-watcher": "^1.23",
-        "symplify/easy-coding-standard": "^10.0.21",
+        "symplify/easy-coding-standard": "^10.1.0",
         "vimeo/psalm": "^4.20"
     },
     "config": {
