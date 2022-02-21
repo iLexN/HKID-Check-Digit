@@ -17,7 +17,7 @@
     "require-dev": {
         "codedungeon/phpunit-result-printer": "^0.31.0",
         "ilexn/keep-a-change-log": "^2.0",
-        "infection/infection": "^0.26.4",
+        "infection/infection": "^0.26.5",
         "phpbench/phpbench": "1.2.3",
         "phpstan/phpstan": "^1.4",
         "phpstan/phpstan-phpunit": "^1.0",
