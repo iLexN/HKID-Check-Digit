@@ -15,18 +15,18 @@
         "ilexn/result-option": "^0.2.0"
     },
     "require-dev": {
-        "codedungeon/phpunit-result-printer": "^0.31.0",
+        "codedungeon/phpunit-result-printer": "^0.32.0",
         "ilexn/keep-a-change-log": "^2.0",
-        "infection/infection": "^0.26.4",
-        "phpbench/phpbench": "1.2.3",
-        "phpstan/phpstan": "^1.4",
-        "phpstan/phpstan-phpunit": "^1.0",
+        "infection/infection": "^0.26.6",
+        "phpbench/phpbench": "1.2.5",
+        "phpstan/phpstan": "^1.5",
+        "phpstan/phpstan-phpunit": "^1.1",
         "phpstan/phpstan-strict-rules": "^1.1",
         "phpunit/phpunit": "^9.5",
-        "rector/rector": "0.12.16",
+        "rector/rector": "0.12.21",
         "spatie/phpunit-watcher": "^1.23",
-        "symplify/easy-coding-standard": "^10.0.21",
-        "vimeo/psalm": "^4.20"
+        "symplify/easy-coding-standard": "^10.2.2",
+        "vimeo/psalm": "^4.22"
     },
     "config": {
         "sort-packages": true,
