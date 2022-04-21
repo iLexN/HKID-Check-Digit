@@ -3,7 +3,9 @@ parameters:
     paths:
         - src
         - tests
-
+    ignoreErrors:
+    		- '#^Parameter \#1 \$hkid of class Ilex\\Validation\\HkidValidation\\HkIdValidResult constructor expects Ilex\\ResultOption\\Option\\Option\<Ilex\\Validation\\HkidValidation\\Hkid\>, Ilex\\ResultOption\\Option\\Option\<mixed\> given\.$#'
+    		- '#^Method Ilex\\Validation\\HkidValidation\\HkidDigitCheck\:\:validate\(\) should return Ilex\\ResultOption\\Option\\Option\<Ilex\\Validation\\HkidValidation\\Hkid\> but returns Ilex\\ResultOption\\Option\\Option\<mixed\>\.$#'
 includes:
     - vendor/phpstan/phpstan-strict-rules/rules.neon
     - vendor/phpstan/phpstan-phpunit/extension.neon
