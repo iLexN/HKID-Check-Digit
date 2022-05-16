@@ -34,11 +34,11 @@ class HkidTest extends TestCase
         self::assertFalse($a->isDigitError());
         self::assertFalse($a->isPattenError());
 
-        self::assertEquals($expectedFormat, $a->format());
-        self::assertEquals($expectedFormat, (string)$a);
-        self::assertEquals($this->clearString($p1), $a->getPart1());
-        self::assertEquals($this->clearString($p2), $a->getPart2());
-        self::assertEquals($this->clearString($p3), $a->getPart3());
+        self::assertSame($expectedFormat, $a->format());
+        self::assertSame($expectedFormat, (string)$a);
+        self::assertSame($this->clearString($p1), $a->getPart1());
+        self::assertSame($this->clearString($p2), $a->getPart2());
+        self::assertSame($this->clearString($p3), $a->getPart3());
     }
 
     /**
@@ -64,11 +64,11 @@ class HkidTest extends TestCase
         self::assertFalse($c->isDigitError());
         self::assertFalse($c->isPattenError());
 
-        self::assertEquals($expectedFormat, $c->format());
-        self::assertEquals($expectedFormat, (string)$c);
-        self::assertEquals($this->clearString($p1), $c->getPart1());
-        self::assertEquals($this->clearString($p2), $c->getPart2());
-        self::assertEquals($this->clearString($p3), $c->getPart3());
+        self::assertSame($expectedFormat, $c->format());
+        self::assertSame($expectedFormat, (string)$c);
+        self::assertSame($this->clearString($p1), $c->getPart1());
+        self::assertSame($this->clearString($p2), $c->getPart2());
+        self::assertSame($this->clearString($p3), $c->getPart3());
     }
 
     /**
@@ -94,11 +94,11 @@ class HkidTest extends TestCase
         self::assertFalse($r->isDigitError());
         self::assertFalse($r->isPattenError());
 
-        self::assertEquals($expectedFormat, $r->format());
-        self::assertEquals($expectedFormat, (string)$r);
-        self::assertEquals($this->clearString($p1), $r->getPart1());
-        self::assertEquals($this->clearString($p2), $r->getPart2());
-        self::assertEquals($this->clearString($p3), $r->getPart3());
+        self::assertSame($expectedFormat, $r->format());
+        self::assertSame($expectedFormat, (string)$r);
+        self::assertSame($this->clearString($p1), $r->getPart1());
+        self::assertSame($this->clearString($p2), $r->getPart2());
+        self::assertSame($this->clearString($p3), $r->getPart3());
     }
 
     /**
