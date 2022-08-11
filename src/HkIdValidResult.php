@@ -14,7 +14,6 @@ final class HkIdValidResult implements \Stringable
      * HkIdValidResult constructor.
      *
      * @param \Ilex\ResultOption\Option\Option<\Ilex\Validation\HkidValidation\Hkid> $hkid
-     * @param \Ilex\Validation\HkidValidation\Enum\Reason $reason
      */
     public function __construct(
         private readonly Option $hkid,

@@ -17,7 +17,6 @@ class HkidTest extends TestCase
      * @param string $p1 CA
      * @param string $p2 182361
      * @param string $p3 1
-     * @param string $expectedFormat
      *
      * @throws \Ilex\ResultOption\Error\OptionException
      */
@@ -47,7 +46,6 @@ class HkidTest extends TestCase
      * @param string $p1 CA
      * @param string $p2 182361
      * @param string $p3 1
-     * @param string $expectedFormat
      *
      * @throws \Ilex\ResultOption\Error\OptionException
      */
@@ -77,7 +75,6 @@ class HkidTest extends TestCase
      * @param string $p1 CA
      * @param string $p2 182361
      * @param string $p3 1
-     * @param string $expectedFormat
      *
      * @throws \Ilex\ResultOption\Error\OptionException
      */
@@ -142,7 +139,6 @@ class HkidTest extends TestCase
      * @param string $p1 CA
      * @param string $p2 182361
      * @param string $p3 1
-     * @param Reason $reason
      */
     public function testCheckHkidFormatFalse(
         string $p1,
@@ -182,10 +178,6 @@ class HkidTest extends TestCase
     }
 
     /**
-     * @param string $p1
-     * @param string $p2
-     * @param string $p3
-     *
      * @return string
      *
      * @see \Ilex\Validation\HkidValidation\HkIdValidResult::format
@@ -196,10 +188,8 @@ class HkidTest extends TestCase
     }
 
     /**
-     * @param string $string
      *
      * @return string
-     *
      * @see \Ilex\Validation\HkidValidation\HkidDigitCheck::clearString
      */
     private function clearString(string $string): string
