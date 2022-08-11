@@ -113,7 +113,6 @@ final class HkidDigitCheck
     /**
      * upper case and trim space
      *
-     * @param string $string
      *
      * @return string
      */
@@ -125,9 +124,6 @@ final class HkidDigitCheck
     /**
      * check by part
      *
-     * @param string $p1
-     * @param string $p2
-     * @param string $p3
      *
      * @return HkIdValidResult
      * @throws \Ilex\ResultOption\Error\OptionException
@@ -145,7 +141,6 @@ final class HkidDigitCheck
     /**
      * check whole string format and pattern
      *
-     * @param string $string
      *
      * @return HkIdValidResult
      * @throws \Ilex\ResultOption\Error\OptionException
@@ -176,7 +171,6 @@ final class HkidDigitCheck
     /**
      * break down the string to part1,2,3
      *
-     * @param string $string
      *
      * @return \Ilex\ResultOption\Option\Option<\Ilex\Validation\HkidValidation\Hkid>
      */
@@ -196,7 +190,6 @@ final class HkidDigitCheck
     /**
      * get part 1 num sum
      *
-     * @param string $p1
      *
      * @return int
      */
@@ -214,8 +207,6 @@ final class HkidDigitCheck
     /**
      * Get part 2 remainder
      *
-     * @param string $p2
-     * @param int $charSum
      *
      * @return string
      */
@@ -235,8 +226,6 @@ final class HkidDigitCheck
     /**
      * Cal Part 2 Remainder
      *
-     * @param string $part2
-     * @param int $charSum
      *
      * @return int
      */
