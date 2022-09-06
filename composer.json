@@ -26,7 +26,7 @@
         "rector/rector": "0.14.0",
         "spatie/phpunit-watcher": "^1.23",
         "symplify/easy-coding-standard": "^11.1.9",
-        "vimeo/psalm": "^4.26"
+        "vimeo/psalm": "^4.27"
     },
     "config": {
         "sort-packages": true,
