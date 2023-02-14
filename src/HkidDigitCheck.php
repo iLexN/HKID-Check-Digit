@@ -12,7 +12,7 @@ use Ilex\Validation\HkidValidation\Enum\Reason;
  *
  * @package Ilex\Validation\HkidValidation
  */
-final class HkidDigitCheck
+final readonly class HkidDigitCheck
 {
     /**
      * @var int
@@ -95,7 +95,7 @@ final class HkidDigitCheck
      *
      * @var int[]
      */
-    private readonly array $partOneCharNumArray;
+    private array $partOneCharNumArray;
 
     /**
      * @var string
