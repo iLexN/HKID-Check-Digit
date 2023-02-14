@@ -7,7 +7,7 @@ namespace Ilex\Validation\HkidValidation;
 use Ilex\ResultOption\Option\Option;
 use Ilex\Validation\HkidValidation\Enum\Reason;
 
-final class HkIdValidResult implements \Stringable
+final readonly class HkIdValidResult implements \Stringable
 {
 
     /**
@@ -16,8 +16,8 @@ final class HkIdValidResult implements \Stringable
      * @param \Ilex\ResultOption\Option\Option<\Ilex\Validation\HkidValidation\Hkid> $hkid
      */
     public function __construct(
-        private readonly Option $hkid,
-        private readonly Reason $reason,
+        private Option $hkid,
+        private Reason $reason,
     ) {
     }
 

@@ -6,20 +6,20 @@ use Generator;
 use Ilex\Validation\HkidValidation\Enum\Reason;
 use Ilex\Validation\HkidValidation\Helper;
 use Ilex\Validation\HkidValidation\HkidDigitCheck;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class HkidTest extends TestCase
 {
 
     /**
-     * @dataProvider additionProviderTrueResult
      *
      * @param string $p1 CA
      * @param string $p2 182361
      * @param string $p3 1
-     *
      * @throws \Ilex\ResultOption\Error\OptionException
      */
+    #[DataProvider('additionProviderTrueResult')]
     public function testCheckPartsHkidFormatTrue(
         string $p1,
         string $p2,
@@ -41,14 +41,13 @@ class HkidTest extends TestCase
     }
 
     /**
-     * @dataProvider additionProviderTrueResult
      *
      * @param string $p1 CA
      * @param string $p2 182361
      * @param string $p3 1
-     *
      * @throws \Ilex\ResultOption\Error\OptionException
      */
+    #[DataProvider('additionProviderTrueResult')]
     public function testCheckStringHkidFormatHelperTrue(
         string $p1,
         string $p2,
@@ -70,14 +69,13 @@ class HkidTest extends TestCase
     }
 
     /**
-     * @dataProvider additionProviderTrueResult
      *
      * @param string $p1 CA
      * @param string $p2 182361
      * @param string $p3 1
-     *
      * @throws \Ilex\ResultOption\Error\OptionException
      */
+    #[DataProvider('additionProviderTrueResult')]
     public function testCheckHkidFormatMainTrue(
         string $p1,
         string $p2,
@@ -101,7 +99,7 @@ class HkidTest extends TestCase
     /**
      * @return \Generator<array<int,string>>
      */
-    public function additionProviderTrueResult(): Generator
+    public static function additionProviderTrueResult(): Generator
     {
         yield 'B111111(1)' => ['B', '111111', '1', 'B111111(1)'];
         yield 'CA182361(1)' => ['Ca', '182361', '1', 'CA182361(1)'];
@@ -116,7 +114,7 @@ class HkidTest extends TestCase
     /**
      * @return \Generator<array<int,string|Reason>>
      */
-    public function additionProviderFalseResult(): Generator
+    public static function additionProviderFalseResult(): Generator
     {
         $p = Reason::PattenError;
         $d = Reason::DigitError;
@@ -134,12 +132,12 @@ class HkidTest extends TestCase
     }
 
     /**
-     * @dataProvider additionProviderFalseResult
      *
      * @param string $p1 CA
      * @param string $p2 182361
      * @param string $p3 1
      */
+    #[DataProvider('additionProviderFalseResult')]
     public function testCheckHkidFormatFalse(
         string $p1,
         string $p2,

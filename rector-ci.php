@@ -17,7 +17,9 @@ return static function (RectorConfig $rectorConfig): void {
         SetList::PHP_74,
         SetList::PHP_80,
         SetList::PHP_81,
+        SetList::PHP_82,
         PHPUnitSetList::PHPUNIT_91,
+        PHPUnitSetList::PHPUNIT_100,
         PHPUnitSetList::PHPUNIT_CODE_QUALITY,
         PHPUnitSetList::PHPUNIT_EXCEPTION,
         PHPUnitSetList::PHPUNIT_YIELD_DATA_PROVIDER,
@@ -32,6 +34,6 @@ return static function (RectorConfig $rectorConfig): void {
         Rector\Php80\Rector\FunctionLike\UnionTypesRector::class,
         Rector\DeadCode\Rector\ClassMethod\RemoveUselessParamTagRector::class,
         Rector\DeadCode\Rector\ClassMethod\RemoveUselessReturnTagRector::class,
-        __DIR__ . '/src/Helper.php',
+//        __DIR__ . '/src/Helper.php',
     ]);
 };
