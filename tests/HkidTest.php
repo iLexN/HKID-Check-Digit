@@ -28,16 +28,16 @@ class HkidTest extends TestCase
     ): void {
         $a = Helper::checkByParts($p1, $p2, $p3);
 
-        self::assertTrue($a->isValid());
-        self::assertEquals(Reason::Ok, $a->getReason());
-        self::assertFalse($a->isDigitError());
-        self::assertFalse($a->isPattenError());
+        $this->assertTrue($a->isValid());
+        $this->assertEquals(Reason::Ok, $a->getReason());
+        $this->assertFalse($a->isDigitError());
+        $this->assertFalse($a->isPattenError());
 
-        self::assertSame($expectedFormat, $a->format());
-        self::assertSame($expectedFormat, (string)$a);
-        self::assertSame($this->clearString($p1), $a->getPart1());
-        self::assertSame($this->clearString($p2), $a->getPart2());
-        self::assertSame($this->clearString($p3), $a->getPart3());
+        $this->assertSame($expectedFormat, $a->format());
+        $this->assertSame($expectedFormat, (string)$a);
+        $this->assertSame($this->clearString($p1), $a->getPart1());
+        $this->assertSame($this->clearString($p2), $a->getPart2());
+        $this->assertSame($this->clearString($p3), $a->getPart3());
     }
 
     /**
@@ -56,16 +56,16 @@ class HkidTest extends TestCase
     ): void {
         $c = Helper::checkByString($this->partsToString($p1, $p2, $p3));
 
-        self::assertTrue($c->isValid());
-        self::assertEquals(Reason::Ok, $c->getReason());
-        self::assertFalse($c->isDigitError());
-        self::assertFalse($c->isPattenError());
+        $this->assertTrue($c->isValid());
+        $this->assertEquals(Reason::Ok, $c->getReason());
+        $this->assertFalse($c->isDigitError());
+        $this->assertFalse($c->isPattenError());
 
-        self::assertSame($expectedFormat, $c->format());
-        self::assertSame($expectedFormat, (string)$c);
-        self::assertSame($this->clearString($p1), $c->getPart1());
-        self::assertSame($this->clearString($p2), $c->getPart2());
-        self::assertSame($this->clearString($p3), $c->getPart3());
+        $this->assertSame($expectedFormat, $c->format());
+        $this->assertSame($expectedFormat, (string)$c);
+        $this->assertSame($this->clearString($p1), $c->getPart1());
+        $this->assertSame($this->clearString($p2), $c->getPart2());
+        $this->assertSame($this->clearString($p3), $c->getPart3());
     }
 
     /**
@@ -84,16 +84,16 @@ class HkidTest extends TestCase
     ): void {
         $b = new HkidDigitCheck();
         $r = $b->checkParts($p1, $p2, $p3);
-        self::assertTrue($r->isValid());
-        self::assertEquals(Reason::Ok, $r->getReason());
-        self::assertFalse($r->isDigitError());
-        self::assertFalse($r->isPattenError());
+        $this->assertTrue($r->isValid());
+        $this->assertEquals(Reason::Ok, $r->getReason());
+        $this->assertFalse($r->isDigitError());
+        $this->assertFalse($r->isPattenError());
 
-        self::assertSame($expectedFormat, $r->format());
-        self::assertSame($expectedFormat, (string)$r);
-        self::assertSame($this->clearString($p1), $r->getPart1());
-        self::assertSame($this->clearString($p2), $r->getPart2());
-        self::assertSame($this->clearString($p3), $r->getPart3());
+        $this->assertSame($expectedFormat, $r->format());
+        $this->assertSame($expectedFormat, (string)$r);
+        $this->assertSame($this->clearString($p1), $r->getPart1());
+        $this->assertSame($this->clearString($p2), $r->getPart2());
+        $this->assertSame($this->clearString($p3), $r->getPart3());
     }
 
     /**
@@ -145,34 +145,34 @@ class HkidTest extends TestCase
         Reason $reason,
     ): void {
         $a = Helper::checkByParts($p1, $p2, $p3);
-        self::assertFalse($a->isValid());
-        self::assertEquals($reason, $a->getReason());
-        self::assertEquals($reason->isDigitError(), $a->isDigitError());
-        self::assertEquals($reason->isPattenError(), $a->isPattenError());
+        $this->assertFalse($a->isValid());
+        $this->assertEquals($reason, $a->getReason());
+        $this->assertEquals($reason->isDigitError(), $a->isDigitError());
+        $this->assertEquals($reason->isPattenError(), $a->isPattenError());
 
         switch ($reason) {
             case Reason::DigitError:
-                self::assertFalse($a->isPattenError());
-                self::assertTrue($a->isDigitError());
+                $this->assertFalse($a->isPattenError());
+                $this->assertTrue($a->isDigitError());
                 break;
             case Reason::PattenError:
-                self::assertTrue($a->isPattenError());
-                self::assertFalse($a->isDigitError());
+                $this->assertTrue($a->isPattenError());
+                $this->assertFalse($a->isDigitError());
                 break;
         }
 
         $a = Helper::checkByString($this->partsToString($p1, $p2, $p3));
-        self::assertFalse($a->isValid());
-        self::assertEquals($reason, $a->getReason());
-        self::assertEquals($reason->isDigitError(), $a->isDigitError());
-        self::assertEquals($reason->isPattenError(), $a->isPattenError());
+        $this->assertFalse($a->isValid());
+        $this->assertEquals($reason, $a->getReason());
+        $this->assertEquals($reason->isDigitError(), $a->isDigitError());
+        $this->assertEquals($reason->isPattenError(), $a->isPattenError());
     }
 
     public function testSameInstance(): void
     {
         $one = Helper::factory();
         $two = Helper::factory();
-        self::assertEquals($one, $two);
+        $this->assertEquals($one, $two);
     }
 
     /**
