@@ -1,5 +1,5 @@
 # Validation of HKID
-> Used to validation the format and check digit calculation for HKID 
+> Used to validation the format and check digit calculation for HKID. 
 
 ```
  __    __   __  ___  __   _______       ______  __    __   _______   ______  __  ___
