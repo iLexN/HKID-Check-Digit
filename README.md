@@ -16,7 +16,6 @@
 
 ![GitHub Action](https://github.com/iLexN/HKID-Check-Digit/workflows/CI%20Check/badge.svg?branch=5.x)
 [![Coverage Status](https://coveralls.io/repos/github/iLexN/HKID-Check-Digit/badge.svg?branch=5.x)](https://coveralls.io/github/iLexN/HKID-Check-Digit?branch=5.x)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/iLexN/HKID-Check-Digit/badges/quality-score.png?b=5.x)](https://scrutinizer-ci.com/g/iLexN/HKID-Check-Digit/?branch=5.x)
 [![Infection MSI](https://badge.stryker-mutator.io/github.com/iLexN/HKID-Check-Digit/5.x)](https://infection.github.io)
 
 | Tag | PHP      |
