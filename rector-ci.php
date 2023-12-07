@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use Rector\CodingStyle\Rector\Class_\AddArrayDefaultToArrayPropertyRector;
 use Rector\Config\RectorConfig;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\SetList;
@@ -13,13 +12,12 @@ return static function (RectorConfig $rectorConfig): void {
         SetList::CODE_QUALITY,
         SetList::DEAD_CODE,
         SetList::CODING_STYLE,
-        SetList::PHP_82,
+        SetList::PHP_83,
         PHPUnitSetList::PHPUNIT_100,
         PHPUnitSetList::PHPUNIT_CODE_QUALITY,
     ]);
 
     $rectorConfig->skip([
-        AddArrayDefaultToArrayPropertyRector::class,
         Rector\DeadCode\Rector\ClassMethod\RemoveUselessParamTagRector::class,
         Rector\DeadCode\Rector\ClassMethod\RemoveUselessReturnTagRector::class,
         Rector\PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class,
