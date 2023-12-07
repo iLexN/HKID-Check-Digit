@@ -172,6 +172,7 @@ class HkidTest extends TestCase
     {
         $one = Helper::factory();
         $two = Helper::factory();
+        self::assertSame($one, $two);
         self::assertEquals($one, $two);
     }
 

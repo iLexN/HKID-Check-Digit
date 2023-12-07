@@ -2,6 +2,8 @@
 
 namespace Ilex\Validation\HkidValidation;
 
+use Ilex\ResultOption\Error\OptionException;
+
 /**
  * Class Factory
  * Helper for Quick check
@@ -24,7 +26,7 @@ final class Helper
      * @param string $p2 182361
      * @param string $p3 1
      *
-     * @return HkIdValidResult
+     * @throws OptionException
      */
     public static function checkByParts(
         string $p1,
@@ -39,7 +41,7 @@ final class Helper
      *
      * @param string $string CA182361(1)
      *
-     * @return HkIdValidResult
+     * @throws OptionException
      */
     public static function checkByString(string $string): HkIdValidResult
     {

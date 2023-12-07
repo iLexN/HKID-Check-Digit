@@ -16,10 +16,4 @@ return static function (RectorConfig $rectorConfig): void {
         PHPUnitSetList::PHPUNIT_100,
         PHPUnitSetList::PHPUNIT_CODE_QUALITY,
     ]);
-
-    $rectorConfig->skip([
-        Rector\DeadCode\Rector\ClassMethod\RemoveUselessParamTagRector::class,
-        Rector\DeadCode\Rector\ClassMethod\RemoveUselessReturnTagRector::class,
-        Rector\PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector::class,
-    ]);
 };

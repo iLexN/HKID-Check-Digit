@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ilex\Validation\HkidValidation;
 
+use Ilex\ResultOption\Error\OptionException;
 use Ilex\ResultOption\Option\Option;
 use Ilex\Validation\HkidValidation\Enum\Reason;
 
@@ -13,7 +14,7 @@ final readonly class HkIdValidResult implements \Stringable
     /**
      * HkIdValidResult constructor.
      *
-     * @param \Ilex\ResultOption\Option\Option<\Ilex\Validation\HkidValidation\Hkid> $hkid
+     * @param Option<Hkid> $hkid
      */
     public function __construct(
         private Option $hkid,
@@ -42,8 +43,7 @@ final readonly class HkIdValidResult implements \Stringable
     }
 
     /**
-     * @return string
-     * @throws \Ilex\ResultOption\Error\OptionException
+     * @throws OptionException
      */
     public function getPart1(): string
     {
@@ -51,8 +51,7 @@ final readonly class HkIdValidResult implements \Stringable
     }
 
     /**
-     * @return string
-     * @throws \Ilex\ResultOption\Error\OptionException
+     * @throws OptionException
      */
     public function getPart2(): string
     {
@@ -60,8 +59,7 @@ final readonly class HkIdValidResult implements \Stringable
     }
 
     /**
-     * @return string
-     * @throws \Ilex\ResultOption\Error\OptionException
+     * @throws OptionException
      */
     public function getPart3(): string
     {
@@ -69,7 +67,7 @@ final readonly class HkIdValidResult implements \Stringable
     }
 
     /**
-     * @throws \Ilex\ResultOption\Error\OptionException
+     * @throws OptionException
      */
     public function format(): string
     {
@@ -77,7 +75,7 @@ final readonly class HkIdValidResult implements \Stringable
     }
 
     /**
-     * @throws \Ilex\ResultOption\Error\OptionException
+     * @throws OptionException
      */
     public function __toString(): string
     {
