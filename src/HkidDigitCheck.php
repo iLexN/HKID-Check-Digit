@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ilex\Validation\HkidValidation;
 
+use Ilex\ResultOption\Error\OptionException;
 use Ilex\ResultOption\Option\Option;
 use Ilex\Validation\HkidValidation\Enum\Reason;
 
@@ -17,77 +18,77 @@ final readonly class HkidDigitCheck
     /**
      * @var int
      */
-    private const ONE_CHAT_NUM = 324;
+    private const int ONE_CHAT_NUM = 324;
 
     /**
      * @var int
      */
-    private const MOD_NUM = 11;
+    private const int MOD_NUM = 11;
 
     /**
      * @var string
      */
-    private const MOD_NUM_10 = 'A';
+    private const string MOD_NUM_10 = 'A';
 
     /**
      * @var int
      */
-    private const MOD_NUM_11 = 0;
+    private const int MOD_NUM_11 = 0;
 
     /**
      * @var int
      */
-    private const MOD_MATCH_10 = 10;
+    private const int MOD_MATCH_10 = 10;
 
     /**
      * @var int
      */
-    private const MOD_MATCH_11 = 11;
+    private const int MOD_MATCH_11 = 11;
 
     /**
      * @var int
      */
-    private const CHAT_WEIGHT_1 = 9;
+    private const int CHAT_WEIGHT_1 = 9;
 
     /**
      * @var int
      */
-    private const CHAT_WEIGHT_2 = 8;
+    private const int CHAT_WEIGHT_2 = 8;
 
     /**
      * @var int
      */
-    private const NUM_WEIGHT_1 = 7;
+    private const int NUM_WEIGHT_1 = 7;
 
     /**
      * @var int
      */
-    private const NUM_WEIGHT_2 = 6;
+    private const int NUM_WEIGHT_2 = 6;
 
     /**
      * @var int
      */
-    private const NUM_WEIGHT_3 = 5;
+    private const int NUM_WEIGHT_3 = 5;
 
     /**
      * @var int
      */
-    private const NUM_WEIGHT_4 = 4;
+    private const int NUM_WEIGHT_4 = 4;
 
     /**
      * @var int
      */
-    private const NUM_WEIGHT_5 = 3;
+    private const int NUM_WEIGHT_5 = 3;
 
     /**
      * @var int
      */
-    private const NUM_WEIGHT_6 = 2;
+    private const int NUM_WEIGHT_6 = 2;
 
     /**
      * @var int
      */
-    private const CHAT_CONVERT_START_NUM = 10;
+    private const int CHAT_CONVERT_START_NUM = 10;
 
 
     /**
@@ -100,7 +101,7 @@ final readonly class HkidDigitCheck
     /**
      * @var string
      */
-    private const RE = '/^(?P<p1>\D{1,2})(?P<p2>\d{6})\((?P<p3>[\w{1}0-9aA])\)$/i';
+    private const string RE = '/^(?P<p1>\D{1,2})(?P<p2>\d{6})\((?P<p3>[\w{1}0-9aA])\)$/i';
 
     /**
      * HkidDigitCheck constructor.
@@ -112,9 +113,6 @@ final readonly class HkidDigitCheck
 
     /**
      * upper case and trim space
-     *
-     *
-     * @return string
      */
     private function clearString(string $string): string
     {
@@ -124,9 +122,7 @@ final readonly class HkidDigitCheck
     /**
      * check by part
      *
-     *
-     * @return HkIdValidResult
-     * @throws \Ilex\ResultOption\Error\OptionException
+     * @throws OptionException
      */
     public function checkParts(
         string $p1,
@@ -141,9 +137,7 @@ final readonly class HkidDigitCheck
     /**
      * check whole string format and pattern
      *
-     *
-     * @return HkIdValidResult
-     * @throws \Ilex\ResultOption\Error\OptionException
+     * @throws OptionException
      */
     public function checkString(string $string): HkIdValidResult
     {
@@ -172,7 +166,7 @@ final readonly class HkidDigitCheck
      * break down the string to part1,2,3
      *
      *
-     * @return \Ilex\ResultOption\Option\Option<\Ilex\Validation\HkidValidation\Hkid>
+     * @return Option<Hkid>
      */
     private function validate(string $string): Option
     {
@@ -189,9 +183,6 @@ final readonly class HkidDigitCheck
 
     /**
      * get part 1 num sum
-     *
-     *
-     * @return int
      */
     private function getCharSum(string $p1): int
     {
@@ -206,9 +197,6 @@ final readonly class HkidDigitCheck
 
     /**
      * Get part 2 remainder
-     *
-     *
-     * @return string
      */
     private function getPart2Remainder(string $p2, int $charSum): string
     {
@@ -225,9 +213,6 @@ final readonly class HkidDigitCheck
 
     /**
      * Cal Part 2 Remainder
-     *
-     *
-     * @return int
      */
     private function calPart2Remainder(string $part2, int $charSum): int
     {

@@ -17,25 +17,16 @@ final readonly class Hkid implements HkidValueInterface
     ) {
     }
 
-    /**
-     * @return string
-     */
     public function getPart1(): string
     {
         return $this->part1;
     }
 
-    /**
-     * @return string
-     */
     public function getPart2(): string
     {
         return $this->part2;
     }
 
-    /**
-     * @return string
-     */
     public function getPart3(): string
     {
         return $this->part3;
