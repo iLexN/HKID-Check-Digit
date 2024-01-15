@@ -17,21 +17,25 @@ final readonly class Hkid implements HkidValueInterface
     ) {
     }
 
+    #[\Override]
     public function getPart1(): string
     {
         return $this->part1;
     }
 
+    #[\Override]
     public function getPart2(): string
     {
         return $this->part2;
     }
 
+    #[\Override]
     public function getPart3(): string
     {
         return $this->part3;
     }
 
+    #[\Override]
     public function format(): string
     {
         return \sprintf('%s%s(%s)', $this->getPart1(), $this->getPart2(), $this->getPart3());
