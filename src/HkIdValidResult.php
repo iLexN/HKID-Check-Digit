@@ -77,6 +77,7 @@ final readonly class HkIdValidResult implements \Stringable
     /**
      * @throws OptionException
      */
+    #[\Override]
     public function __toString(): string
     {
         return $this->format();
