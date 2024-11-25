@@ -29,7 +29,7 @@ class HkidTest extends TestCase
         $a = Helper::checkByParts($p1, $p2, $p3);
 
         $this->assertTrue($a->isValid());
-        $this->assertEquals(Reason::Ok, $a->getReason());
+        $this->assertSame(Reason::Ok, $a->getReason());
         $this->assertFalse($a->isDigitError());
         $this->assertFalse($a->isPattenError());
 
@@ -57,7 +57,7 @@ class HkidTest extends TestCase
         $c = Helper::checkByString($this->partsToString($p1, $p2, $p3));
 
         $this->assertTrue($c->isValid());
-        $this->assertEquals(Reason::Ok, $c->getReason());
+        $this->assertSame(Reason::Ok, $c->getReason());
         $this->assertFalse($c->isDigitError());
         $this->assertFalse($c->isPattenError());
 
@@ -85,7 +85,7 @@ class HkidTest extends TestCase
         $b = new HkidDigitCheck();
         $r = $b->checkParts($p1, $p2, $p3);
         $this->assertTrue($r->isValid());
-        $this->assertEquals(Reason::Ok, $r->getReason());
+        $this->assertSame(Reason::Ok, $r->getReason());
         $this->assertFalse($r->isDigitError());
         $this->assertFalse($r->isPattenError());
 
