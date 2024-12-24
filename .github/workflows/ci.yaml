@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php: ['8.3']
+        php: ['8.3','8.4']
 
     name: PHP ${{ matrix.php }} tests
     steps:
@@ -90,8 +90,8 @@ jobs:
       - name: PhpStan check
         run: composer bug-check
 
-      - name: Psalm check
-        run: composer psalm
+      # - name: Psalm check
+      #   run: composer psalm
 
       - name: Rector check
         run: composer rector-check

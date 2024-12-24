@@ -24,9 +24,7 @@
         "phpstan/phpstan-strict-rules": "^1.6",
         "phpunit/phpunit": "10.5.26",
         "rector/rector": "1.2.10",
-        "spatie/phpunit-watcher": "^1.23",
-        "symplify/easy-coding-standard": "^12.5.4",
-        "vimeo/psalm": "^5.26"
+        "spatie/phpunit-watcher": "^1.23"
     },
     "config": {
         "sort-packages": true,
