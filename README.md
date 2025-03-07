@@ -14,7 +14,7 @@
 [![Latest Stable Version](https://poser.pugx.org/ilexn/hkid-check-digit/v/stable)](https://packagist.org/packages/ilexn/hkid-check-digit)
 [![Total Downloads](https://poser.pugx.org/ilexn/hkid-check-digit/downloads)](https://packagist.org/packages/ilexn/hkid-check-digit)
 
-![GitHub Action](https://github.com/iLexN/HKID-Check-Digit/workflows/CI%20Check/badge.svg?branch=5.x)
+[![GitHub Action](https://github.com/iLexN/HKID-Check-Digit/actions/workflows/ci.yaml/badge.svg)](https://github.com/iLexN/HKID-Check-Digit/actions/workflows/ci.yaml)
 [![Coverage Status](https://coveralls.io/repos/github/iLexN/HKID-Check-Digit/badge.svg?branch=5.x)](https://coveralls.io/github/iLexN/HKID-Check-Digit?branch=5.x)
 [![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FiLexN%2FHKID-Check-Digit%2F5.x)](https://dashboard.stryker-mutator.io/reports/github.com/iLexN/HKID-Check-Digit/5.x)
 
