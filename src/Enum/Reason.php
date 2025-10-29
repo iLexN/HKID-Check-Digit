@@ -8,7 +8,7 @@ enum Reason
 
     case Ok;
 
-    case PattenError;
+    case PatternError;
 
     case DigitError;
 
@@ -20,10 +20,10 @@ enum Reason
         };
     }
 
-    public function isPattenError(): bool
+    public function isPatternError(): bool
     {
         return match ($this) {
-            self::PattenError => true,
+            self::PatternError => true,
             default => false,
         };
     }

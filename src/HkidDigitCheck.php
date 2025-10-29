@@ -144,7 +144,7 @@ final readonly class HkidDigitCheck
         $option = $this->validate($string);
 
         if ($option->isNone()) {
-            return new HkIdValidResult($option, Reason::PattenError);
+            return new HkIdValidResult($option, Reason::PatternError);
         }
 
         if ($this->isValid($option->unwrap())) {

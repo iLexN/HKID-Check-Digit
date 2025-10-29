@@ -27,9 +27,9 @@ final readonly class HkIdValidResult implements \Stringable
         return $this->reason->isValid();
     }
 
-    public function isPattenError(): bool
+    public function isPatternError(): bool
     {
-        return $this->reason->isPattenError();
+        return $this->reason->isPatternError();
     }
 
     public function isDigitError(): bool
