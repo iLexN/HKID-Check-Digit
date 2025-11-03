@@ -8,7 +8,7 @@
     "logs": {
         "text": "infection.log",
         "stryker": {
-            "report": "5.x"
+            "report": "6.x"
         }
     },
     "mutators": {

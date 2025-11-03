@@ -15,79 +15,34 @@ use Ilex\Validation\HkidValidation\Enum\Reason;
  */
 final readonly class HkidDigitCheck
 {
-    /**
-     * @var int
-     */
     private const int ONE_CHAT_NUM = 324;
 
-    /**
-     * @var int
-     */
     private const int MOD_NUM = 11;
 
-    /**
-     * @var string
-     */
     private const string MOD_NUM_10 = 'A';
 
-    /**
-     * @var int
-     */
     private const int MOD_NUM_11 = 0;
 
-    /**
-     * @var int
-     */
     private const int MOD_MATCH_10 = 10;
 
-    /**
-     * @var int
-     */
     private const int MOD_MATCH_11 = 11;
 
-    /**
-     * @var int
-     */
     private const int CHAT_WEIGHT_1 = 9;
 
-    /**
-     * @var int
-     */
     private const int CHAT_WEIGHT_2 = 8;
 
-    /**
-     * @var int
-     */
     private const int NUM_WEIGHT_1 = 7;
 
-    /**
-     * @var int
-     */
     private const int NUM_WEIGHT_2 = 6;
 
-    /**
-     * @var int
-     */
     private const int NUM_WEIGHT_3 = 5;
 
-    /**
-     * @var int
-     */
     private const int NUM_WEIGHT_4 = 4;
 
-    /**
-     * @var int
-     */
     private const int NUM_WEIGHT_5 = 3;
 
-    /**
-     * @var int
-     */
     private const int NUM_WEIGHT_6 = 2;
 
-    /**
-     * @var int
-     */
     private const int CHAT_CONVERT_START_NUM = 10;
 
 
@@ -98,9 +53,6 @@ final readonly class HkidDigitCheck
      */
     private array $partOneCharNumArray;
 
-    /**
-     * @var string
-     */
     private const string RE = '/^(?P<p1>\D{1,2})(?P<p2>\d{6})\((?P<p3>[\w{1}0-9aA])\)$/i';
 
     /**
@@ -216,6 +168,7 @@ final readonly class HkidDigitCheck
      */
     private function calPart2Remainder(string $part2, int $charSum): int
     {
+        /** @infection-ignore-all */
         $p2 = \array_map(static fn (string $int): int => (int)$int, \str_split($part2));
 
         return self::MOD_NUM - ((
