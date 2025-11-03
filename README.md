@@ -15,8 +15,8 @@
 [![Total Downloads](https://poser.pugx.org/ilexn/hkid-check-digit/downloads)](https://packagist.org/packages/ilexn/hkid-check-digit)
 
 [![GitHub Action](https://github.com/iLexN/HKID-Check-Digit/actions/workflows/ci.yaml/badge.svg)](https://github.com/iLexN/HKID-Check-Digit/actions/workflows/ci.yaml)
-[![Coverage Status](https://coveralls.io/repos/github/iLexN/HKID-Check-Digit/badge.svg?branch=5.x)](https://coveralls.io/github/iLexN/HKID-Check-Digit?branch=5.x)
-[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FiLexN%2FHKID-Check-Digit%2F5.x)](https://dashboard.stryker-mutator.io/reports/github.com/iLexN/HKID-Check-Digit/5.x)
+[![Coverage Status](https://coveralls.io/repos/github/iLexN/HKID-Check-Digit/badge.svg?branch=6.x)](https://coveralls.io/github/iLexN/HKID-Check-Digit?branch=6.x)
+[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FiLexN%2FHKID-Check-Digit%2F6.x)](https://dashboard.stryker-mutator.io/reports/github.com/iLexN/HKID-Check-Digit/6.x)
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/iLexN/HKID-Check-Digit)
 
@@ -27,6 +27,7 @@
 | 3.x | php>=7.4 |
 | 4.x | php>=8.0 |
 | 5.x | php>=8.1 |
+| 6.x | php>=8.4 |
 
 ## Installation
 ```sh
@@ -34,7 +35,7 @@ composer require ilexn/hkid-check-digit
 ```
 
 ## Upgrade from 5.x to 6.x
-The `\Ilex\Validation\HkidValidation\Enum\Reason::PattenError` changed to `\Ilex\Validation\HkidValidation\Enum\Reason::PatternError`
+The `\Ilex\Validation\HkidValidation\Enum\Reason::PatternError` changed to `\Ilex\Validation\HkidValidation\Enum\Reason::PatternError`
 
 This has the incorrect spelling in the previous version.
 
@@ -48,7 +49,7 @@ switch ($hkid->getReason()){
         echo($hkid->format());
         break;
     case \Ilex\Validation\HkidValidation\Reason\ReasonInterface::PATTEN_ERROR:
-        echo('Patten not match');
+        echo('Pattern not match');
         break;
     case \Ilex\Validation\HkidValidation\Reason\ReasonInterface::DIGIT_ERROR:
         echo('Digit not match');
@@ -61,8 +62,8 @@ switch ($hkid->getReason()){
         echo('correct');
         echo($hkid->format());
         break;
-    case \Ilex\Validation\HkidValidation\Enum\Reason::PattenError:
-        echo('Patten not match');
+    case \Ilex\Validation\HkidValidation\Enum\Reason::PatternError:
+        echo('Pattern not match');
         break;
     case \Ilex\Validation\HkidValidation\Enum\Reason::DigitError:
         echo('Digit not match');
@@ -82,7 +83,7 @@ $a = Helper::checkByString($s);
 
 //>=3.x
 $a->isValid(); //bool
-$a->isPattenError(); //bool
+$a->PatternError(); //bool
 $a->isDigitError(); //bool
 echo($a->format()); // print the formated HKID.
 echo($a->getReason());
@@ -133,8 +134,8 @@ switch ($hkid->getReason()){
         echo('correct');
         echo($hkid->format());
         break;
-    case \Ilex\Validation\HkidValidation\Enum\Reason::PattenError:
-        echo('Patten not match');
+    case \Ilex\Validation\HkidValidation\Enum\Reason::PatternError:
+        echo('Pattern not match');
         break;
     case \Ilex\Validation\HkidValidation\Enum\Reason::DigitError:
         echo('Digit not match');
@@ -159,8 +160,8 @@ if ($hkid->isValid()) {
     echo $hkid->format();
 } else {
     echo ('wrong');
-    if ($hkid->isPattenError()) {
-        echo('Patten not match');
+    if ($hkid->PatternError()) {
+        echo('Pattern not match');
     }
     if ($hkid->isDigitError()) {
         echo('Digit not match');
