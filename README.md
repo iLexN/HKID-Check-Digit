@@ -15,8 +15,8 @@
 [![Total Downloads](https://poser.pugx.org/ilexn/hkid-check-digit/downloads)](https://packagist.org/packages/ilexn/hkid-check-digit)
 
 [![GitHub Action](https://github.com/iLexN/HKID-Check-Digit/actions/workflows/ci.yaml/badge.svg)](https://github.com/iLexN/HKID-Check-Digit/actions/workflows/ci.yaml)
-[![Coverage Status](https://coveralls.io/repos/github/iLexN/HKID-Check-Digit/badge.svg?branch=5.x)](https://coveralls.io/github/iLexN/HKID-Check-Digit?branch=5.x)
-[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FiLexN%2FHKID-Check-Digit%2F5.x)](https://dashboard.stryker-mutator.io/reports/github.com/iLexN/HKID-Check-Digit/5.x)
+[![Coverage Status](https://coveralls.io/repos/github/iLexN/HKID-Check-Digit/badge.svg?branch=6.x)](https://coveralls.io/github/iLexN/HKID-Check-Digit?branch=6.x)
+[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FiLexN%2FHKID-Check-Digit%2F6.x)](https://dashboard.stryker-mutator.io/reports/github.com/iLexN/HKID-Check-Digit/6.x)
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/iLexN/HKID-Check-Digit)
 
