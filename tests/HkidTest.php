@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ilex\Validation\HkidValidation\Tests;
 
 use Generator;
@@ -10,7 +12,7 @@ use Ilex\Validation\HkidValidation\HkidDigitCheck;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-class HkidTest extends TestCase
+final class HkidTest extends TestCase
 {
 
     /**
@@ -149,8 +151,8 @@ class HkidTest extends TestCase
         $a = Helper::checkByParts($p1, $p2, $p3);
         $this->assertFalse($a->isValid());
         $this->assertEquals($reason, $a->getReason());
-        $this->assertEquals($reason->isDigitError(), $a->isDigitError());
-        $this->assertEquals($reason->isPatternError(), $a->isPatternError());
+        $this->assertSame($reason->isDigitError(), $a->isDigitError());
+        $this->assertSame($reason->isPatternError(), $a->isPatternError());
 
         switch ($reason) {
             case Reason::DigitError:
@@ -166,8 +168,8 @@ class HkidTest extends TestCase
         $a = Helper::checkByString($this->partsToString($p1, $p2, $p3));
         $this->assertFalse($a->isValid());
         $this->assertEquals($reason, $a->getReason());
-        $this->assertEquals($reason->isDigitError(), $a->isDigitError());
-        $this->assertEquals($reason->isPatternError(), $a->isPatternError());
+        $this->assertSame($reason->isDigitError(), $a->isDigitError());
+        $this->assertSame($reason->isPatternError(), $a->isPatternError());
     }
 
     public function testSameInstance(): void
