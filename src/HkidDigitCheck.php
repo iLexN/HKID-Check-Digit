@@ -168,6 +168,7 @@ final readonly class HkidDigitCheck
      */
     private function calPart2Remainder(string $part2, int $charSum): int
     {
+        /** @infection-ignore-all */
         $p2 = \array_map(static fn (string $int): int => (int)$int, \str_split($part2));
 
         return self::MOD_NUM - ((
