@@ -3,6 +3,7 @@
 namespace Ilex\Validation\HkidValidation\Tests;
 
 use Generator;
+use Ilex\ResultOption\Error\OptionException;
 use Ilex\Validation\HkidValidation\Enum\Reason;
 use Ilex\Validation\HkidValidation\Helper;
 use Ilex\Validation\HkidValidation\HkidDigitCheck;
@@ -17,7 +18,7 @@ class HkidTest extends TestCase
      * @param string $p1 CA
      * @param string $p2 182361
      * @param string $p3 1
-     * @throws \Ilex\ResultOption\Error\OptionException
+     * @throws OptionException
      */
     #[DataProvider('additionProviderTrueResult')]
     public function testCheckPartsHkidFormatTrue(
@@ -31,7 +32,7 @@ class HkidTest extends TestCase
         $this->assertTrue($a->isValid());
         $this->assertSame(Reason::Ok, $a->getReason());
         $this->assertFalse($a->isDigitError());
-        $this->assertFalse($a->isPattenError());
+        $this->assertFalse($a->isPatternError());
 
         $this->assertSame($expectedFormat, $a->format());
         $this->assertSame($expectedFormat, (string)$a);
@@ -45,7 +46,7 @@ class HkidTest extends TestCase
      * @param string $p1 CA
      * @param string $p2 182361
      * @param string $p3 1
-     * @throws \Ilex\ResultOption\Error\OptionException
+     * @throws OptionException
      */
     #[DataProvider('additionProviderTrueResult')]
     public function testCheckStringHkidFormatHelperTrue(
@@ -59,7 +60,7 @@ class HkidTest extends TestCase
         $this->assertTrue($c->isValid());
         $this->assertSame(Reason::Ok, $c->getReason());
         $this->assertFalse($c->isDigitError());
-        $this->assertFalse($c->isPattenError());
+        $this->assertFalse($c->isPatternError());
 
         $this->assertSame($expectedFormat, $c->format());
         $this->assertSame($expectedFormat, (string)$c);
@@ -73,7 +74,7 @@ class HkidTest extends TestCase
      * @param string $p1 CA
      * @param string $p2 182361
      * @param string $p3 1
-     * @throws \Ilex\ResultOption\Error\OptionException
+     * @throws OptionException
      */
     #[DataProvider('additionProviderTrueResult')]
     public function testCheckHkidFormatMainTrue(
@@ -87,7 +88,7 @@ class HkidTest extends TestCase
         $this->assertTrue($r->isValid());
         $this->assertSame(Reason::Ok, $r->getReason());
         $this->assertFalse($r->isDigitError());
-        $this->assertFalse($r->isPattenError());
+        $this->assertFalse($r->isPatternError());
 
         $this->assertSame($expectedFormat, $r->format());
         $this->assertSame($expectedFormat, (string)$r);
@@ -116,7 +117,7 @@ class HkidTest extends TestCase
      */
     public static function additionProviderFalseResult(): Generator
     {
-        $p = Reason::PattenError;
+        $p = Reason::PatternError;
         $d = Reason::DigitError;
 
         yield 'B111111(3)' => ['B', '111111', '3', $d];
@@ -136,6 +137,7 @@ class HkidTest extends TestCase
      * @param string $p1 CA
      * @param string $p2 182361
      * @param string $p3 1
+     * @throws OptionException
      */
     #[DataProvider('additionProviderFalseResult')]
     public function testCheckHkidFormatFalse(
@@ -148,15 +150,15 @@ class HkidTest extends TestCase
         $this->assertFalse($a->isValid());
         $this->assertEquals($reason, $a->getReason());
         $this->assertEquals($reason->isDigitError(), $a->isDigitError());
-        $this->assertEquals($reason->isPattenError(), $a->isPattenError());
+        $this->assertEquals($reason->isPatternError(), $a->isPatternError());
 
         switch ($reason) {
             case Reason::DigitError:
-                $this->assertFalse($a->isPattenError());
+                $this->assertFalse($a->isPatternError());
                 $this->assertTrue($a->isDigitError());
                 break;
-            case Reason::PattenError:
-                $this->assertTrue($a->isPattenError());
+            case Reason::PatternError:
+                $this->assertTrue($a->isPatternError());
                 $this->assertFalse($a->isDigitError());
                 break;
         }
@@ -165,7 +167,7 @@ class HkidTest extends TestCase
         $this->assertFalse($a->isValid());
         $this->assertEquals($reason, $a->getReason());
         $this->assertEquals($reason->isDigitError(), $a->isDigitError());
-        $this->assertEquals($reason->isPattenError(), $a->isPattenError());
+        $this->assertEquals($reason->isPatternError(), $a->isPatternError());
     }
 
     public function testSameInstance(): void

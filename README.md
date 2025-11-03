@@ -33,6 +33,11 @@
 composer require ilexn/hkid-check-digit
 ```
 
+## Upgrade from 5.x to 6.x
+The `\Ilex\Validation\HkidValidation\Enum\Reason::PattenError` changed to `\Ilex\Validation\HkidValidation\Enum\Reason::PatternError`
+
+This has the incorrect spelling in the previous version.
+
 ## Upgrade from 4.x to 5.x
 The `\Ilex\Validation\HkidValidation\Reason\ReasonInterface` changed to Enum `\Ilex\Validation\HkidValidation\Enum\Reason`
 ```php

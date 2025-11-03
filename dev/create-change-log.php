@@ -15,6 +15,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
     new DefaultFormatter('https://github.com/iLexN/HKID-Check-Digit/compare')
 );
 
+$c->addRelease((new Release('6.0.0','2025-11-03'))
+    ->added('\Ilex\Validation\HkidValidation\Enum\Reason::PatternError')
+    ->removed('\Ilex\Validation\HkidValidation\Enum\Reason::PattenError')
+);
+
 $c->addRelease((new Release('5.0.1','2021-12-03'))
     ->added('Support PHP 8.1')
     ->added('Enum class for Reason')

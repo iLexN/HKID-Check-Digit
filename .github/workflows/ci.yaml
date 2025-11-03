@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php: ['8.3','8.4']
+        php: ['8.4']
 
     name: PHP ${{ matrix.php }} tests
     steps:
@@ -44,7 +44,7 @@ jobs:
         run: vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
       - name: Upload coverage results to Coveralls
-        if: ${{ matrix.php == '8.3' }} 
+        if: ${{ matrix.php == '8.4' }}
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -55,7 +55,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php: ['8.3']
+        php: ['8.4']
 
     name: PHP ${{ matrix.php }} code check
     steps:
