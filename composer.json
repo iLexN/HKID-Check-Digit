@@ -20,7 +20,7 @@
         "infection/infection": "0.31.9",
         "phpbench/phpbench": "1.4.3",
         "phpstan/phpstan": "2.1.32",
-        "phpstan/phpstan-phpunit": "2.0.7",
+        "phpstan/phpstan-phpunit": "2.0.8",
         "phpstan/phpstan-strict-rules": "2.0.7",
         "phpunit/phpunit": "12.4.3",
         "rector/rector": "2.2.8"
