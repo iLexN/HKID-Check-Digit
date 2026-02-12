@@ -35,7 +35,7 @@ composer require ilexn/hkid-check-digit
 ```
 
 ## Upgrade from 5.x to 6.x
-The `\Ilex\Validation\HkidValidation\Enum\Reason::PatternError` changed to `\Ilex\Validation\HkidValidation\Enum\Reason::PatternError`
+The `\Ilex\Validation\HkidValidation\Enum\Reason::PattenError` changed to `\Ilex\Validation\HkidValidation\Enum\Reason::PatternError`
 
 This has the incorrect spelling in the previous version.
 
@@ -62,7 +62,7 @@ switch ($hkid->getReason()){
         echo('correct');
         echo($hkid->format());
         break;
-    case \Ilex\Validation\HkidValidation\Enum\Reason::PatternError:
+    case \Ilex\Validation\HkidValidation\Enum\Reason::PattenError:
         echo('Pattern not match');
         break;
     case \Ilex\Validation\HkidValidation\Enum\Reason::DigitError:
