@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ilex\Validation\HkidValidation;
 
 use Ilex\ResultOption\Error\OptionException;
