@@ -22,7 +22,7 @@
         "phpstan/phpstan": "2.1.47",
         "phpstan/phpstan-phpunit": "2.0.16",
         "phpstan/phpstan-strict-rules": "2.0.10",
-        "phpunit/phpunit": "12.5.8",
+        "phpunit/phpunit": "12.5.22",
         "rector/rector": "2.4.1"
     },
     "config": {
