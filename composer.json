@@ -21,7 +21,7 @@
         "phpbench/phpbench": "1.6.1",
         "phpstan/phpstan": "2.1.54",
         "phpstan/phpstan-phpunit": "2.0.16",
-        "phpstan/phpstan-strict-rules": "2.0.10",
+        "phpstan/phpstan-strict-rules": "2.0.11",
         "phpunit/phpunit": "12.5.22",
         "rector/rector": "2.4.1"
     },
