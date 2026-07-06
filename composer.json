@@ -19,7 +19,7 @@
         "ilexn/keep-a-change-log": "^2.0",
         "infection/infection": "0.34.0",
         "phpbench/phpbench": "1.7.0",
-        "phpstan/phpstan": "2.2.2",
+        "phpstan/phpstan": "2.2.5",
         "phpstan/phpstan-phpunit": "2.0.16",
         "phpstan/phpstan-strict-rules": "2.0.11",
         "phpunit/phpunit": "12.5.22",
