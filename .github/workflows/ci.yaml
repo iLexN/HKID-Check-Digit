@@ -16,7 +16,7 @@ jobs:
     name: PHP ${{ matrix.php }} tests
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
       - name: Get Composer Cache Directory
         id: composer-cache
@@ -24,7 +24,7 @@ jobs:
           echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache composer dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: composer-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
@@ -60,7 +60,7 @@ jobs:
     name: PHP ${{ matrix.php }} code check
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
       - name: Get Composer Cache Directory
         id: composer-cache
@@ -68,7 +68,7 @@ jobs:
           echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache composer dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: composer-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
